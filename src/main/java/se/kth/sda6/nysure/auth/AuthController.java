@@ -1,12 +1,12 @@
-package se.kth.sda6.skeleton.auth;
+package se.kth.sda6.nysure.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
-import se.kth.sda6.skeleton.user.User;
-import se.kth.sda6.skeleton.user.UserService;
+import se.kth.sda6.nysure.user.User;
+import se.kth.sda6.nysure.user.UserService;
 
 @RestController
 public class AuthController {

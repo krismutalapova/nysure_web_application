@@ -1,13 +1,13 @@
-package se.kth.sda6.skeleton;
+package se.kth.sda6.nysure;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SkeletonApplicationTests {
+class NysureApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

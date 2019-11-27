@@ -2,13 +2,16 @@ import React, {useState} from "react";
 
 function RegisterForm({onSubmit}) {
     const [name, setName] = useState("");
+    const [id, setId]=useState("");
+    const [address, setAddress]=useState("");
+    const [telephone, setTelephone]=use
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     return (
         <div className="card">
             <div className="card-body">
-                <h4 className="card-title">Sign up</h4>
+                <h4 className="card-title">Register</h4>
                 <div>
                     <div className="form-group">
                         <label>Name:</label>
@@ -21,6 +24,26 @@ function RegisterForm({onSubmit}) {
                     </div>
 
                     <div className="form-group">
+                        <label>Id:</label>
+                        <input 
+                            type="text"
+                            className="form-control"
+                            value={id}
+                            onChange={ e => setId(e.target.value) }
+                            placeholder="Id - YYYYMMDD-XXXX"/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Address:</label>
+                        <input 
+                            type="text"
+                            className="form-control"
+                            value={name}
+                            onChange={ e => setAddress(e.target.value) }
+                            placeholder="Address"/>
+                    </div>
+
+                    <div className="form-group">
                         <label>Email:</label>
                         <input
                             type="email"
@@ -28,6 +51,16 @@ function RegisterForm({onSubmit}) {
                             onChange={ e => setEmail(e.target.value) }
                             className="form-control"
                             placeholder="Email"/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Telephone:</label>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={ e => setTelephone(e.target.value) }
+                            className="form-control"
+                            placeholder="Telephone"/>
                     </div>
 
                     <div className="form-group">

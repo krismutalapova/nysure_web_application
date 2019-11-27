@@ -1,4 +1,4 @@
-package se.kth.sda6.skeleton.auth;
+package se.kth.sda6.nysure.auth;
 
 public class AuthResponse {
     private String token;
