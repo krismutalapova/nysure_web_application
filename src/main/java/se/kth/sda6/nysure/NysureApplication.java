@@ -7,10 +7,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-public class SkeletonApplication {
+public class NysureApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SkeletonApplication.class, args);
+		SpringApplication.run(NysureApplication.class, args);
 	}
 
 	@Bean
