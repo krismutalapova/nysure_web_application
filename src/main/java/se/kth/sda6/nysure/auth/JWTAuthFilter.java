@@ -1,4 +1,4 @@
-package se.kth.sda6.skeleton.auth;
+package se.kth.sda6.nysure.auth;
 
 import com.auth0.jwt.interfaces.Claim;
 import org.springframework.beans.factory.annotation.Autowired;

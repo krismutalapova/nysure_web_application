@@ -1,4 +1,4 @@
-package se.kth.sda6.skeleton.auth;
+package se.kth.sda6.nysure.auth;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
