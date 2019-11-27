@@ -1,4 +1,4 @@
-package se.kth.sda6.skeleton;
+package se.kth.sda6.nysure;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

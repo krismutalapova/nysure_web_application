@@ -1,4 +1,4 @@
-package se.kth.sda6.skeleton.config;
+package se.kth.sda6.nysure.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import se.kth.sda6.skeleton.auth.CustomUserDetailsService;
-import se.kth.sda6.skeleton.auth.JWTAuthFilter;
-import se.kth.sda6.skeleton.auth.JWTEncoderDecoder;
+import se.kth.sda6.nysure.auth.CustomUserDetailsService;
+import se.kth.sda6.nysure.auth.JWTAuthFilter;
+import se.kth.sda6.nysure.auth.JWTEncoderDecoder;
 
 @Configuration
 @EnableWebSecurity

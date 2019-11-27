@@ -1,4 +1,4 @@
-package se.kth.sda6.skeleton.user;
+package se.kth.sda6.nysure.user;
 
 import org.hibernate.validator.constraints.Length;
 

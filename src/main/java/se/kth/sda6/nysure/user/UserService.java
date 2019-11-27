@@ -1,4 +1,4 @@
-package se.kth.sda6.skeleton.user;
+package se.kth.sda6.nysure.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

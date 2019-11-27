@@ -1,4 +1,4 @@
-package se.kth.sda6.skeleton.auth;
+package se.kth.sda6.nysure.auth;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

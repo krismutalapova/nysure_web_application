@@ -1,11 +1,11 @@
-package se.kth.sda6.skeleton.auth;
+package se.kth.sda6.nysure.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import se.kth.sda6.skeleton.user.User;
-import se.kth.sda6.skeleton.user.UserRepository;
+import se.kth.sda6.nysure.user.User;
+import se.kth.sda6.nysure.user.UserRepository;
 
 import java.util.ArrayList;
 
