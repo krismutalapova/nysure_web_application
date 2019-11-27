@@ -26,13 +26,13 @@ public class InsuranceController {
 
 
     @PostMapping("")
-    public Insurance create(@RequestBody Insurance newPost) {
-        return insuranceService.create(newPost);
+    public Insurance create(@RequestBody Insurance newInsurance) {
+        return insuranceService.create(newInsurance);
     }
 
     @PutMapping("")
-    public Insurance update(@RequestBody Insurance updatedPost) {
-        return insuranceService.update(updatedPost);
+    public Insurance update(@RequestBody Insurance updatedInsurance) {
+        return insuranceService.update(updatedInsurance);
     }
 
     @DeleteMapping("/{id}")
