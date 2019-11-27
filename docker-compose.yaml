@@ -3,9 +3,9 @@ services:
   database:
     image: postgres:11-alpine
     environment:
-       - POSTGRES_DB=skeleton 
-       - POSTGRES_USER=skeleton_user
-       - POSTGRES_PASSWORD=skeleton_pass
+       - POSTGRES_DB=nysure 
+       - POSTGRES_USER=nysure_user
+       - POSTGRES_PASSWORD=nysure_pass
     ports:
       - "5433:5432"
     volumes:
