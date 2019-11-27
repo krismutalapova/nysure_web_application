@@ -5,14 +5,16 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="account")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.")
+    @NotEmpty(message = "Please provide an email address")
+    @Column(name = "id", unique = true)
+    private String id;
 
     @Email(message = "Invalid email address! Please provide a valid email address")
     @NotEmpty(message = "Please provide an email address")
@@ -28,21 +30,38 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @Length(min = 3, max=50, message = "Address must be between 3-50 characters")
+    @Column(name = "address")
+    private String address;
+
+    @Length(min = 7, max=15, message = "Phone must be between 7-15 characters")
+    @Column(name = "phone")
+    private String phone;
+
     // Hibernate needs a default constructor to function
     public User() {}
 
-    public User(@Email(message = "Invalid email address! Please provide a valid email address") @NotEmpty(message = "Please provide an email address") String email, @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters") String password, @Length(min = 3, max = 100, message = "Name must be between 3-100 characters") String name) {
+    public User(@Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.") @NotEmpty(message = "Please provide an email address") String id,
+                @Email(message = "Invalid email address! Please provide a valid email address") @NotEmpty(message = "Please provide an email address") String email,
+                @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters") String password,
+                @Length(min = 3, max = 100, message = "Name must be between 3-100 characters") String name,
+                @Length(min = 3, max=50, message = "Address must be between 3-50 characters") String address,
+                @Length(min = 7, max=15, message = "Phone must be between 7-15 characters") String phone) {
+
+        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
+        this.address = address;
+        this.phone = phone;
     }
 
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
