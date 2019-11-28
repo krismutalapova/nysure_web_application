@@ -19,8 +19,8 @@ public class Insurance {
     private String company;
 
 
-//    @ManyToOne()
-//    private User user;
+    @ManyToOne()
+    private User user;
 
 
     /** @TODO Add the list of insurances to a User Class and add a One to Many relationship
@@ -55,11 +55,11 @@ public class Insurance {
         this.company = company;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
