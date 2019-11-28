@@ -38,7 +38,7 @@ function RegisterForm({onSubmit}) {
                         <input 
                             type="text"
                             className="form-control"
-                            value={name}
+                            value={address}
                             onChange={ e => setAddress(e.target.value) }
                             placeholder="Address"/>
                     </div>
@@ -57,7 +57,7 @@ function RegisterForm({onSubmit}) {
                         <label>Telephone:</label>
                         <input
                             type="text"
-                            value={name}
+                            value={telephone}
                             onChange={ e => setTelephone(e.target.value) }
                             className="form-control"
                             placeholder="Telephone"/>
