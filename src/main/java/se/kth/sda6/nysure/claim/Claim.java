@@ -1,6 +1,6 @@
 package se.kth.sda6.nysure.claim;
 
-import se.kth.sda6.nysure.user.User;
+import se.kth.sda6.nysure.insurance.Insurance;
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +15,7 @@ public class Claim {
     private String inDescr;
 
     @ManyToOne()
-    private User user;
+    private Insurance insurance;
 
     public Claim() {
     }
@@ -36,12 +36,12 @@ public class Claim {
         this.inDescr = inDescr;
     }
 
-    public User getUser() {
-        return user;
+    public Insurance getInsurance() {
+        return insurance;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
     }
 }
 
