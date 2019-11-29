@@ -30,7 +30,7 @@ function RegisterForm({onSubmit}) {
                             className="form-control"
                             value={id}
                             onChange={ e => setId(e.target.value) }
-                            placeholder="Id - YYYYMMDD-XXXX"/>
+                            placeholder="YYYYMMDD-XXXX"/>
                     </div>
 
                     <div className="form-group">
