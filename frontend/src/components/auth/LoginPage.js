@@ -25,7 +25,7 @@ class LoginPage extends Component {
                     <div className="row mt-4">
                         <div className="col-md-6 " style={{color: "white"}}>
                             <h1>Nysure</h1>
-                            <p>The new insurance manager</p>
+                            <p>The new insurance managing solution</p>
                         </div>
 
                         <div className="col-md-6">
