@@ -1,6 +1,8 @@
 body {
+
   min-height: 100vh;
-  background: linear-gradient(to right, #2c3e50, #3498db);
+  background: linear-gradient(to right, #d0d7d7, #ececec);
+
 }
 
 .App {
@@ -12,7 +14,7 @@ body {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #899b9b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,4 +26,32 @@ body {
 
 .App-link {
   color: #09d3ac;
+}
+
+.card {
+    background-color: black;
+}
+.card-body {
+    background-color: #a7b3b4;
+    margin:-5px;
+    border-radius: 10px;
+}
+
+.form-control {
+    margin: none;
+    background: linear-gradient(to right, #d0d7d7, #ececec);
+}
+
+.NySureLogo {
+    display: block;
+    height: 30vmin;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.LoginSlogan {
+  text-align-last: center;
+  font-size: calc(7px + 2vmin);
+  color: black;
+  margin-top: 20px;
 }
