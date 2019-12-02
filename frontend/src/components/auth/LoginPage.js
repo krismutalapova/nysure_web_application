@@ -23,9 +23,10 @@ class LoginPage extends Component {
             <div className="wrapper">
                 <div className="container">
                     <div className="row mt-4">
-                        <div className="col-md-6 " style={{color: "white"}}>
-                            <h1>Nysure</h1>
-                            <p>The new insurance managing solution</p>
+                        <div className="col-md-6 " style={{color: "transparent"}}>
+                        <img className="NySureLogo" alt="NySure" src="NySureLogo.png" />
+                            <p className="LoginSlogan">Simplifying what's important</p>
+
                         </div>
 
                         <div className="col-md-6">
