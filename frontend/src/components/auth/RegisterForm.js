@@ -2,10 +2,7 @@ import React, {useState} from "react";
 import useForm from "react-hook-form";
 
 function RegisterForm({onSubmit}) {
-    const [name, setName] = useState("");
     const [id, setId]=useState("");
-    const [address, setAddress]=useState("");
-    const [telephone, setTelephone]=useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { register, handleSubmit, errors } = useForm();
