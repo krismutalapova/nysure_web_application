@@ -30,8 +30,8 @@ function Navbar({onLogout}) {
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/uploading" className="nav-link">
-                                Upload files 
+                            <Link to="/item" className="nav-link">
+                                Item 
                             </Link>
                         </li>
 
