@@ -12,7 +12,7 @@ class ItemPage extends Component {
     }
 
     async onClickCreateItem(item){
-        console.log("item: " + item);
+        console.log("item: " + {item});
         try {
             const response = await ItemApi.createItem(item);
             const item = response.data;
