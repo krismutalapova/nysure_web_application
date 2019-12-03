@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import RegisterForm from "./RegisterForm";
 import Auth from "../../services/Auth";
+import useForm from "react-hook-form";
 
 function LoginForm({onSubmit}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { register, handleSubmit, errors } = useForm();
 
 //       <script>document.getElementById("submitButtonRegister").click(); </script>
 
@@ -13,25 +15,36 @@ function LoginForm({onSubmit}) {
             <div className="logincard">
                 <h4 className="card-title" >Login</h4>
                 <div>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <label>Email:</label>
-                        <input 
-                            type="email"
-                            className="form-control"
-                            placeholder="Email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)} />
-                    </div>
+                        <input
+                                name="email"
+                                type="email"
+                                value={email}
+                                onChange={ e => setEmail(e.target.value) }
+                                className="form-control"
+                                placeholder="email"
+                                ref={register({ required: "required field"})}/>
+                        </div>
+                               
+                        {errors.email && errors.email.message}
+                        {errors.email && errors.email.type === "@" }
 
                     <div className="form-group">
                         <label>Password:</label>
-                        <input 
-                            type="password" 
-                            placeholder="Password" 
-                            className="form-control" 
-                            value={password}
-                            onChange={e => setPassword(e.target.value)} />
-                    </div>
+                        <input
+                                name="email"
+                                type="email"
+                                value={email}
+                                onChange={ e => setEmail(e.target.value) }
+                                className="form-control"
+                                placeholder="email"
+                                ref={register({ required: "required field"})}/>
+                        </div>
+                               
+                        {errors.email && errors.email.message}
+                        {errors.email && errors.email.type === "@" }
 
 						<div class="contact100-form-checkbox">
 							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"/>
@@ -47,12 +60,14 @@ function LoginForm({onSubmit}) {
 						</div>
 
                     <div className="form-group">
-                        <button 
-                            className="btn btn-secondary btn-block"
-                            onClick={() => onSubmit({email, password})}>
-                            Login
-                        </button>
-                    </div>
+                        
+                    <input
+                            type="submit"
+                            className="btn btn-success btn-block"
+                            value="Login"
+                            />    
+                            </div>
+                        </form>
                 </div>
             </div>
         </div>

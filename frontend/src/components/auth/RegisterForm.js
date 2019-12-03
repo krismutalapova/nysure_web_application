@@ -66,10 +66,8 @@ function RegisterForm({onSubmit}) {
                             type="submit"
                             className="btn btn-success btn-block"
                             value="create account"
-                            />
-                    
-                        
-        </form>
+                            />    
+                </form>
             </div>
         </div>
     );
