@@ -11,3 +11,27 @@
     width: 100%;
     text-align: center;
 }
+
+.edit-info {
+    display: inline-block;
+    width: 12pt;
+    height: 12pt;
+    margin: 3pt;
+    mask: url(/icons/pencil.svg) no-repeat center;
+    mask-size: cover;
+    background-color: #ffffff;
+}
+
+.edit-info:hover {
+    background-color: #17a2b8;
+}
+
+.navbar-collapse {
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-outline-info {
+    color: #ffffff;
+    border-color: #ffffff;
+}

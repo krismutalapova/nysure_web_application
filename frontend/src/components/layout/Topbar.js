@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function Topbar({onLogout}) {
     return (
@@ -8,7 +7,12 @@ function Topbar({onLogout}) {
                 <img src="images/NySure-Logo-96.png" alt="logo" />
             </a>
             <div className="collapse navbar-collapse" id="navbarColor01">
-                <p className="user">Hi, Swen Borg</p>
+                <p className="user">
+                    Hi, Swen Borg
+                    <a href="/user">
+                        <span className="edit-info"></span>
+                    </a>
+                </p>
             </div>
             <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>Logout</button>
         </nav>

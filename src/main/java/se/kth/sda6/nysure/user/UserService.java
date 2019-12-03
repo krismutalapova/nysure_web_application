@@ -25,10 +25,6 @@ public class UserService {
         userRepository.save(user);
     }
 
-//    public Optional<User> current() {
-//        return
-//    }
-
     public Optional<User> getById(String id) {
         return userRepository.findById(id);
     }

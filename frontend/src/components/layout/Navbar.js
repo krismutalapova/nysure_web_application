@@ -8,7 +8,7 @@ function Navbar({onLogout}) {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarColor01">
-                <ul className="navbar-nav mr-auto">
+                <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
                                 Home
@@ -39,8 +39,6 @@ function Navbar({onLogout}) {
                             </Link>
                         </li>
                 </ul>
-
-                <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>Logout</button>
             </div>
         </nav>
     );

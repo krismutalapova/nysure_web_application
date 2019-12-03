@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import ChartsPage from "../DummyChart.js";
 
 class HomePage extends Component {
-
-    // componentDidMount() {
-    //     ChartsPage.example();
-    // }
-
     render() {
         return (
             <div>
