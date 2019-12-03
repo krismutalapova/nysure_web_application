@@ -10,6 +10,10 @@ function ItemForm( {onClickCreateItem} ) {
             itemType: itemType,
             insurancePlan: insurancePlan,
         });
+
+        // Clear the input field
+        setItemType("");
+        setInsurancePlan("");
     };
 
     return (
@@ -18,17 +22,19 @@ function ItemForm( {onClickCreateItem} ) {
             <label htmlFor="type"> Item type:</label> 
                 <select type="text" value={itemType} onChange={e => setItemType(e.target.value)} className="form-control">
                 <option value="no-type">No type selected</option>
-                <option value="uyfkf">hej</option>
+                <option value="person">person</option>
+                <option value="home">home</option>
+                <option value="motor vehicle">motor vehicle</option>
+                <option value="electronic device">electronic device</option>
                 </select>       
         </div>
         <div className="form-group">
-            <label htmlFor="type"> Insurance plan:</label> 
+            <label htmlFor="type"> Insurance plan:</label>
                 <select type="text" value={insurancePlan} onChange={e => setInsurancePlan(e.target.value)} className="form-control">
-                <option value="no-insurance">No insurance plan selected</option>
-                <option value="uyfkf">hej</option>
-                </select>       
+                <option value="no-insurance">No insurance plan</option>
+                </select>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Create</button>
+        <button type="submit" className="btn btn-primary" data-dismiss="modal" onClick={handleSubmit}>Create</button>
     </div>                  
     );
 }
