@@ -1,13 +1,26 @@
 import React, { Component } from "react";
-import ItemPopup from "./ItemPopup";
+import ItemForm from "./ItemForm";
 import ItemApi from "../../api/ItemApi";
 
 class ItemPage extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            items: [],
+        }
+    }
 
     async onClickCreateItem(item){
-        console.log("hej");
+        console.log("item: " + item);
         try {
-            await ItemApi.createItem(item);
+            const response = await ItemApi.createItem(item);
+            const item = response.data;
+            const newItem = this.state.items.concat(item);
+
+            this.setState({
+                posts: newItem,
+            });
             }
         catch (e) {
             console.error(e);
@@ -32,9 +45,7 @@ class ItemPage extends Component {
                                         </button>
                                     </div>
                                     <div className="modal-body">
-                                    <ItemPopup
-                                        onClickCreateItem={(body) => this.onClickCreateItem(body)}
-                                    />
+                                    <ItemForm onClickCreateItem={(item) => this.onClickCreateItem(item)} />
                                     </div>
                                 </div>
                             </div>
