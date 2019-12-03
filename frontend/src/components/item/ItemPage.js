@@ -19,7 +19,7 @@ class ItemPage extends Component {
             const newItem = this.state.items.concat(item);
 
             this.setState({
-                posts: newItem,
+                items: newItem,
             });
             }
         catch (e) {
