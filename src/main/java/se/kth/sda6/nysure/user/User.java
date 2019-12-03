@@ -11,6 +11,7 @@ import javax.validation.constraints.Pattern;
 @Table(name="account")
 public class User {
     @Id
+   // @Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.")
     @Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.")
     @NotEmpty(message = "Please provide an email address")
     @Column(name = "id", unique = true)
@@ -45,7 +46,7 @@ public class User {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.") @NotEmpty(message = "Please provide an email address") String id) {
         this.id = id;
     }
 
@@ -53,7 +54,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@Email(message = "Invalid email address! Please provide a valid email address") @NotEmpty(message = "Please provide an email address") String email) {
         this.email = email;
     }
 
@@ -61,7 +62,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(@Length(min = 5, max = 100, message = "Password length most be between 5-100 characters") String password) {
         this.password = password;
     }
 
@@ -69,7 +70,7 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@Length(min = 3, max = 100, message = "Name must be between 3-100 characters") String name) {
         this.name = name;
     }
 
@@ -77,7 +78,7 @@ public class User {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress (@Length(min = 3, max=50, message = "Address must be between 3-50 characters") String address) {
         this.address = address;
     }
 
@@ -85,7 +86,7 @@ public class User {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(@Length(min = 7, max=15, message = "Phone must be between 7-15 characters") String phone) {
         this.phone = phone;
     }
 }
