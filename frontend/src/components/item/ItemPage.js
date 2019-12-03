@@ -7,12 +7,13 @@ class ItemPage extends Component {
     async onClickCreateItem(item){
         console.log("hej");
         try {
-            await ItemApi.onClickCreateItem(item);
+            await ItemApi.createItem(item);
             }
         catch (e) {
             console.error(e);
         }
     }
+
     render() {
         return (
             <div className="card mt-3">
@@ -32,7 +33,7 @@ class ItemPage extends Component {
                                     </div>
                                     <div className="modal-body">
                                     <ItemPopup
-                                    onClickCreateItem={(body) => this.onClickCreateItem(body)}
+                                        onClickCreateItem={(body) => this.onClickCreateItem(body)}
                                     />
                                     </div>
                                 </div>
