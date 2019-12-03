@@ -11,7 +11,6 @@ import javax.validation.constraints.Pattern;
 @Table(name="account")
 public class User {
     @Id
-   // @Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.")
     @Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.")
     @NotEmpty(message = "Please provide an email address")
     @Column(name = "id", unique = true)

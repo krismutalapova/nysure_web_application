@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.web.bind.annotation.*;
 import se.kth.sda6.nysure.user.User;
 import se.kth.sda6.nysure.user.UserService;
@@ -18,7 +19,11 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
-        userService.register(user);
+        try {
+            userService.register(user);
+        }catch (TransactionSystemException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
         String token = authService.createAuthToken(user.getEmail());
         AuthResponse authResponse = new AuthResponse(token);
