@@ -38,9 +38,10 @@ function RegisterForm({onSubmit}) {
                             onChange={e => setPassword(e.target.value)} />
                     </div>
 
-                    <div className="form-group">
+                    <div className="modal-footer">
                         <button
                             className="btn btn-success btn-block"
+                            data-dismiss="modal"
                             onClick={e => onSubmit({id, email, password})}>
                             Create account
                         </button>
