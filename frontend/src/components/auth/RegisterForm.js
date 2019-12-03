@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import useForm from "react-hook-form";
 
+
 function RegisterForm({onSubmit}) {
     const [id, setId]=useState("");
     const [email, setEmail] = useState("");
@@ -16,9 +17,11 @@ function RegisterForm({onSubmit}) {
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                    <div className="form-group">
-                        <label>Id:</label>
+                    <div className="form-group" >
+                        <label>Personnummer</label>
                         <input 
+                            pattern= {'[0-9]{8}\-[0-9]{4}'}
+                            maxLength="13"
                             name="id"
                             type="text"
                             className="form-control"
@@ -27,7 +30,7 @@ function RegisterForm({onSubmit}) {
                             placeholder="YYYYMMDD-XXXX"
                             ref={register({ required: "required field", maxLength: 13 })}/>
                     </div>
-                            {/* error message */}
+                             {/* error message */}
                             {errors.id && errors.id.message}
                             {errors.id && errors.id.type === "maxLength" && "max length 13"}
 
@@ -50,6 +53,8 @@ function RegisterForm({onSubmit}) {
                     <div className="form-group">
                         <label>Password:</label>
                         <input 
+                            minLength="10"
+                            maxLength="15"
                             name="password"
                             type="password" 
                             value={password}
