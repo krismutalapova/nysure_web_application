@@ -33,7 +33,15 @@ body {
 }
 
 .card {
-    background-color: black;
+    background-color: #a7b3b4;
+}
+
+.strong-shadow{
+background-color: #a7b3b4;
+}
+.logincard {
+    background-color: #a7b3b4;
+    border-color: #a7b3b4;
 }
 
 .card-body {
@@ -60,6 +68,7 @@ body {
   color: black;
   margin-top: 20px;
 }
+
 .center-content {
   text-align: center;
   align-content: center;
@@ -104,3 +113,26 @@ body {
 .bg-dark {
   background-color: #a7b3b4 !important;
 }
+
+
+.modal-dialog {
+    background-color: #a7b3b4;
+}
+
+.modal-content {
+    background-color: #a7b3b4;
+}
+
+.modal-header {
+    background-color: #a7b3b4;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.modal-body {
+    background-color: #a7b3b4;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-top: -10px;
+}
+
