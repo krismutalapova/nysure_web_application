@@ -49,7 +49,6 @@ function RegisterForm({onSubmit}) {
                             {errors.email && errors.email.message}
                             {errors.email && errors.email.type === "@" }
 
-
                     <div className="form-group">
                         <label>Password:</label>
                         <input 
