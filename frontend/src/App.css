@@ -29,8 +29,17 @@ body {
 }
 
 .card {
-    background-color: black;
+    background-color: #a7b3b4;
 }
+
+.strong-shadow{
+background-color: #a7b3b4;
+}
+.logincard {
+    background-color: #a7b3b4;
+    border-color: #a7b3b4;
+}
+
 .card-body {
     background-color: #a7b3b4;
     margin:-5px;
@@ -54,4 +63,25 @@ body {
   font-size: calc(7px + 2vmin);
   color: black;
   margin-top: 20px;
+}
+
+.modal-dialog {
+    background-color: #a7b3b4;
+}
+
+.modal-content {
+    background-color: #a7b3b4;
+}
+
+.modal-header {
+    background-color: #a7b3b4;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.modal-body {
+    background-color: #a7b3b4;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-top: -10px;
 }
