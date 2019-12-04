@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import RegisterForm from "./RegisterForm";
-import Auth from "../../services/Auth";
 
 function LoginForm({onSubmit}) {
     const [email, setEmail] = useState("");
@@ -33,15 +31,15 @@ function LoginForm({onSubmit}) {
                             onChange={e => setPassword(e.target.value)} />
                     </div>
 
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"/>
-							<label class="label-checkbox100" htmlFor="ckb1">
+						<div className="contact100-form-checkbox">
+							<input className="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"/>
+							<label className="label-checkbox100" htmlFor="ckb1">
 								Remember me
 							</label>
 						</div>
 
 						<div>
-							<a href="#" class="txt1">
+							<a href="/" className="txt1">
 								Forgot Password?
 							</a>
 						</div>

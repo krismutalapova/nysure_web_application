@@ -1,8 +1,13 @@
+@import "css/Navbar.css";
+@import "css/Container.css";
+@import "css/BtnCircle.css";
+@import "css/BtnCard.css";
+@import "css/Cols.css";
+/* @import "css/Rows.css"; */
+
 body {
-
   min-height: 100vh;
-  background: linear-gradient(to right, #d0d7d7, #ececec);
-
+  background: linear-gradient(to bottom, #ffffff, #ececec);
 }
 
 .App {
@@ -65,6 +70,52 @@ background-color: #a7b3b4;
   margin-top: 20px;
 }
 
+.center-content {
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  vertical-align: center;
+}
+
+.border-content-left {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  color: white;
+  font-size: 16pt;
+  border: lightblue 1pt solid;
+  padding: 5pt;
+}
+
+.btn-circle, .btn-circle:hover {
+  color: white;
+}
+
+.text-white {
+  color: white;
+}
+
+.estimated-spent {
+  width: 50%;
+}
+
+.bottomPadding {
+  height: 50pt;
+  float: left;
+  width: 100%;
+}
+
+.bg-cyan {
+  background-color: #82b1b7;
+}
+
+.bg-dark {
+  background-color: #a7b3b4 !important;
+}
+
+
 .modal-dialog {
     background-color: #a7b3b4;
 }
@@ -85,3 +136,4 @@ background-color: #a7b3b4;
     border-bottom-left-radius: 5px;
     margin-top: -10px;
 }
+
