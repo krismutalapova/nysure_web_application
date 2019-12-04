@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service()
 public class UserService {
     @Autowired
@@ -23,9 +21,5 @@ public class UserService {
         String encryptedPass = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPass);
         userRepository.save(user);
-    }
-
-    public Optional<User> getById(String id) {
-        return userRepository.findById(id);
     }
 }
