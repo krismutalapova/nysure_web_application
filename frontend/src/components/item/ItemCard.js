@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import FileApi from "./../../api/FileApi";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 class ItemCard extends Component {
