@@ -39,9 +39,9 @@ class HomePage extends Component {
                         <h4>Email</h4>
                         <p>{this.state.user.email}</p>
                         <h4>Address</h4>
-                        <p>{this.state.user.address}</p>
+                        <p>{this.state.user.address || 'N/A'}</p>
                         <h4>Phone</h4>
-                        <p>{this.state.user.phone}</p>
+                        <p>{this.state.user.phone || 'N/A'}</p>
                         <div className="card bg-cyan text-white estimated-spent">
                             <h4 className="">Estimated spent:</h4>
                             <br />

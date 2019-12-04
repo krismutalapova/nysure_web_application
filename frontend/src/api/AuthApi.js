@@ -6,9 +6,6 @@ class AuthApi {
     }
 
     register ({id, name, email, password, address, telephone}) {
-        name = "name";
-        address = "address";
-        telephone = "98398473";
         return Api.post('/register', {id, name, email, password, address, telephone});
     }
 }

@@ -12,7 +12,7 @@ function Topbar({onLogout}) {
             </a>
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <p className="user">
-                    Hi, {user.name}
+                    Hi, {user.name || 'N/A'}
                     <a href="/user">
                         <span className="edit-info"></span>
                     </a>
