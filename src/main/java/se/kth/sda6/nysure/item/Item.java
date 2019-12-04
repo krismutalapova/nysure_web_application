@@ -13,11 +13,14 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long itemId;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name = "itemType")
+    private String itemType;
 
     @ManyToOne()
     private Insurance insurance;
+
+    @Column(name="date")
+    private String date;
 
     public Item() {
     }
@@ -30,12 +33,12 @@ public class Item {
         this.itemId = itemId;
     }
 
-    public String getType() {
-        return type;
+    public String getItemType() {
+        return itemType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
     }
 
     public Insurance getInsurance() {
@@ -44,5 +47,13 @@ public class Item {
 
     public void setInsurance(Insurance insurance) {
         this.insurance = insurance;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

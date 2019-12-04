@@ -41,22 +41,6 @@ public class User {
     // Hibernate needs a default constructor to function
     public User() {}
 
-    public User(@Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.") @NotEmpty(message = "Please provide an email address") String id,
-                @Email(message = "Invalid email address! Please provide a valid email address") @NotEmpty(message = "Please provide an email address") String email,
-                @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters") String password,
-                @Length(min = 3, max = 100, message = "Name must be between 3-100 characters") String name,
-                @Length(min = 3, max=50, message = "Address must be between 3-50 characters") String address,
-                @Length(min = 7, max=15, message = "Phone must be between 7-15 characters") String phone) {
-
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.address = address;
-        this.phone = phone;
-    }
-
-
     public String getId() {
         return id;
     }

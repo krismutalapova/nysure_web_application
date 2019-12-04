@@ -1,0 +1,35 @@
+
+.btn-card {
+    width: 90%;
+    height: 90pt;
+    line-height: 90pt;
+    text-align: center;
+    padding: 0;
+    border-radius: 5pt;
+  }
+  
+  .btn-card i {
+    position: relative;
+    top: -1px;
+  }
+  
+  .btn-card-sm {
+    width: 70%;
+    height: 70pt;
+    line-height: 70pt;
+    font-size: 0.9rem;
+  }
+  
+  .btn-card-lg {
+    width: 90%;
+    height: 150pt;
+    line-height: 150pt;
+    font-size: 1.1rem;
+  }
+  
+  .btn-card-xl {
+    width: 90%;
+    height: 200pt;
+    line-height: 200pt;
+    font-size: 1.3rem;
+  }
