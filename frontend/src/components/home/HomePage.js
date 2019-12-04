@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ChartsPage from "../DummyChart.js";
 import UserApi from "../../api/UserApi.js";
 
 class HomePage extends Component {
@@ -49,7 +48,6 @@ class HomePage extends Component {
                         </div>
                     </div>
                     <div className="col-2">
-                        <ChartsPage />
                     </div>
                 </div>
                 <div className="row-full">
