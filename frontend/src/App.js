@@ -15,7 +15,7 @@ import Topbar from "./components/layout/Topbar";
 // Import pages
 import LoginPage from "./components/auth/LoginPage";
 import HomePage from './components/home/HomePage';
-import FileUpload from "./components/uploading/FileUpload";
+import ItemPage from "./components/item/ItemPage";
 import AboutUs from './components/infopages/AboutUs';
 import ContactDetails from './components/infopages/ContactDetails';
 import InsuranceDetails from './components/insurance/InsuranceDetails';
@@ -41,8 +41,8 @@ function App() {
                             <ContactDetails/>
                         </Route>
 
-                        <Route path="/uploading">
-                            <FileUpload/>
+                        <Route path="/item">
+                            <ItemPage/>
                         </Route>
 
                         <Route path="/">
