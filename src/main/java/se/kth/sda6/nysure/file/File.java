@@ -1,5 +1,7 @@
 package se.kth.sda6.nysure.file;
 
+import se.kth.sda6.nysure.item.Item;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +22,9 @@ public class File {
     @Column(name="fileContent")
     @Lob
     private byte [] fileData;
+
+    @ManyToOne
+    private Item item;
 
     public Long getId() {
         return id;
@@ -51,5 +56,13 @@ public class File {
 
     public void setFileData(byte[] fileData) {
         this.fileData = fileData;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 }

@@ -1,8 +1,8 @@
 import React from "react";
 
 function ItemForm( {onClickCreateItem} ) {
-    const [itemType, setItemType] = React.useState("");
-    const [insurancePlan, setInsurancePlan] = React.useState("");
+    const [itemType, setItemType] = React.useState("no-type");
+    const [insurancePlan, setInsurancePlan] = React.useState("no-insurance");
 
     const handleSubmit = () => {
         // Invoke the passed in event callback
@@ -12,8 +12,8 @@ function ItemForm( {onClickCreateItem} ) {
         });
 
         // Clear the input field
-        setItemType("");
-        setInsurancePlan("");
+        setItemType("no-type");
+        setInsurancePlan("no-insurance");
     };
 
     return (

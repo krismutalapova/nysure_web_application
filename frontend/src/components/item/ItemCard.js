@@ -26,7 +26,6 @@ class ItemCard extends Component {
                     this.setState(
                         {selectedFiles}
                     );
-                    console.log(res.data);
                     alert("File uploaded successfully.")
             })
             .catch(err => console.error(err));
