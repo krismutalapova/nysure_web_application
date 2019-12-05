@@ -25,6 +25,10 @@ public class Item {
     public Item() {
     }
 
+    public Item(Long itemId) {
+        this.itemId = itemId;
+    }
+
     public Long getItemId() {
         return itemId;
     }

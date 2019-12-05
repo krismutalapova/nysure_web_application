@@ -26,6 +26,17 @@ public class File {
     @ManyToOne
     private Item item;
 
+    public File(){
+
+    }
+
+    public File(String fileName, String fileType, byte[] fileData, Item item) {
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.fileData = fileData;
+        this.item = item;
+    }
+
     public Long getId() {
         return id;
     }
