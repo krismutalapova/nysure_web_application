@@ -1,13 +1,15 @@
 import Api from "./Api";
-class FileApi {
-    uploadFile(file) {
-        return Api.post('/upload', file);
-    }
-    getAllFiles() {
-        return Api.get('/upload');
-    }
-    deleteFile(id) {
-        return Api.delete('/upload/'+id);
-    }
+
+function uploadFile(id, file) {
+    return Api.post(`/upload/${id}`, file);
 }
-export default new FileApi();
+
+function getAllFiles(id) {
+    return Api.get(`/upload/${id}`);
+}
+
+function deleteFile(id) {
+    return Api.delete(`/upload/${id}`);
+}
+
+export { uploadFile, getAllFiles, deleteFile };
