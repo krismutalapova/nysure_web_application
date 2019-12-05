@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FileApi from "./../../api/FileApi";
+import{ uploadFile, getAllFiles } from "./../../api/FileApi";
 
 
 class InsuranceCard extends Component {
@@ -19,7 +19,7 @@ class InsuranceCard extends Component {
         console.log(file);
         const formData = new FormData();
         formData.append('file', file);
-        FileApi.uploadFile(formData)
+        uploadFile(formData)
             .then(res => {
                     const selectedFiles = this.state.selectedFiles.concat(res.data.data);
                     this.setState(
@@ -39,7 +39,7 @@ class InsuranceCard extends Component {
 
     componentDidMount() {
         //get all files
-        FileApi.getAllFiles()
+        getAllFiles()
             .then(({ data }) => this.setState({ selectedFiles: data }))
             .catch(err => console.error(err));
     }
