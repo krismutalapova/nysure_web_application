@@ -21,7 +21,7 @@ public class AuthController {
     public ResponseEntity<?> register(@RequestBody User user) {
         try {
             userService.register(user);
-        }catch (TransactionSystemException e){
+        } catch (TransactionSystemException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

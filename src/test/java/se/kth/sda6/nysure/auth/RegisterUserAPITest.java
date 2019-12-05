@@ -12,6 +12,7 @@ import se.kth.sda6.nysure.user.User;
 import se.kth.sda6.nysure.user.UserService;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class RegisterUserAPITest {
     @Autowired
@@ -23,7 +24,7 @@ class RegisterUserAPITest {
     @Autowired
     private AuthController authController;
 
-    private static String personnummerOK ="19901024-1111";
+    private static String personnummerOK = "19901024-1111";
     private static String emailOK = "myemail@is.ok";
     private static String passwordOK = "mypasswordisok007";
     private static String nameOK = null;
@@ -32,7 +33,7 @@ class RegisterUserAPITest {
 
     User testUserOk = createNewUser(personnummerOK, emailOK, passwordOK, nameOK, addressOK, phoneNumberOK);
 
-    private User createNewUser(String id, String email, String password, String name, String address, String phoneNumber){
+    private User createNewUser(String id, String email, String password, String name, String address, String phoneNumber) {
         User u = new User();
         u.setId(id);
         u.setEmail(email);
@@ -63,8 +64,9 @@ class RegisterUserAPITest {
         assertTrue(encryptedPass);
 
     }
+
     @Test
-        void negativePersonnummerRegisterUserAPI() {
+    void negativePersonnummerRegisterUserAPI() {
         //Test 2 fails: shouldn't accept bad format
         //Personnummer empty
         ResponseEntity badPN1 = authController.register(createNewUser("", emailOK, passwordOK, nameOK, addressOK, phoneNumberOK));
@@ -82,31 +84,32 @@ class RegisterUserAPITest {
         ResponseEntity badPN5 = authController.register(createNewUser("YYYYMMDD-XXXX", emailOK, passwordOK, nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badPN5.getStatusCode());
     }
-        @Test
-        void negativeEmailRegisterUserAPI() {
+
+    @Test
+    void negativeEmailRegisterUserAPI() {
         //Test 2 and 4 fail
-            //Email empty
-            ResponseEntity badEmail1 = authController.register(createNewUser(personnummerOK,"", passwordOK, nameOK, addressOK, phoneNumberOK));
-            assertEquals(HttpStatus.BAD_REQUEST, badEmail1.getStatusCode());
-            //Email incorrect pattern --> passes as OK (returns 201 CREATED)
-            ResponseEntity badEmail2 = authController.register(createNewUser(personnummerOK,"john.gmail@com", passwordOK, nameOK, addressOK, phoneNumberOK));
-            //assertEquals(HttpStatus.BAD_REQUEST, badEmail2.getStatusCode());
-            //Email no @
-            ResponseEntity badEmail3 = authController.register(createNewUser(personnummerOK,"johngmail.com", passwordOK, nameOK, addressOK, phoneNumberOK));
-            assertEquals(HttpStatus.BAD_REQUEST, badEmail3.getStatusCode());
-            //Email no . --> passes as OK (returns 201 CREATED)
-            ResponseEntity badEmail4 = authController.register(createNewUser(personnummerOK,"john@gmailcom", passwordOK, nameOK, addressOK, phoneNumberOK));
-            //assertEquals(HttpStatus.BAD_REQUEST, badEmail4.getStatusCode());
-            //Email CAPITAL letter --> passes as 201 CREATED but Formatting should be handled
-            ResponseEntity badEmail5 = authController.register(createNewUser(personnummerOK,"JOHN@GMAIL.COM", passwordOK, nameOK, addressOK, phoneNumberOK));
-            assertEquals(HttpStatus.CREATED, badEmail5.getStatusCode());
-            //Email letters with accents --> passes as OK (returns 201 CREATED)
-            ResponseEntity badEmail6 = authController.register(createNewUser(personnummerOK,"jöhn@gmäîl.côm", passwordOK, nameOK, addressOK, phoneNumberOK));
-            //assertEquals(HttpStatus.BAD_REQUEST, badEmail6.getStatusCode());
-            //Email no name
-            ResponseEntity badEmail7 = authController.register(createNewUser(personnummerOK,"@gmail.com", passwordOK, nameOK, addressOK, phoneNumberOK));
-            assertEquals(HttpStatus.BAD_REQUEST, badEmail7.getStatusCode());
-        }
+        //Email empty
+        ResponseEntity badEmail1 = authController.register(createNewUser(personnummerOK, "", passwordOK, nameOK, addressOK, phoneNumberOK));
+        assertEquals(HttpStatus.BAD_REQUEST, badEmail1.getStatusCode());
+        //Email incorrect pattern --> passes as OK (returns 201 CREATED)
+        ResponseEntity badEmail2 = authController.register(createNewUser(personnummerOK, "john.gmail@com", passwordOK, nameOK, addressOK, phoneNumberOK));
+        //assertEquals(HttpStatus.BAD_REQUEST, badEmail2.getStatusCode());
+        //Email no @
+        ResponseEntity badEmail3 = authController.register(createNewUser(personnummerOK, "johngmail.com", passwordOK, nameOK, addressOK, phoneNumberOK));
+        assertEquals(HttpStatus.BAD_REQUEST, badEmail3.getStatusCode());
+        //Email no . --> passes as OK (returns 201 CREATED)
+        ResponseEntity badEmail4 = authController.register(createNewUser(personnummerOK, "john@gmailcom", passwordOK, nameOK, addressOK, phoneNumberOK));
+        //assertEquals(HttpStatus.BAD_REQUEST, badEmail4.getStatusCode());
+        //Email CAPITAL letter --> passes as 201 CREATED but Formatting should be handled
+        ResponseEntity badEmail5 = authController.register(createNewUser(personnummerOK, "JOHN@GMAIL.COM", passwordOK, nameOK, addressOK, phoneNumberOK));
+        assertEquals(HttpStatus.CREATED, badEmail5.getStatusCode());
+        //Email letters with accents --> passes as OK (returns 201 CREATED)
+        ResponseEntity badEmail6 = authController.register(createNewUser(personnummerOK, "jöhn@gmäîl.côm", passwordOK, nameOK, addressOK, phoneNumberOK));
+        //assertEquals(HttpStatus.BAD_REQUEST, badEmail6.getStatusCode());
+        //Email no name
+        ResponseEntity badEmail7 = authController.register(createNewUser(personnummerOK, "@gmail.com", passwordOK, nameOK, addressOK, phoneNumberOK));
+        assertEquals(HttpStatus.BAD_REQUEST, badEmail7.getStatusCode());
+    }
 
     @Test
     void negativePasswordRegisterUserAPI() {
@@ -145,19 +148,19 @@ class RegisterUserAPITest {
     }
 
     @Test
-    void negativeNameRegisterUserAPI(){
+    void negativeNameRegisterUserAPI() {
         //All 4 pass
         //Name empty
-        ResponseEntity badName1 = authController.register(createNewUser(personnummerOK,emailOK, passwordOK, "", addressOK, phoneNumberOK));
+        ResponseEntity badName1 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, "", addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badName1.getStatusCode());
         //Name too short / < 3
-        ResponseEntity badName2 = authController.register(createNewUser(personnummerOK,emailOK, passwordOK, "ab", addressOK, phoneNumberOK));
+        ResponseEntity badName2 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, "ab", addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badName2.getStatusCode());
         //Name too long / > 100
-        ResponseEntity badName3 = authController.register(createNewUser(personnummerOK,emailOK, passwordOK, "negativeNameRegisterUserAPInegativeNameRegisterUserAPInegativeNameRegisterUserAPInegativeNameRegisterUserAPI", addressOK, phoneNumberOK));
+        ResponseEntity badName3 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, "negativeNameRegisterUserAPInegativeNameRegisterUserAPInegativeNameRegisterUserAPInegativeNameRegisterUserAPI", addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badName3.getStatusCode());
         //Name null
-        ResponseEntity badName8 = authController.register(createNewUser(personnummerOK,emailOK, passwordOK, null, addressOK, phoneNumberOK));
+        ResponseEntity badName8 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, null, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.CREATED, badName8.getStatusCode());
 
         /*
@@ -176,20 +179,21 @@ class RegisterUserAPITest {
         assertEquals(HttpStatus.BAD_REQUEST, badName7.getStatusCode());
          */
     }
+
     @Test
-    void negativeAddressRegisterUserAPI(){
+    void negativeAddressRegisterUserAPI() {
         //All 4 pass
         //Address empty
-        ResponseEntity badAddress1 = authController.register(createNewUser(personnummerOK,emailOK, passwordOK, nameOK, "", phoneNumberOK));
+        ResponseEntity badAddress1 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, "", phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badAddress1.getStatusCode());
         //Address too short / < 3
-        ResponseEntity badAddress2 = authController.register(createNewUser(personnummerOK,emailOK, passwordOK, nameOK, "a1", phoneNumberOK));
+        ResponseEntity badAddress2 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, "a1", phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badAddress2.getStatusCode());
         //Address too long / > 50
-        ResponseEntity badAddress3 = authController.register(createNewUser(personnummerOK,emailOK, passwordOK, nameOK, "negativeAddressRegisterUserAPInegativeAddressRegisterUserAPInegativeAddressRegisterUserAPI", phoneNumberOK));
+        ResponseEntity badAddress3 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, "negativeAddressRegisterUserAPInegativeAddressRegisterUserAPInegativeAddressRegisterUserAPI", phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badAddress3.getStatusCode());
         //Address null
-        ResponseEntity badAddress8 = authController.register(createNewUser(personnummerOK,emailOK, passwordOK, nameOK, null, phoneNumberOK));
+        ResponseEntity badAddress8 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, null, phoneNumberOK));
         assertEquals(HttpStatus.CREATED, badAddress8.getStatusCode());
 
         /*
@@ -208,6 +212,7 @@ class RegisterUserAPITest {
         assertEquals(HttpStatus.BAD_REQUEST, badAddress7.getStatusCode());
 */
     }
+
     @Test
     void negativePhoneNumberRegisterUserAPI() {
         //All 4 pass
@@ -221,7 +226,7 @@ class RegisterUserAPITest {
         ResponseEntity badPhoneNumber3 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, addressOK, "12345678901234567890"));
         assertEquals(HttpStatus.BAD_REQUEST, badPhoneNumber3.getStatusCode());
         //Phone null
-        ResponseEntity badAddress8 = authController.register(createNewUser(personnummerOK,emailOK, passwordOK, nameOK, addressOK, null));
+        ResponseEntity badAddress8 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, addressOK, null));
         assertEquals(HttpStatus.CREATED, badAddress8.getStatusCode());
 
 /*
