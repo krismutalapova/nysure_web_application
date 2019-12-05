@@ -6,9 +6,8 @@ class ItemCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            selectedFiles: [],
             insurancePlan: "no-insurance",
-            date: null,
+            selectedFiles: [],
         }
     };
 
@@ -49,29 +48,35 @@ class ItemCard extends Component {
 
     render() {
         const { selectedFiles, insurancePlan } = this.state;
-        if (selectedFiles.length > 0) {
-            selectedFiles[0].isActive = true
+
+        const uploadedImages = selectedFiles.filter(image => image.fileType.includes("image"));
+
+        const uploadedDocuments = selectedFiles.filter(image => !image.fileType.includes("image"));
+
+        if (uploadedImages.length > 0) {
+            uploadedImages[0].isActive = true
         }
+
         return (
             <div className="card" style={cardStyle}>
                 <div className="card-body" >
-
-                    <label htmlFor="insurancePlan"> Insurance plan:</label>
+                    <label htmlFor="insurancePlan">Insurance plan:</label>
                     <select disabled style={selectStyle} type="text" value={insurancePlan} onChange={this.setInsurancePlan} className="form-control">
                         <option value="no-insurance">No insurance plan</option>
                     </select>
 
-                    <label htmlFor="warrantyPlan">Warranty plan: </label>
-                    <input disabled type="text" className="form-control" style={selectStyle} placeholder="no warranty plan"></input>
-
                     <div className="form-group files color" style={selectStyle}>
-                        <label htmlFor="uploadPhoto">Upload a photo:</label>
-                        <small class="text-muted float-right">{`${selectedFiles.length} photo${selectedFiles.length === 1 ? "" : "s"} uploaded`}</small>
+                        <label htmlFor="uploadPhoto">Upload a file:</label>
                         <input type="file" className="form-control" onChange={this.onFileChangeHandler} />
                     </div>
                         {
-                            selectedFiles.length > 0
-                            ? <Carousel selectedFiles={selectedFiles} />
+                            uploadedDocuments.length > 0
+                            ? <DownloadDocs uploadedDocuments={uploadedDocuments} />
+                            : ""
+                        }
+                        {
+                            uploadedImages.length > 0
+                            ? <Carousel uploadedImages={uploadedImages} />
                             : ""
                         }
                 </div>
@@ -80,11 +85,31 @@ class ItemCard extends Component {
     };
 }
 
-const Carousel = ({selectedFiles}) =>
+const DownloadDocs = ({uploadedDocuments}) =>
+    <div id="listOfDocuments">
+        <label htmlFor="warrantyPlan"><b>Item documents:</b></label>
+        <small className="text-muted float-right">{`${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? "" : "s"} uploaded`}</small>
+            {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
+                            return (
+                                <p key={id}>
+                                        {fileName} : <a className="float-right"
+                                                        download
+                                                        href={
+                                                        "data:" + fileType +
+                                                        ";base64," + fileData }>download</a>
+                                </p>
+                            )
+                        })
+            }
+    </div>
+
+const Carousel = ({uploadedImages}) =>
     <div>
+    <label htmlFor="uploadPhoto"><b>Item photos:</b></label>
+    <small className="text-muted float-right">{`${uploadedImages.length} photo${uploadedImages.length === 1 ? "" : "s"} uploaded`}</small>
     <div id="carouselItem" className="carousel slide" data-ride="carousel">
         <div className="carousel-inner">
-            {selectedFiles.map(({ id, fileName, fileType, fileData, isActive }) => {
+            {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
                 return (
                     <div key={id} className={"carousel-item" + (isActive ? " active" : "")}>
                         <img className="d-block w-100"
@@ -111,7 +136,7 @@ const Carousel = ({selectedFiles}) =>
 const selectStyle = {
     width: '100%',
     margin: 'auto',
-    marginBottom: '30px'
+    marginBottom: '30px',
 }
 
 const cardStyle = {

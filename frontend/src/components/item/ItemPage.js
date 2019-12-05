@@ -75,8 +75,8 @@ class ItemPage extends Component {
 
 const Modal = ({ children, id, title }) =>
     <div id={id} className="modal fade" role="dialog">
-        <div className="modal-dialog">
-            <div className="modal-content">
+        <div className="modal-dialog" style={modalBorderStyle}>
+            <div className="modal-content" style={modalBorderStyle}>
                 <div className="modal-header">
                     <h4 className="modal-title">{title}</h4>
                     <button type="button" className="close" data-dismiss="modal"> &times;
@@ -99,5 +99,9 @@ const buttonStyle = {
     marginRight: '10px',
     marginBottom: '10px',
 }
+
+const modalBorderStyle = {
+    borderRadius: '10px',
+  }
 
 export default ItemPage;
