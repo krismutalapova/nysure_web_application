@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserApi from "../../api/UserApi.js";
+import Claims from  "../claims/Claims.js";
 
 class HomePage extends Component {
     state = {
@@ -68,13 +69,16 @@ class HomePage extends Component {
                     </div>
                     <div className="col-4 center-content">
                         <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>GET A QUOTA</p>
+
+                            <p>GET A QUOTA </p>
                         </button>
                     </div>
                 </div>
                 <div className="row-full">
                     <div className="bottomPadding"></div>
                 </div>
+                
+            <Claims/>
             </div>
         );
     }
