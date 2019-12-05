@@ -48,7 +48,7 @@ class ItemCard extends Component {
     }
 
     render() {
-        const { selectedFiles, insurancePlan, date } = this.state;
+        const { selectedFiles, insurancePlan } = this.state;
         if (selectedFiles.length > 0) {
             selectedFiles[0].isActive = true
         }
@@ -61,16 +61,13 @@ class ItemCard extends Component {
                         <option value="no-insurance">No insurance plan</option>
                     </select>
 
-                    <label htmlFor="warrantyPlan">Warranty: </label>
+                    <label htmlFor="warrantyPlan">Warranty plan: </label>
                     <input disabled type="text" className="form-control" style={selectStyle} placeholder="no warranty plan"></input>
 
-                    <label htmlFor="date">Last modified date: </label>
-                    <input disabled type="text" className="form-control" style={selectStyle}></input>
-
                     <div className="form-group files color" style={selectStyle}>
-                        <label>Upload a photo:</label>
+                        <label htmlFor="uploadPhoto">Upload a photo:</label>
                         <small class="text-muted float-right">{`${selectedFiles.length} photo${selectedFiles.length === 1 ? "" : "s"} uploaded`}</small>
-                        <input type="file" className="form-control" name="file" onChange={this.onFileChangeHandler} />
+                        <input type="file" className="form-control" onChange={this.onFileChangeHandler} />
                     </div>
                         {
                             selectedFiles.length > 0
@@ -119,8 +116,7 @@ const selectStyle = {
 
 const cardStyle = {
     width: '80%',
-    margin: 'auto'
+    margin: 'auto',
 }
-
 
 export default ItemCard;
