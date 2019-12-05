@@ -25,7 +25,6 @@ public class ItemController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-
     @PostMapping("")
     public Item create(@RequestBody Item newItem) {
         return itemService.create(newItem);
