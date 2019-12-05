@@ -40,11 +40,10 @@ class ItemPage extends Component {
                         data-toggle="modal"
                         data-target={"#itemFormModal"}> <i className="fa fa-plus"></i>
                     </button>
-                    &nbsp;&nbsp;
                     <button type="submit" disabled
-                        className="btn btn-primary btn-lg"
-                        style={buttonStyle}>Get a quote</button>
-                    <Modal id="itemFormModal" title="New item">
+                        className="btn btn-lg font-weight-bold"
+                        style={buttonStyle}>Add a new item</button>
+                    <Modal id="itemFormModal" title="Create an item">
                         <ItemForm onClickCreateItem={(itemData) => this.onClickCreateItem(itemData)} />
                     </Modal>
                 </div>
