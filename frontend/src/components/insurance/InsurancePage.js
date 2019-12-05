@@ -12,7 +12,7 @@ class InsurancePage extends Component {
         }
     }
 
-    async onClickCreateInsurance(insuranceData){
+    async onClickCreateInsurance(insuranceData) {
         try {
             const response = await InsuranceApi.createInsurance(insuranceData);
             const insurance = response.data;
@@ -21,7 +21,7 @@ class InsurancePage extends Component {
             this.setState({
                 insurances: newInsurance,
             });
-            }
+        }
         catch (e) {
             console.error(e);
         }
@@ -38,14 +38,14 @@ class InsurancePage extends Component {
                         className="btn btn-outline-secondary btn-lg"
                         style={buttonStyle}
                         data-toggle="modal"
-                        data-target={"#insuranceFormModal"}> <i className="fa fa-plus"></i> 
+                        data-target={"#insuranceFormModal"}> <i className="fa fa-plus"></i>
                     </button>
-                    &nbsp;&nbsp;
+
                     <button type="submit" disabled
-                            className="btn btn-primary btn-lg"
-                            style={buttonStyle}>Get a quote</button>
+                        className="btn btn-lg font-weight-bold"
+                        style={buttonStyle}>Add an insurance </button>
                     <div id="insuranceFormModal" className="modal fade" role="dialog">
-                            <div className="modal-dialog">
+                        <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h4 className="modal-title" alignText="center" >Select the company</h4>
@@ -60,37 +60,37 @@ class InsurancePage extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    { insurances.map(({ insuranceId, insuranceType, insurancePlan }) => {
-                                return (
-                                    <div key={insuranceId} className="card" style={cardStyle}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">{insuranceType}</h5>
-                                        <p className="card-text">{ !insurancePlan ? "no insurance plan" : insurancePlan }</p>
-                                        <p className="card-text"><small className="text-muted">Last modified 3 weeks ago.</small></p>
-                                        <button type="button"
-                                            className="btn btn-primary"
-                                
-                                            data-toggle="modal"
-                                            data-target={"#insuranceCardModal"}> View insurance
+                    {insurances.map(({ insuranceId, insuranceType, insurancePlan }) => {
+                        return (
+                            <div key={insuranceId} className="card" style={cardStyle}>
+                                <div className="card-body">
+                                    <h5 className="card-title">{insuranceType}</h5>
+                                    <p className="card-text">{!insurancePlan ? "no insurance plan" : insurancePlan}</p>
+                                    <p className="card-text"><small className="text-muted">Last modified 3 weeks ago.</small></p>
+                                    <button type="button"
+                                        className="btn btn-primary"
+
+                                        data-toggle="modal"
+                                        data-target={"#insuranceCardModal"}> View insurance
                                         </button>
-                                    </div>
-                                    <div id="insuranceCardModal" className="modal fade" role="dialog">
-                                            <div className="modal-dialog">
-                                                <div className="modal-content">
-                                                   <div className="modal-header">
-                                                    <h4 className="modal-title">{insuranceType}</h4>
-                                                    <button type="button" className="close" data-dismiss="modal"> &times;
+                                </div>
+                                <div id="insuranceCardModal" className="modal fade" role="dialog">
+                                    <div className="modal-dialog">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h4 className="modal-title">{insuranceType}</h4>
+                                                <button type="button" className="close" data-dismiss="modal"> &times;
                                                     </button>
-                                                    </div>
-                                                        <div className="modal-body">
-                                                            <InsuranceCard />
-                                                        </div>
-                                                </div>
                                             </div>
+                                            <div className="modal-body">
+                                                <InsuranceCard />
+                                            </div>
+                                        </div>
                                     </div>
-                                    </div>
-                                );
-                            })}
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         );
