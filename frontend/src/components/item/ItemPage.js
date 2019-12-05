@@ -12,7 +12,7 @@ class ItemPage extends Component {
         }
     }
 
-    async onClickCreateItem(itemData){
+    async onClickCreateItem(itemData) {
         try {
             const response = await ItemApi.createItem(itemData);
             const item = response.data;
@@ -21,7 +21,7 @@ class ItemPage extends Component {
             this.setState({
                 items: newItem,
             });
-            }
+        }
         catch (e) {
             console.error(e);
         }
@@ -38,64 +38,57 @@ class ItemPage extends Component {
                         className="btn btn-outline-secondary btn-lg"
                         style={buttonStyle}
                         data-toggle="modal"
-                        data-target={"#itemFormModal"}> <i className="fa fa-plus"></i> 
+                        data-target={"#itemFormModal"}> <i className="fa fa-plus"></i>
                     </button>
                     &nbsp;&nbsp;
                     <button type="submit" disabled
-                            className="btn btn-primary btn-lg"
-                            style={buttonStyle}>Get a quote</button>
-                    <div id="itemFormModal" className="modal fade" role="dialog">
-                            <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h4 className="modal-title">New item</h4>
-                                    <button type="button" className="close" data-dismiss="modal"> &times;
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <ItemForm onClickCreateItem={(itemData) => this.onClickCreateItem(itemData)} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        className="btn btn-primary btn-lg"
+                        style={buttonStyle}>Get a quote</button>
+                    <Modal id="itemFormModal" title="New item">
+                        <ItemForm onClickCreateItem={(itemData) => this.onClickCreateItem(itemData)} />
+                    </Modal>
                 </div>
                 <div className="row">
-                    { items.map(({ itemId, itemType, insurancePlan }) => {
-                                return (
-                                    <div key={itemId} className="card" style={cardStyle}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">{itemType}</h5>
-                                        <p className="card-text">{ !insurancePlan ? "no insurance plan" : insurancePlan }</p>
-                                        <p className="card-text"><small className="text-muted">Last modified 3 weeks ago.</small></p>
-                                        <button type="button"
-                                            className="btn btn-primary"
-                                
-                                            data-toggle="modal"
-                                            data-target={"#itemCardModal"}> View item
+                    {items.map((item) => {
+                        return (
+                            <div key={item.itemId} className="card" style={cardStyle}>
+                                <div className="card-body">
+                                    <h5 className="card-title">{item.itemType}</h5>
+                                    <p className="card-text">{!item.insurancePlan ? "No insurance plan." : item.insurancePlan}</p>
+                                    <button type="button"
+                                        className="btn btn-primary"
+                                        data-toggle="modal"
+                                        data-target={`#itemCardModal-${item.itemId}`}
+                                    > View item
                                         </button>
-                                    </div>
-                                    <div id="itemCardModal" className="modal fade" role="dialog">
-                                            <div className="modal-dialog">
-                                                <div className="modal-content">
-                                                   <div className="modal-header">
-                                                    <h4 className="modal-title">{itemType}</h4>
-                                                    <button type="button" className="close" data-dismiss="modal"> &times;
-                                                    </button>
-                                                    </div>
-                                                        <div className="modal-body">
-                                                            <ItemCard />
-                                                        </div>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    </div>
-                                );
-                            })}
+                                </div>
+                                <Modal id={`itemCardModal-${item.itemId}`} title={item.itemType}>
+                                    <ItemCard item={item} />
+                                </Modal>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         );
     }
 }
+
+const Modal = ({ children, id, title }) =>
+    <div id={id} className="modal fade" role="dialog">
+        <div className="modal-dialog">
+            <div className="modal-content">
+                <div className="modal-header">
+                    <h4 className="modal-title">{title}</h4>
+                    <button type="button" className="close" data-dismiss="modal"> &times;
+                                                    </button>
+                </div>
+                <div className="modal-body">
+                    {children}
+                </div>
+            </div>
+        </div>
+    </div>
 
 const cardStyle = {
     width: '30%',

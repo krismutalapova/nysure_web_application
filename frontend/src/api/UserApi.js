@@ -11,7 +11,6 @@ class UserApi {
     currentUserSet = () => {};
 
     constructor(props) {
-        console.log("UserApi");
         this.loadUser();
     }
 
