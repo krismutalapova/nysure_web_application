@@ -3,13 +3,17 @@ package se.kth.sda6.nysure.auth;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import se.kth.sda6.nysure.auth.AuthController;
 import se.kth.sda6.nysure.auth.AuthRequest;
 import se.kth.sda6.nysure.user.User;
+import se.kth.sda6.nysure.user.UserRepository;
 import se.kth.sda6.nysure.user.UserService;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,6 +27,9 @@ class RegisterUserAPITest {
 
     @Autowired
     private AuthController authController;
+
+    @Autowired
+    UserRepository userRepository;
 
     private static String personnummerOK = "19901024-1111";
     private static String emailOK = "myemail@is.ok";
@@ -42,6 +49,14 @@ class RegisterUserAPITest {
         u.setAddress(address);
         u.setPhone(phoneNumber);
         return u;
+    }
+
+    private void clear(){
+        try {
+            userRepository.deleteById(personnummerOK);
+        } catch (EmptyResultDataAccessException e){
+            //User already removed, no need for more action
+        }
     }
 
     @Test
@@ -71,18 +86,27 @@ class RegisterUserAPITest {
         //Personnummer empty
         ResponseEntity badPN1 = authController.register(createNewUser("", emailOK, passwordOK, nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badPN1.getStatusCode());
+        clear();
+
         //Personnummer incorrect pattern --> get a 201 CREATED instead of BAD_REQUEST (format is wrong)
-        ResponseEntity badPN2 = authController.register(createNewUser("19902410-9900", emailOK, passwordOK, nameOK, addressOK, phoneNumberOK));
+        //ResponseEntity badPN2 = authController.register(createNewUser("19902410-9900", emailOK, passwordOK, nameOK, addressOK, phoneNumberOK));
         //assertEquals(HttpStatus.BAD_REQUEST, badPN2.getStatusCode());
+        //clear();
+
         //Personnummer no hyphen
         ResponseEntity badPN3 = authController.register(createNewUser("199010249900", emailOK, passwordOK, nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badPN3.getStatusCode());
+        clear();
+
         //Personnummer no full year
         ResponseEntity badPN4 = authController.register(createNewUser("901024-9900", emailOK, passwordOK, nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badPN4.getStatusCode());
+        clear();
+
         //Personnummer letters
         ResponseEntity badPN5 = authController.register(createNewUser("YYYYMMDD-XXXX", emailOK, passwordOK, nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badPN5.getStatusCode());
+        clear();
     }
 
     @Test
@@ -91,38 +115,64 @@ class RegisterUserAPITest {
         //Email empty
         ResponseEntity badEmail1 = authController.register(createNewUser(personnummerOK, "", passwordOK, nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badEmail1.getStatusCode());
+        clear();
+
         //Email incorrect pattern --> passes as OK (returns 201 CREATED)
-        ResponseEntity badEmail2 = authController.register(createNewUser(personnummerOK, "john.gmail@com", passwordOK, nameOK, addressOK, phoneNumberOK));
+        //ResponseEntity badEmail2 = authController.register(createNewUser(personnummerOK, "john.gmail@com", passwordOK, nameOK, addressOK, phoneNumberOK));
         //assertEquals(HttpStatus.BAD_REQUEST, badEmail2.getStatusCode());
+        //clear();
+
         //Email no @
         ResponseEntity badEmail3 = authController.register(createNewUser(personnummerOK, "johngmail.com", passwordOK, nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badEmail3.getStatusCode());
+        clear();
+
         //Email no . --> passes as OK (returns 201 CREATED)
-        ResponseEntity badEmail4 = authController.register(createNewUser(personnummerOK, "john@gmailcom", passwordOK, nameOK, addressOK, phoneNumberOK));
+        //ResponseEntity badEmail4 = authController.register(createNewUser(personnummerOK, "john@gmailcom", passwordOK, nameOK, addressOK, phoneNumberOK));
         //assertEquals(HttpStatus.BAD_REQUEST, badEmail4.getStatusCode());
+        //clear();
+
         //Email CAPITAL letter --> passes as 201 CREATED but Formatting should be handled
         ResponseEntity badEmail5 = authController.register(createNewUser(personnummerOK, "JOHN@GMAIL.COM", passwordOK, nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.CREATED, badEmail5.getStatusCode());
+        clear();
+
         //Email letters with accents --> passes as OK (returns 201 CREATED)
-        ResponseEntity badEmail6 = authController.register(createNewUser(personnummerOK, "jöhn@gmäîl.côm", passwordOK, nameOK, addressOK, phoneNumberOK));
+        //ResponseEntity badEmail6 = authController.register(createNewUser(personnummerOK, "jöhn@gmäîl.côm", passwordOK, nameOK, addressOK, phoneNumberOK));
         //assertEquals(HttpStatus.BAD_REQUEST, badEmail6.getStatusCode());
+        //clear();
+
         //Email no name
         ResponseEntity badEmail7 = authController.register(createNewUser(personnummerOK, "@gmail.com", passwordOK, nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badEmail7.getStatusCode());
+        clear();
     }
 
+        //All 3 following tests fail because transformed by encoding before validations
     @Test
-    void negativePasswordRegisterUserAPI() {
-        //All 3 fail because transformed by encoding before validations
+    void negativePasswordRegisterUserAPI1() {
         //Password empty --> passes as not a BAD_REQUEST (returns 201 CREATED)
         ResponseEntity badPassword1 = authController.register(createNewUser(personnummerOK, emailOK, "", nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badPassword1.getStatusCode());
+        clear();
+
+    }
+
+    @Test
+    void negativePasswordRegisterUserAPI2() {
         //Password too short / < 5 --> passes as not a BAD_REQUEST (returns 201 CREATED)
         ResponseEntity badPassword2 = authController.register(createNewUser(personnummerOK, emailOK, "test", nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badPassword2.getStatusCode());
+        clear();
+
+    }
+
+    @Test
+    void negativePasswordRegisterUserAPI3() {
         //Password too long / > 100 --> passes as not a BAD_REQUEST (returns 201 CREATED)
         ResponseEntity badPassword3 = authController.register(createNewUser(personnummerOK, emailOK, "negativePasswordRegisterUserAPInegativePasswordRegisterUserAPInegativePasswordRegisterUserAPInegative", nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badPassword3.getStatusCode());
+        clear();
 
         /*
         //Nice-to-haves
@@ -153,15 +203,22 @@ class RegisterUserAPITest {
         //Name empty
         ResponseEntity badName1 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, "", addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badName1.getStatusCode());
+        clear();
+
         //Name too short / < 3
         ResponseEntity badName2 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, "ab", addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badName2.getStatusCode());
+        clear();
+
         //Name too long / > 100
         ResponseEntity badName3 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, "negativeNameRegisterUserAPInegativeNameRegisterUserAPInegativeNameRegisterUserAPInegativeNameRegisterUserAPI", addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badName3.getStatusCode());
+        clear();
+
         //Name null
         ResponseEntity badName8 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, null, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.CREATED, badName8.getStatusCode());
+        clear();
 
         /*
         //Nice-to-haves
@@ -186,15 +243,22 @@ class RegisterUserAPITest {
         //Address empty
         ResponseEntity badAddress1 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, "", phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badAddress1.getStatusCode());
+        clear();
+
         //Address too short / < 3
         ResponseEntity badAddress2 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, "a1", phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badAddress2.getStatusCode());
+        clear();
+
         //Address too long / > 50
         ResponseEntity badAddress3 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, "negativeAddressRegisterUserAPInegativeAddressRegisterUserAPInegativeAddressRegisterUserAPI", phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badAddress3.getStatusCode());
+        clear();
+
         //Address null
         ResponseEntity badAddress8 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, null, phoneNumberOK));
         assertEquals(HttpStatus.CREATED, badAddress8.getStatusCode());
+        clear();
 
         /*
         //Nice-to-haves
@@ -219,15 +283,22 @@ class RegisterUserAPITest {
         //Phone number empty
         ResponseEntity badPhoneNumber1 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, addressOK, ""));
         assertEquals(HttpStatus.BAD_REQUEST, badPhoneNumber1.getStatusCode());
+        clear();
+
         //Phone number too short / < 7
         ResponseEntity badPhoneNumber2 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, addressOK, "123456"));
         assertEquals(HttpStatus.BAD_REQUEST, badPhoneNumber2.getStatusCode());
+        clear();
+
         //Phone number too long / > 15
         ResponseEntity badPhoneNumber3 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, addressOK, "12345678901234567890"));
         assertEquals(HttpStatus.BAD_REQUEST, badPhoneNumber3.getStatusCode());
+        clear();
+
         //Phone null
         ResponseEntity badAddress8 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, nameOK, addressOK, null));
         assertEquals(HttpStatus.CREATED, badAddress8.getStatusCode());
+        clear();
 
 /*
         //Nice-to-haves
