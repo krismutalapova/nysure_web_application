@@ -29,7 +29,6 @@ class ItemCard extends Component {
                 this.setState(
                     { selectedFiles }
                 );
-                alert("File uploaded successfully.")
             })
             .catch(err => console.error(err));
     };
@@ -57,19 +56,20 @@ class ItemCard extends Component {
             <div className="card" style={cardStyle}>
                 <div className="card-body" >
 
-                    <label htmlFor="type"> Insurance plan:</label>
+                    <label htmlFor="insurancePlan"> Insurance plan:</label>
                     <select disabled style={selectStyle} type="text" value={insurancePlan} onChange={this.setInsurancePlan} className="form-control">
                         <option value="no-insurance">No insurance plan</option>
                     </select>
 
-                    <label htmlFor="type">Warranty: </label>
+                    <label htmlFor="warrantyPlan">Warranty: </label>
                     <input disabled type="text" className="form-control" style={selectStyle} placeholder="no warranty plan"></input>
 
-                    <label htmlFor="type">Last modified date: </label>
+                    <label htmlFor="date">Last modified date: </label>
                     <input disabled type="text" className="form-control" style={selectStyle}></input>
 
                     <div className="form-group files color" style={selectStyle}>
                         <label>Upload a photo:</label>
+                        <small class="text-muted float-right">{`${selectedFiles.length} photo${selectedFiles.length === 1 ? "" : "s"} uploaded`}</small>
                         <input type="file" className="form-control" name="file" onChange={this.onFileChangeHandler} />
                     </div>
                         {
