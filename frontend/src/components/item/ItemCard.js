@@ -63,13 +63,13 @@ class ItemCard extends Component {
                     </select>
 
                     <label htmlFor="type">Warranty: </label>
-                    <input disabled type="text" className="form-control" id="usr" style={selectStyle}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} placeholder="no warranty plan"></input>
 
                     <label htmlFor="type">Last modified date: </label>
-                    <input disabled type="text" className="form-control" id="usr" style={selectStyle}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle}></input>
 
                     <div className="form-group files color" style={selectStyle}>
-                        <label>Upload Your File</label>
+                        <label>Upload a photo:</label>
                         <input type="file" className="form-control" name="file" onChange={this.onFileChangeHandler} />
                     </div>
                         {
@@ -85,7 +85,7 @@ class ItemCard extends Component {
 
 const Carousel = ({selectedFiles}) =>
     <div>
-    <div id="carousel" className="carousel slide" data-ride="carousel">
+    <div id="carouselItem" className="carousel slide" data-ride="carousel">
         <div className="carousel-inner">
             {selectedFiles.map(({ id, fileName, fileType, fileData, isActive }) => {
                 return (
@@ -100,11 +100,11 @@ const Carousel = ({selectedFiles}) =>
             })
             }
         </div>
-        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <a className="carousel-control-prev" href="#carouselItem" role="button" data-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
             <span className="sr-only">Previous</span>
         </a>
-        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a className="carousel-control-next" href="#carouselItem" role="button" data-slide="next">
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
             <span className="sr-only">Next</span>
         </a>
