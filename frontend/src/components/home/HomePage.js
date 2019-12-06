@@ -33,24 +33,21 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <div className="row-full">
+            <div className ="column col-10">
+                                <div className="row-full">
                     <div className="column col-2">
                         <h4>Email</h4>
                         <p>{this.state.user.email}</p>
-                        <h4>Address</h4>
-                        <p>{this.state.user.address || 'N/A'}</p>
-                        <h4>Phone</h4>
-                        <p>{this.state.user.phone || 'N/A'}</p>
                         <div className="card bg-cyan text-white estimated-spent">
                             <h4 className="">Estimated spent:</h4>
                             <br />
                             <p className="">SEK 122,334,454.00</p>
                         </div>
                     </div>
-                    <div className="col-2">
-                    </div>
                 </div>
-                <div className="row-full">
+                </div>
+                <div className ="column col-10">
+                                    <div className="row-full">
                     <div className="col-4 center-content">
                         <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
                             <p>Photos / Items</p>
@@ -68,10 +65,13 @@ class HomePage extends Component {
                     </div>
                     <div className="col-4 center-content">
                         <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>Get a quota</p>
+                            <p>Get a quote</p>
                         </button>
                     </div>
                 </div>
+                </div>
+
+
                 <div className="row-full">
                     <div className="bottomPadding"></div>
                 </div>
