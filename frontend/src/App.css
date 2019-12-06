@@ -137,6 +137,10 @@ background-color: #a7b3b4;
     margin-top: -10px;
 }
 
+.row-100 {
+  width: 100%;
+  display: block;
+}
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -159,3 +163,4 @@ background-color: #a7b3b4;
   font-size: 55px;
   color: gray;
 }
+

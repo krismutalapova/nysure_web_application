@@ -53,22 +53,22 @@ class HomePage extends Component {
                 <div className="row-full">
                     <div className="col-4 center-content">
                         <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>photos / items</p>
+                            <p>Photos / Items</p>
                         </button>
                     </div>
                     <div className="col-4 center-content">
                         <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>insurances linked</p>
+                            <p>Insurances linked</p>
                         </button>
                     </div>
                     <div className="col-4 center-content">
                         <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>claims</p>
+                            <p>Claims</p>
                         </button>
                     </div>
                     <div className="col-4 center-content">
                         <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>GET A QUOTA</p>
+                            <p>Get a quota</p>
                         </button>
                     </div>
                 </div>

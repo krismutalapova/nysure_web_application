@@ -33,7 +33,7 @@ function App() {
                             <InsurancePage/>
                         </Route>
 
-                        <Route path="/infopages">
+                        <Route path="/aboutus">
                             <AboutUs/>
                         </Route>
 
