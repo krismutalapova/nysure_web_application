@@ -48,7 +48,7 @@ class InsurancePage extends Component {
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h4 className="modal-title" alignText="center" >Select the company</h4>
+                                    <h5 className="modal-title" alignText="center" >Select and click on the insurance company</h5>
                                     <button type="button" className="close" data-dismiss="modal"> &times;
                                     </button>
                                 </div>
