@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name="account")
+@Table(name = "account")
 public class User {
     @Id
     @Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.")
@@ -22,24 +22,25 @@ public class User {
     private String email;
 
 
-    @Length(min = 5, max=100, message = "Password length most be between 5-100 characters")
+    @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters")
     @Column(name = "password")
     private String password;
 
-    @Length(min = 3, max=100, message = "Name must be between 3-100 characters")
+    @Length(min = 3, max = 100, message = "Name must be between 3-100 characters")
     @Column(name = "name")
     private String name;
 
-    @Length(min = 3, max=50, message = "Address must be between 3-50 characters")
+    @Length(min = 3, max = 50, message = "Address must be between 3-50 characters")
     @Column(name = "address")
     private String address;
 
-    @Length(min = 7, max=15, message = "Phone must be between 7-15 characters")
+    @Length(min = 7, max = 15, message = "Phone must be between 7-15 characters")
     @Column(name = "phone")
     private String phone;
 
     // Hibernate needs a default constructor to function
-    public User() {}
+    public User() {
+    }
 
     public String getId() {
         return id;

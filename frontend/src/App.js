@@ -18,7 +18,7 @@ import HomePage from './components/home/HomePage';
 import ItemPage from "./components/item/ItemPage";
 import AboutUs from './components/infopages/AboutUs';
 import ContactDetails from './components/infopages/ContactDetails';
-import InsuranceDetails from './components/insurance/InsuranceDetails';
+import InsurancePage from './components/insurance/InsurancePage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -30,7 +30,7 @@ function App() {
                 <div className="container mt-5">
                     <Switch>
                         <Route path="/insurance">
-                            <InsuranceDetails/>
+                            <InsurancePage/>
                         </Route>
 
                         <Route path="/aboutus">
