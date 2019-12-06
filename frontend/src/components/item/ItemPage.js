@@ -40,11 +40,10 @@ class ItemPage extends Component {
                         data-toggle="modal"
                         data-target={"#itemFormModal"}> <i className="fa fa-plus"></i>
                     </button>
-                    &nbsp;&nbsp;
                     <button type="submit" disabled
-                        className="btn btn-primary btn-lg"
-                        style={buttonStyle}>Get a quote</button>
-                    <Modal id="itemFormModal" title="New item">
+                        className="btn btn-lg font-weight-bold"
+                        style={buttonStyle}>Add a new item</button>
+                    <Modal id="itemFormModal" title="Create an item">
                         <ItemForm onClickCreateItem={(itemData) => this.onClickCreateItem(itemData)} />
                     </Modal>
                 </div>
@@ -76,8 +75,8 @@ class ItemPage extends Component {
 
 const Modal = ({ children, id, title }) =>
     <div id={id} className="modal fade" role="dialog">
-        <div className="modal-dialog">
-            <div className="modal-content">
+        <div className="modal-dialog" style={modalBorderStyle}>
+            <div className="modal-content" style={modalBorderStyle}>
                 <div className="modal-header">
                     <h4 className="modal-title">{title}</h4>
                     <button type="button" className="close" data-dismiss="modal"> &times;
@@ -100,5 +99,9 @@ const buttonStyle = {
     marginRight: '10px',
     marginBottom: '10px',
 }
+
+const modalBorderStyle = {
+    borderRadius: '10px',
+  }
 
 export default ItemPage;
