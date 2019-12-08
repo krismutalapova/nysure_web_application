@@ -33,12 +33,10 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-            <div className ="column col-10">
+                <div className ="column">
                                 <div className="row-full">
-                    <div className="column col-2">
-                        <h4>Email</h4>
-                        <p>{this.state.user.email}</p>
-                        <div className="card bg-cyan text-white estimated-spent">
+                    <div className="column">
+                        <div className="card text-white estimated-spent">
                             <h4 className="">Estimated spent:</h4>
                             <br />
                             <p className="">SEK 122,334,454.00</p>
@@ -46,32 +44,30 @@ class HomePage extends Component {
                     </div>
                 </div>
                 </div>
-                <div className ="column col-10">
+                <div className ="column">
                                     <div className="row-full">
                     <div className="col-4 center-content">
-                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
+                        <a href="/item" className="btn bg-cyan btn-circle btn-circle-lg m-1">
                             <p>Photos / Items</p>
-                        </button>
+                        </a>
                     </div>
                     <div className="col-4 center-content">
-                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
+                        <a href="/insurance" className="btn bg-cyan btn-circle btn-circle-lg m-1">
                             <p>Insurances linked</p>
-                        </button>
+                        </a>
                     </div>
                     <div className="col-4 center-content">
-                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
+                        <a href="/claims" className="btn bg-cyan btn-circle btn-circle-lg m-1">
                             <p>Claims</p>
-                        </button>
+                        </a>
                     </div>
                     <div className="col-4 center-content">
-                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
+                        <a href="/quote" className="btn bg-cyan btn-circle btn-circle-lg m-1">
                             <p>Get a quote</p>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 </div>
-
-
                 <div className="row-full">
                     <div className="bottomPadding"></div>
                 </div>

@@ -43,7 +43,7 @@ class AboutUs extends Component {
                     </div>
                     <div className="col-3 center-content">
                         <a href="https://www.linkedin.com/in/sara-garabedian-24a8a999/">
-                        <img className="btn-circle btn-circle-lg" src="images/sara.png" alt="sara" />
+                        <img className="btn-circle btn-circle-lg" src="images/SG.png" alt="SG" />
                         </a>
                         <p>Sara </p>
                     </div>
