@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserApi from "../../api/UserApi.js";
-import Claims from  "../claims/Claims.js";
+import Claims from "../claims/Claims.js";
 
 class HomePage extends Component {
     state = {
@@ -29,6 +29,12 @@ class HomePage extends Component {
         } catch (e) {
             console.error(e);
         }
+    }
+
+    displayClaims = () => {
+        this.setState({
+            displayClaims: !this
+        })
     }
 
     render() {
@@ -63,22 +69,23 @@ class HomePage extends Component {
                         </button>
                     </div>
                     <div className="col-4 center-content">
-                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
+                        {/* <a href="/././claims/Claims.js">*/}
+                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1" onClick = {this.renderInsurances}>
                             <p>claims</p>
-                        </button>
+                         </button>
+
                     </div>
                     <div className="col-4 center-content">
                         <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
 
-                            <p>GET A QUOTA </p>
+                            <p>GET A QUOTE </p>
                         </button>
                     </div>
                 </div>
                 <div className="row-full">
                     <div className="bottomPadding"></div>
-                </div>
-                
-            <Claims/>
+                </div> 
+                <Claims/>
             </div>
         );
     }
