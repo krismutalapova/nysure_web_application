@@ -1,14 +1,14 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 class AboutUs extends Component {
-    render (){
+    render() {
         return (
             <div>
                 <div className="row-100">
                     <h5 className="App">
                         We care about people!
                         <br />
-                        We believe that managing your insurance claims insurance online should be  easy an accessible.
+                        We believe that managing your insurance claims online should be  easy an accessible.
                         <br />
                         We know that the ones that are crazy enough to want to change the world, are the ones who do.
                         <br />
@@ -17,32 +17,44 @@ class AboutUs extends Component {
                 </div>
                 <div className="row-100">
                     <div className="col-3 center-content">
-                        <img className="btn-circle btn-circle-lg" src="images/meri.jpg" alt="meri" />
+                        <a href="https://www.linkedin.com/in/mary-mihailovski-vancovska/">
+                            <img className="btn-circle btn-circle-lg" src="images/meri.jpg" alt="meri" />
+                        </a>
+                        <p>Meri </p>
                     </div>
                     <div className="col-3 center-content">
-                    <img className="btn-circle btn-circle-lg" src="images/kristina.jpg" alt="kristina" />
+                        <a href="https://www.linkedin.com/in/kristina-mutalapova/">
+                            <img className="btn-circle btn-circle-lg" src="images/kristina.jpg" alt="kristina" />
+                        </a>
+                        <p>Kris</p>
                     </div>
                     <div className="col-3 center-content">
-                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>Photos / Items</p>
-                        </button>
-                    </div>
-                    <div className="col-3 center-content">
-                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>Photos / Items</p>
-                        </button>
-                    </div>
-                    <div className="col-3 center-content">
-                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>Photos / Items</p>
-                        </button>
-                    </div>
-                    <div className="col-3 center-content">
-                        <button className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>Photos / Items</p>
-                        </button>
+                        <img className="btn-circle btn-circle-lg" src="images/penny.jpg" alt="penny" />
+                        <p>Penny</p>
                     </div>
                 </div>
+                <div className="row-100">
+                    <div className="col-3 center-content">
+                        <a href="https://www.linkedin.com/in/elmenqui/">
+                            <img className="btn-circle btn-circle-lg" src="images/alberto.jpg" alt="alberto" />
+                            </a>
+                            <p>Alberto</p>
+                        
+                    </div>
+                    <div className="col-3 center-content">
+                        <a href="https://www.linkedin.com/in/sara-garabedian-24a8a999/">
+                        <img className="btn-circle btn-circle-lg" src="images/SG.png" alt="SG" />
+                        </a>
+                        <p>Sara </p>
+                    </div>
+                    <div className="col-3 center-content">
+                        <a href="https://www.linkedin.com/in/mabmalia/">
+                        <img className="btn-circle btn-circle-lg" src="images/miguel1.png" alt="miguel1" />
+                        </a>
+                        <p>Miguel</p>
+                    </div>
+                </div>
+
                 <div className="row-100">
                     <div className="card text-white App">
                         CONTACT
@@ -54,7 +66,7 @@ class AboutUs extends Component {
                 <div className="row-full">
                     <div className="bottomPadding"></div>
                 </div>
-           </div>
+            </div>
         )
     };
 
