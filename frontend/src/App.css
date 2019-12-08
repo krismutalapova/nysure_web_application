@@ -98,7 +98,9 @@ background-color: #a7b3b4;
 }
 
 .estimated-spent {
-  width: 50%;
+  width: 100%;
+  text-align: center;
+  padding: 5pt;
 }
 
 .bottomPadding {
@@ -135,5 +137,32 @@ background-color: #a7b3b4;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     margin-top: -10px;
+}
+
+.row-100 {
+  width: 100%;
+  display: block;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: none;
+  background-image: none;
+}
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: gray;
+}
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: gray;
 }
 

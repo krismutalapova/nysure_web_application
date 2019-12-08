@@ -16,7 +16,7 @@ function Navbar({onLogout}) {
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/infopages" className="nav-link">
+                            <Link to="/aboutus" className="nav-link">
                                 About us
                             </Link>
                         </li>
