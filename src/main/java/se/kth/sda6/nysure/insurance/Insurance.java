@@ -8,43 +8,42 @@ import javax.persistence.*;
 public class Insurance {
 
     @Id
-    @Column(name = "policyId")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long policyId;
+    private String id;
 
-    @Column(name = "insuranceType")
-    private String insuranceType;
+    @Column(name = "type")
+    private String type;
 
     @Column(name = "company")
     private String company;
 
+    @Column(name = "cost")
+    private Long cost;
+
+    @Column(name = "status")
+    private boolean status;
 
     @ManyToOne()
     private User user;
 
-
-    /** @TODO Add the list of insurances to a User Class and add a One to Many relationship
-    * @OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL)
-    * private List<Insurance> insurances = new ArrayList<>();
-    */
-
     public Insurance() {
     }
 
-    public Long getPolicyId() {
-        return policyId;
+    public String getId() {
+        return id;
     }
 
-    public void setPolicyId(Long policyId) {
-        this.policyId = policyId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getInsuranceType() {
-        return insuranceType;
+    public String getType() {
+        return type;
     }
 
-    public void setInsuranceType(String insuranceType) {
-        this.insuranceType = insuranceType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getCompany() {
@@ -53,6 +52,22 @@ public class Insurance {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public Long getCost() {
+        return cost;
+    }
+
+    public void setCost(Long cost) {
+        this.cost = cost;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public User getUser() {
