@@ -5,8 +5,8 @@ class InsuranceApi {
         return Api.get('/insurances');
     }
 
-    getInsuranceById(id) {
-        return Api.get('/insurances/'+id);
+    getAllByStatus(status) {
+        return Api.get('/insurances?status='+  status);
     }
 
     createInsurance(insurance) {
