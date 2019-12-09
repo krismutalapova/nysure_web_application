@@ -48,7 +48,7 @@ class InsurancePage extends Component {
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" style={centerText} >Select and click on the insurance company</h5>
+                                    <h5 className="modal-title">Select and click on the insurance company</h5>
                                     <button type="button" className="close" data-dismiss="modal"> &times;
                                     </button>
                                 </div>
@@ -108,8 +108,6 @@ const buttonStyle = {
     marginBottom: '10px',
 }
 
-const centerText = {
-    textAlign: 'center'
-}
+
 
 export default InsurancePage;
