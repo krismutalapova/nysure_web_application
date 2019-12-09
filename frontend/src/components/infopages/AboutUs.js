@@ -8,7 +8,7 @@ class AboutUs extends Component {
                     <h5 className="App">
                         We care about people!
                         <br />
-                        We believe that managing your insurance claims online should be  easy an accessible.
+                        We believe that managing your insurance claims online should be easy and accessible.
                         <br />
                         We know that the ones that are crazy enough to want to change the world, are the ones who do.
                         <br />
