@@ -40,9 +40,9 @@ class Claims extends React.Component {
             return (
                 
                
-                <tr key={id} style={{padding:'20px', textAlign:'center'}}>
-                    <td style={{padding:'5px 10px 5px 10px', width: '100%', textAlign:'left'}}>{insurance}</td> 
-                    <td style={{padding:'5px 10px 5px 10px', width: '100%', textAlign:'left'}}>{type}</td>
+                <tr key={id} style={{padding:'20px', textAlign:'left'}}>
+                    <td style={{padding:'5px 10px 5px 10px', width: '50%', textAlign:'left'}}>{insurance}</td> 
+                    <td style={{padding:'5px 10px 5px 10px', width: '50%', textAlign:'left'}}>{type}</td>
                     <td style={{padding:'5px 10px 5px 10px', width: '100%', textAlign:'left'}}>{claim}</td>
                 </tr>
 
@@ -69,7 +69,7 @@ class Claims extends React.Component {
                     <h1 className="claims-title" style={{color:'#899b9b'}}>Claims</h1>
                     <table id="claims" style={tableStyle}>
                         <tbody>
-                           <tr>{this.renderClaimsHeader()}</tr> 
+                           <tr style={{textAlign:'left'}}>{this.renderClaimsHeader()}</tr> 
                             {this.renderClaims()}
                         </tbody>
                     </table>
