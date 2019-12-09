@@ -14,7 +14,7 @@ class InsurancePage extends Component {
 
     async onClickCreateInsurance(insuranceData) {
         try {
-            const response = await InsuranceApi.createInsurance(insuranceData);
+            const response = await InsuranceApi.changeStatus(insuranceData);
             const insurance = response.data;
             const newInsurance = this.state.insurances.concat(insurance);
 
@@ -25,6 +25,13 @@ class InsurancePage extends Component {
         catch (e) {
             console.error(e);
         }
+    }
+
+    componentDidMount() {
+        //get all insurances by status
+        InsuranceApi.getAllByStatus("true")
+            .then(({ data }) => this.setState({ insurances: data }))
+            .catch(err => console.error(err));
     }
 
     render() {
@@ -60,12 +67,12 @@ class InsurancePage extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    {insurances.map(({ insuranceId, insuranceType, insurancePlan }) => {
+                    {insurances.map(( insurance ) => {
                         return (
-                            <div key={insuranceId} className="card" style={cardStyle}>
+                            <div key={insurance.insuranceId} className="card" style={cardStyle}>
                                 <div className="card-body">
-                                    <h5 className="card-title">{insuranceType}</h5>
-                                    <p className="card-text">{!insurancePlan ? "no insurance plan" : insurancePlan}</p>
+                                    <h5 className="card-title">{insurance.insuranceType}</h5>
+                                    <p className="card-text">{!insurance.insurancePlan ? "no insurance plan" : insurance.insurancePlan}</p>
                                     <p className="card-text"><small className="text-muted">Last modified 3 weeks ago.</small></p>
                                     <button type="button"
                                         className="btn btn-primary"
@@ -78,12 +85,12 @@ class InsurancePage extends Component {
                                     <div className="modal-dialog">
                                         <div className="modal-content">
                                             <div className="modal-header">
-                                                <h4 className="modal-title">{insuranceType}</h4>
+                                                <h4 className="modal-title">{insurance.insuranceType}</h4>
                                                 <button type="button" className="close" data-dismiss="modal"> &times;
                                                     </button>
                                             </div>
                                             <div className="modal-body">
-                                                <InsuranceCard />
+                                                <InsuranceCard insurance={insurance}/>
                                             </div>
                                         </div>
                                     </div>

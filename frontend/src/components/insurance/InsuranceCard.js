@@ -44,6 +44,10 @@ class InsuranceCard extends Component {
 
     render() {
         const {selectedFiles, insurancePlan} = this.state;
+        const uploadedImages = selectedFiles.filter(image => image.fileType.includes("image"));
+        const uploadedDocuments = selectedFiles.filter(image => !image.fileType.includes("image"));
+
+
         if (selectedFiles.length>0){
             selectedFiles[0].isActive=true
         }
@@ -51,64 +55,90 @@ class InsuranceCard extends Component {
             <div className="card" style={cardStyle}>
             <div className="card-body" >
                     <label htmlFor="type"> Insurance plan:</label>
-                    <select style={selectStyle} type="text" value={insurancePlan} onChange={this.setInsurancePlan} className="form-control">
-                        <option value="no-insurance">No insurance plan</option>
-                    </select>
+                    <input disabled type="text" className="form-control" id="usr" style={selectStyle} value={this.props.insurance.id}></input>
 
-                    <label htmlFor="type">Warranty: </label>
-                    <input disabled type="text" className="form-control" id="usr" style={selectStyle}></input>
+                    <label htmlFor="type">Company: </label>
+                    <input disabled type="text" className="form-control" id="usr" style={selectStyle} value={this.props.insurance.company}></input>
 
-                    <label htmlFor="type">Last modified date: </label>
-                    <input disabled type="text" className="form-control" id="usr" style={selectStyle}></input>
+                    <label htmlFor="type">Cost: </label>
+                    <input disabled type="text" className="form-control" id="usr" style={selectStyle} value={this.props.insurance.cost}></input>
+
+                    <label htmlFor="type">Type: </label>
+                    <input disabled type="text" className="form-control" id="usr" style={selectStyle} value={this.props.insurance.type}></input>
+
                     <div className="form-group files color" style={selectStyle}>
                         <label>Upload Your File</label>
                         <input type="file" className="form-control" name="file" onChange={this.onFileChangeHandler}/>
                     </div>
-                         <div>
-                         <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                        <ol className="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div className="carousel-inner">
-                            
-                             {!selectedFiles ? null : selectedFiles.map(({id, fileName, fileType, fileData, isActive}) => {
+
+                    {
+                            uploadedDocuments.length > 0
+                            ? <DownloadDocs uploadedDocuments={uploadedDocuments} />
+                            : ""
+                        }
+                        {
+                            uploadedImages.length > 0
+                            ? <Carousel uploadedImages={uploadedImages} />
+                            : ""
+                        }
+                        </div>
+            </div>
+        )
+    };
+}
+                    const DownloadDocs = ({uploadedDocuments}) =>
+                        <div id="listOfDocuments">
+                            <label htmlFor="warrantyPlan"><b>Insurance documents:</b></label>
+                            <small className="text-muted float-right">{`${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? "" : "s"} uploaded`}</small>
+                                {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
+                                                return (
+                                                    <p key={id}>
+                                                            {fileName} : <a className="float-right"
+                                                                            download
+                                                                            href={
+                                                                            "data:" + fileType +
+                                                                            ";base64," + fileData }>download</a>
+                                                    </p>
+                                                )
+                                            })
+                                }
+                    </div>
+
+                    const Carousel = ({uploadedImages}) =>
+                        <div>
+                        <label htmlFor="uploadPhoto"><b>Insurance photos:</b></label>
+                        <small className="text-muted float-right">{`${uploadedImages.length} photo${uploadedImages.length === 1 ? "" : "s"} uploaded`}</small>
+                        <div id="carouselItem" className="carousel slide" data-ride="carousel">
+                            <div className="carousel-inner">
+                                {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
                                     return (
-                                        <div key={id} className={"carousel-item" +  (isActive ? " active" : "")}>
-                                        <img className="d-block w-100"
-                                        src={
-                                            "data:" + fileType +
-                                            ";base64," + fileData
-                                        } alt={fileName} />
+                                        <div key={id} className={"carousel-item" + (isActive ? " active" : "")}>
+                                            <img className="d-block w-100"
+                                                src={
+                                                    "data:" + fileType +
+                                                    ";base64," + fileData
+                                                } alt={fileName} />
                                         </div>
                                     )
                                 })
-                                }   
-
-                        </div>
-                        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                }
+                        
+                        <a className="carousel-control-prev" href="#carouselInsurance" role="button" data-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span className="sr-only">Previous</span>
                         </a>
-                        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <a className="carousel-control-next" href="#carouselInsurance" role="button" data-slide="next">
                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
                             <span className="sr-only">Next</span>
                         </a>
+                            </div>
                         </div>
-                 </div>
-            </div>
-            </div>
-        )
-            };
-}
-
-
+                        </div>
 
 const selectStyle ={
    width: '100%',
    margin: 'auto',
-   marginBottom: '30px'
+   marginBottom: '10px'
   }
 
 const cardStyle = {

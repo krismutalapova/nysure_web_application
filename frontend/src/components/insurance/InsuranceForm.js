@@ -12,7 +12,7 @@ function InsuranceForm( {onClickCreateInsurance} ) {
                             
                             <div className="carousel-item active">
                                <button type="button" className="btn-lg" data-dismiss="modal" value="Tre Kronor" 
-                               onClick={e => onClickCreateInsurance(e.target.value)} style={logoButtonStyle}>  
+                               onClick={e => onClickCreateInsurance("Tre Kronor")} style={logoButtonStyle}>  
                                 <img className="d-block" style={cardStyle} src="images/tre300.png" alt="Tre Kronor"/></button>
                             </div>
                             <div className="carousel-item">

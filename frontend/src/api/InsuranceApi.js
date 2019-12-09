@@ -17,6 +17,10 @@ class InsuranceApi {
         return Api.put('/insurances', insurance);
     }
 
+    changeStatus(company){
+        return Api.put('/insurances/change_status?company=' + company);
+    }
+
     deleteInsurance(id) {
         return Api.delete('/insurances/'+id);
     } 
