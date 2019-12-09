@@ -29,6 +29,7 @@ class Claims extends React.Component {
             ]
 
         }
+        
     }
 
     //separate render function for the dynamic table
@@ -37,15 +38,15 @@ class Claims extends React.Component {
         return this.state.claims.map ((item, index) => {
             const {id, insurance, type, claim} = item // breaking down the table stucture
             return (
-                <div>
-                    {this.renderClaimsHeader()}
-                    <tr key={id} style={{padding:'15px', textAlign:'left'}}>
-                    <td style={{padding:'5px 10px 5px 10px'}}>{insurance}</td> 
-                    <td style={{padding:'5px 10px 5px 10px'}}>{type}</td>
-                    <td style={{padding:'5px 10px 5px 10px'}}>{claim}</td>
+                
+               
+                <tr key={id} style={{padding:'20px', textAlign:'center'}}>
+                    <td style={{padding:'5px 10px 5px 10px', width: '100%', textAlign:'left'}}>{insurance}</td> 
+                    <td style={{padding:'5px 10px 5px 10px', width: '100%', textAlign:'left'}}>{type}</td>
+                    <td style={{padding:'5px 10px 5px 10px', width: '100%', textAlign:'left'}}>{claim}</td>
                 </tr>
 
-                </div>
+              
             
             )
         })  
@@ -53,21 +54,22 @@ class Claims extends React.Component {
 
     //render the header
     renderClaimsHeader(){
-    
-        let header = Object.keys(this.state.claims[0]);
-        return header.map((key, index) => {
-            if (key !== "id")
-            return <th key={index}>{key.toLowerCase()}</th>
-        })
-
+        //let firstRow = props.claims[0];
+            let header = Object.keys(this.state.claims[0]);
+            return header.map((key, index) => {
+                if (key !== "id")
+                return <th key={index}>{key.toLowerCase()}</th>
+            })
+        
     }
 
     render(){
             return (
                 <div>
-                    <h1 className="claims-title" style={{color:'#899b9b'}}>Insurance</h1>
+                    <h1 className="claims-title" style={{color:'#899b9b'}}>Claims</h1>
                     <table id="claims" style={tableStyle}>
                         <tbody>
+                           <tr>{this.renderClaimsHeader()}</tr> 
                             {this.renderClaims()}
                         </tbody>
                     </table>
@@ -86,7 +88,8 @@ const tableStyle = {
     text: 'center',
     color: '#899b9b',
     font:  'Trebuchet MS, Arial, Helvetica, sans serif ',
-    fontSize: '30px',  
+    fontSize: '20px',  
+    width: '100%', 
     
 };
 

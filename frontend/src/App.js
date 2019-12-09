@@ -19,6 +19,7 @@ import ItemPage from "./components/item/ItemPage";
 import AboutUs from './components/infopages/AboutUs';
 import ContactDetails from './components/infopages/ContactDetails';
 import InsurancePage from './components/insurance/InsurancePage';
+import ClaimsPage from './components/claims/Claims';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -45,9 +46,14 @@ function App() {
                             <ItemPage/>
                         </Route>
 
-                        <Route path="/">
-                          <HomePage/>
+                        <Route path="/claims">
+                             <ClaimsPage/>
                         </Route>
+
+                        <Route path="/">
+                             <HomePage/>
+                        </Route>
+
                     </Switch>
                 </div>
                 <Navbar onLogout={() => Auth.logout()} />

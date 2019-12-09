@@ -78,7 +78,10 @@ class HomePage extends Component {
                 <div className="row-full">
                     <div className="bottomPadding"></div>
                 </div> 
+               <div>
                 <Claims/>
+                </div>
+                
             </div>
         );
     }
