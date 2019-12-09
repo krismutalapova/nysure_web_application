@@ -20,8 +20,7 @@ public class User {
     @NotEmpty(message = "Please provide an email address")
     @Column(name = "email", unique = true)
     private String email;
-
-
+    
     @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters")
     @Column(name = "password")
     private String password;
@@ -29,10 +28,6 @@ public class User {
     @Length(min = 3, max = 100, message = "Name must be between 3-100 characters")
     @Column(name = "name")
     private String name;
-
-    @Length(min = 3, max = 50, message = "Address must be between 3-50 characters")
-    @Column(name = "address")
-    private String address;
 
     @Length(min = 7, max = 15, message = "Phone must be between 7-15 characters")
     @Column(name = "phone")
@@ -72,14 +67,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getPhone() {
