@@ -9,7 +9,6 @@ public class Insurance {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     @Column(name = "type")
