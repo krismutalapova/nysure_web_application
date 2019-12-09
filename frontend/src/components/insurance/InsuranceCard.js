@@ -8,8 +8,6 @@ class InsuranceCard extends Component {
         this.state = {
             selectedFiles: [],
             insurancePlan: null,
-            warranty: null,
-            date: null,  
         }
     };
 
@@ -45,7 +43,7 @@ class InsuranceCard extends Component {
     }
 
     render() {
-        const {selectedFiles, insurancePlan, warranty, date} = this.state;
+        const {selectedFiles, insurancePlan} = this.state;
         if (selectedFiles.length>0){
             selectedFiles[0].isActive=true
         }
