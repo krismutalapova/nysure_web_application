@@ -25,6 +25,15 @@ class Claims extends React.Component {
                     type: "partial", 
                     claim: "inactive",
                     
+                }, 
+
+                { 
+                    
+                    id: "hello",  
+                    insurance: "bliwa",
+                    type: "partial", 
+                    claim: "active",
+                    
                 }
             ]
 
