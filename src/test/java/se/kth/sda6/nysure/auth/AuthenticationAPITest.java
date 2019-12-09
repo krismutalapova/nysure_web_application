@@ -73,11 +73,14 @@ class AuthenticationAPITest {
         //Empty string
         ResponseEntity emptyField = authController.authenticate((new AuthRequest("", "")));
         assertEquals(HttpStatus.UNAUTHORIZED, emptyField.getStatusCode());
+        ResponseEntity nullEmail = authController.authenticate(new AuthRequest(null, passwordOK));
+        assertEquals(HttpStatus.UNAUTHORIZED, nullEmail.getStatusCode());
     }
 
     @Test
     void userNonExistent() {
-
+        ResponseEntity userNonExistent1 = authController.authenticate(new AuthRequest("nonexistent@gmail.com", passwordOK));
+        assertEquals(HttpStatus.UNAUTHORIZED, userNonExistent1.getStatusCode());
     }
 
     @Test
