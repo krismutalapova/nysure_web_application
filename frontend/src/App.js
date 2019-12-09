@@ -8,7 +8,7 @@ import {
 // Import custom styles for our application
 import './App.css';
 
-import Auth from './services/Auth';
+import Auth from "./services/Auth";
 import Navbar from "./components/layout/Navbar";
 import Topbar from "./components/layout/Topbar";
 
@@ -17,7 +17,6 @@ import LoginPage from "./components/auth/LoginPage";
 import HomePage from './components/home/HomePage';
 import AboutUs from './components/infopages/AboutUs';
 import InsurancePage from './components/insurance/InsurancePage';
-import InsuranceDetails from './components/insurance/InsuranceDetails';
 import ItemPage from "./components/item/ItemPage";
 import ContactDetails from './components/infopages/ContactDetails';
 import ProfilePage from "./components/profile/ProfilePage";
@@ -47,6 +46,10 @@ function App() {
 
                         <Route path="/item">
                             <ItemPage/>
+                        </Route>
+
+                        <Route path="/profile">
+                            <ProfilePage/>
                         </Route>
 
                         <Route path="/">

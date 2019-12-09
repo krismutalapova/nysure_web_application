@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProfileForm from "./UserProfileForm";
+import ProfileForm from "./ProfileForm";
 import UserApi from "../../api/UserApi.js";
 
 class ProfilePage extends Component {
@@ -39,8 +39,9 @@ state = {
                         <div className="col-md-6 " style={{color: "transparent"}}>
                             <img
                                 className="img-circle"
-                                src="images/Alberto_photo.jpg"
-                                class="img-fluid img-circle"/>
+                                class="img-fluid img-circle"
+                                src="images/alberto.jpg"
+                                />
                             <p>ID</p>
                         </div>
 
