@@ -17,13 +17,12 @@ class InsuranceCard extends Component {
         console.log(file);
         const formData = new FormData();
         formData.append('file', file);
-        uploadFile(formData)
+        uploadFile(this.props.insurance.id, formData)
             .then(res => {
                     const selectedFiles = this.state.selectedFiles.concat(res.data.data);
                     this.setState(
                         {selectedFiles}
                     );
-                    alert("File uploaded successfully.")
             })
             .catch(err => console.error(err));
     };
@@ -31,15 +30,15 @@ class InsuranceCard extends Component {
     setInsurancePlan = (e) => {
         e.preventDefault();
         this.setState({
-            insurancePlan:e.target.valuet
+            insurancePlan:e.target.value
         });
     };
 
     componentDidMount() {
         //get all files
-        //getAllFiles()
-         //   .then(({ data }) => this.setState({ selectedFiles: data }))
-         //   .catch(err => console.error(err));
+        getAllFiles(this.props.insurance.id)
+           .then(({ data }) => this.setState({ selectedFiles: data }))
+           .catch(err => console.error(err));
     }
 
     render() {
@@ -49,7 +48,7 @@ class InsuranceCard extends Component {
 
 
         if (selectedFiles.length>0){
-            selectedFiles[0].isActive=true
+           uploadedImages[0].isActive=true
         }
         return (
             <div className="card" style={cardStyle}>
