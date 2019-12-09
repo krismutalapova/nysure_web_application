@@ -12,7 +12,7 @@ import javax.validation.constraints.Pattern;
 public class User {
     @Id
     @Pattern(regexp = "[0-9]{8}-[0-9]{4}", message = "Personal ID must be in format YYYYMMDD-XXXX.")
-    @NotEmpty(message = "Please provide an email address")
+    @NotEmpty(message = "Please provide a valid person number")
     @Column(name = "id", unique = true)
     private String id;
 
