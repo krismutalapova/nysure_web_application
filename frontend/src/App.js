@@ -16,6 +16,7 @@ import Topbar from "./components/layout/Topbar";
 import LoginPage from "./components/auth/LoginPage";
 import HomePage from './components/home/HomePage';
 import AboutUs from './components/infopages/AboutUs';
+import InsurancePage from './components/insurance/InsurancePage';
 import InsuranceDetails from './components/insurance/InsuranceDetails';
 import ItemPage from "./components/item/ItemPage";
 import ContactDetails from './components/infopages/ContactDetails';
@@ -33,10 +34,10 @@ function App() {
                 <div className="container mt-5">
                     <Switch>
                         <Route path="/insurance">
-                            <InsuranceDetails/>
+                            <InsurancePage/>
                         </Route>
 
-                        <Route path="/infopages">
+                        <Route path="/aboutus">
                             <AboutUs/>
                         </Route>
 

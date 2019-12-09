@@ -16,7 +16,9 @@ public class FileService {
     public ResponseMetadata save(Item item, MultipartFile file) throws IOException {
 
         //Create a new file with data received from front end
-        File uploadedFile = new File(file.getOriginalFilename(), file.getContentType(), file.getBytes(), item);
+        File uploadedFile = new File(   file.getOriginalFilename(),
+                                        file.getContentType(),
+                                        file.getBytes(), item);
 
         //save file in database
         repository.save(uploadedFile);

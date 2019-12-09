@@ -22,11 +22,19 @@ function Navbar({onLogout}) {
                         </Link>
                     </li>
 
+<<<<<<< HEAD
                     <li className="nav-item">
                         <Link to="/infopages" className="nav-link">
                             About us
                         </Link>
                     </li>
+=======
+                        <li className="nav-item">
+                            <Link to="/aboutus" className="nav-link">
+                                About us
+                            </Link>
+                        </li>
+>>>>>>> origin
 
                     <li className="nav-item">
                         <Link to="/insurance" className="nav-link">
