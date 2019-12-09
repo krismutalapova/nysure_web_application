@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import ReactDOM from "react-dom";
 
 
 
@@ -35,7 +34,7 @@ class Claims extends React.Component {
                     claim: "active",
                     
                 }, 
-                
+
                 { 
                     
                     id: "hello",  
@@ -72,12 +71,11 @@ class Claims extends React.Component {
 
     //render the header
     renderClaimsHeader(){
-        //let firstRow = props.claims[0];
-            let header = Object.keys(this.state.claims[0]);
-            return header.map((key, index) => {
-                if (key !== "id")
-                return <th key={index}>{key.toLowerCase()}</th>
-            })
+        let header = Object.keys(this.state.claims[0]);
+        return header.map((key, index) => {
+            if (key !== "id")
+            return <th key={index}>{key.toLowerCase()}</th>
+        })
         
     }
 
