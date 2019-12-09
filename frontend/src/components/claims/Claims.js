@@ -12,7 +12,7 @@ class Claims extends React.Component {
                     
                     id: "hi",  
                     insurance: "allianz",
-                    type: "all", 
+                    type: "home", 
                     claim: "active",
                     
                 },
@@ -21,7 +21,7 @@ class Claims extends React.Component {
                     
                     id: "hello",  
                     insurance: "folksam",
-                    type: "partial", 
+                    type: "car", 
                     claim: "inactive",
                     
                 }, 
@@ -30,7 +30,7 @@ class Claims extends React.Component {
                     
                     id: "hello",  
                     insurance: "bliwa",
-                    type: "partial", 
+                    type: "pet", 
                     claim: "active",
                     
                 }, 
@@ -39,7 +39,7 @@ class Claims extends React.Component {
                     
                     id: "hello",  
                     insurance: "lansforsakring",
-                    type: "partial", 
+                    type: "travel", 
                     claim: "active",
                     
                 }
