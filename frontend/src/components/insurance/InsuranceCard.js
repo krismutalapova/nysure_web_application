@@ -37,9 +37,9 @@ class InsuranceCard extends Component {
 
     componentDidMount() {
         //get all files
-        getAllFiles()
-            .then(({ data }) => this.setState({ selectedFiles: data }))
-            .catch(err => console.error(err));
+        //getAllFiles()
+         //   .then(({ data }) => this.setState({ selectedFiles: data }))
+         //   .catch(err => console.error(err));
     }
 
     render() {
