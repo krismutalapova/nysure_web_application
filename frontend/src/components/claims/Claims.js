@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ClaimsCard from "./ClaimsCard";
 
 
 
@@ -42,7 +43,15 @@ class Claims extends React.Component {
                     type: "travel", 
                     claim: "active",
                     
-                }
+                }, 
+                { 
+                    
+                    id: "hello",  
+                    insurance: "bliwa",
+                    type: "pe", 
+                    claim: "active",
+                    
+                }, 
             ]
 
         }
@@ -51,7 +60,7 @@ class Claims extends React.Component {
 
     //separate render function for the dynamic table
     renderClaims() {
-        console.log("clicked")
+        //console.log("clicked")
         return this.state.claims.map ((item, index) => {
             const {id, insurance, type, claim} = item // breaking down the table stucture
             return (
@@ -62,7 +71,6 @@ class Claims extends React.Component {
                     <td style={{padding:'5px 10px 5px 10px', width: '50%', textAlign:'left'}}>{type}</td>
                     <td style={{padding:'5px 10px 5px 10px', width: '100%', textAlign:'left'}}>{claim}</td>
                 </tr>
-
               
             
             )
@@ -81,7 +89,8 @@ class Claims extends React.Component {
 
     render(){
             return (
-                <div>
+                <div className= "table">
+                    <ClaimsCard/>
                     <h1 className="claims-title" style={{color:'#899b9b'}}>Claims</h1>
                     <table id="claims" style={tableStyle}>
                         <tbody>
