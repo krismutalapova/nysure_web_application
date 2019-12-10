@@ -46,7 +46,7 @@ class RegisterUserAPITest {
         u.setEmail(email);
         u.setPassword(password);
         u.setName(name);
-        u.setAddress(address);
+        //u.setAddress(address);
         u.setPhone(phoneNumber);
         return u;
     }
@@ -56,6 +56,12 @@ class RegisterUserAPITest {
             userRepository.deleteById(personnummerOK);
         } catch (EmptyResultDataAccessException e){
             //User already removed, no need for more action
+        }
+        try {
+            User foundUser = userService.findUserByEmail(emailOK);
+            userRepository.delete(foundUser);
+        }catch (Exception e){
+            //User does not exist, no need for more action
         }
     }
 
@@ -71,7 +77,7 @@ class RegisterUserAPITest {
         assertEquals(personnummerOK, foundUser.getId());
         assertEquals(emailOK, foundUser.getEmail());
         assertEquals(nameOK, foundUser.getName());
-        assertEquals(addressOK, foundUser.getAddress());
+        //assertEquals(addressOK, foundUser.getAddress());
         assertEquals(phoneNumberOK, foundUser.getPhone());
 
         //Password stored encrypted
@@ -153,7 +159,7 @@ class RegisterUserAPITest {
     void negativePasswordRegisterUserAPI1() {
         //Password empty --> passes as not a BAD_REQUEST (returns 201 CREATED)
         ResponseEntity badPassword1 = authController.register(createNewUser(personnummerOK, emailOK, "", nameOK, addressOK, phoneNumberOK));
-        assertEquals(HttpStatus.BAD_REQUEST, badPassword1.getStatusCode());
+        assertEquals(HttpStatus.FORBIDDEN, badPassword1.getStatusCode());
         clear();
 
     }
@@ -162,7 +168,7 @@ class RegisterUserAPITest {
     void negativePasswordRegisterUserAPI2() {
         //Password too short / < 5 --> passes as not a BAD_REQUEST (returns 201 CREATED)
         ResponseEntity badPassword2 = authController.register(createNewUser(personnummerOK, emailOK, "test", nameOK, addressOK, phoneNumberOK));
-        assertEquals(HttpStatus.BAD_REQUEST, badPassword2.getStatusCode());
+        assertEquals(HttpStatus.FORBIDDEN, badPassword2.getStatusCode());
         clear();
 
     }
@@ -171,7 +177,7 @@ class RegisterUserAPITest {
     void negativePasswordRegisterUserAPI3() {
         //Password too long / > 100 --> passes as not a BAD_REQUEST (returns 201 CREATED)
         ResponseEntity badPassword3 = authController.register(createNewUser(personnummerOK, emailOK, "negativePasswordRegisterUserAPInegativePasswordRegisterUserAPInegativePasswordRegisterUserAPInegative", nameOK, addressOK, phoneNumberOK));
-        assertEquals(HttpStatus.BAD_REQUEST, badPassword3.getStatusCode());
+        assertEquals(HttpStatus.FORBIDDEN, badPassword3.getStatusCode());
         clear();
 
         /*
@@ -201,6 +207,7 @@ class RegisterUserAPITest {
     void negativeNameRegisterUserAPI() {
         //All 4 pass
         //Name empty
+        clear();
         ResponseEntity badName1 = authController.register(createNewUser(personnummerOK, emailOK, passwordOK, "", addressOK, phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badName1.getStatusCode());
         clear();
@@ -236,7 +243,7 @@ class RegisterUserAPITest {
         assertEquals(HttpStatus.BAD_REQUEST, badName7.getStatusCode());
          */
     }
-
+/*
     @Test
     void negativeAddressRegisterUserAPI() {
         //All 4 pass
@@ -274,8 +281,8 @@ class RegisterUserAPITest {
         //Address No Capital Letters
         ResponseEntity badAddress7 = authController.register(new User(personnummerOK,emailOK, passwordOK, nameOK, "random 39", phoneNumberOK));
         assertEquals(HttpStatus.BAD_REQUEST, badAddress7.getStatusCode());
-*/
     }
+*/
 
     @Test
     void negativePhoneNumberRegisterUserAPI() {
