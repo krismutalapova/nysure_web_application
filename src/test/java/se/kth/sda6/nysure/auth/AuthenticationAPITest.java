@@ -32,7 +32,6 @@ class AuthenticationAPITest {
     void setUp() {
         String personnummerOK = "19901024-1111";
         String nameOK = null;
-        String addressOK = null;
         String phoneNumberOK = null;
 
         User u = new User();
@@ -40,7 +39,6 @@ class AuthenticationAPITest {
         u.setEmail(emailOK);
         u.setPassword(passwordOK);
         u.setName(nameOK);
-        u.setAddress(addressOK);
         u.setPhone(phoneNumberOK);
 
         authController.register(u);
