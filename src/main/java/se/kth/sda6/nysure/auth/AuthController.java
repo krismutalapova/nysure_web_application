@@ -22,17 +22,17 @@ public class AuthController {
     public ResponseEntity<?> register(@RequestBody User user) {
         if (user.getPassword() == null) {
             return new ResponseEntity("Password is missing", HttpStatus.FORBIDDEN);
-        }else if (user.getPassword().length() < 5){
-            return new ResponseEntity("The password must contain at least 5 characters", HttpStatus.FORBIDDEN);
-        }else if (user.getPassword().length() > 100){
-            return new ResponseEntity("The password must contain less than 100 characters", HttpStatus.FORBIDDEN);
+        } else if (user.getPassword().length() < 5) {
+            return new ResponseEntity("The password must contain 5 to 100 characters", HttpStatus.FORBIDDEN);
+        } else if (user.getPassword().length() > 100) {
+            return new ResponseEntity("The password must contain 5 to 100 characters", HttpStatus.FORBIDDEN);
         }
         User foundUser = userService.findUserByEmail(user.getEmail());
-        if (foundUser != null){
+        if (foundUser != null) {
             return new ResponseEntity("Email already used", HttpStatus.FORBIDDEN);
         }
 
-        if (userService.getById(user.getId()).isPresent()){
+        if (userService.getById(user.getId()).isPresent()) {
             return new ResponseEntity("Personnummer already used", HttpStatus.FORBIDDEN);
         }
 
