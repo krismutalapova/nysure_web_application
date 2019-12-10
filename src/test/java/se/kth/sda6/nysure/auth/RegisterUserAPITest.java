@@ -154,10 +154,9 @@ class RegisterUserAPITest {
         clear();
     }
 
-        //All 3 following tests fail because transformed by encoding before validations
     @Test
     void negativePasswordRegisterUserAPI1() {
-        //Password empty --> passes as not a BAD_REQUEST (returns 201 CREATED)
+        //Password empty
         ResponseEntity badPassword1 = authController.register(createNewUser(personnummerOK, emailOK, "", nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.FORBIDDEN, badPassword1.getStatusCode());
         clear();
@@ -166,7 +165,7 @@ class RegisterUserAPITest {
 
     @Test
     void negativePasswordRegisterUserAPI2() {
-        //Password too short / < 5 --> passes as not a BAD_REQUEST (returns 201 CREATED)
+        //Password too short / < 5
         ResponseEntity badPassword2 = authController.register(createNewUser(personnummerOK, emailOK, "test", nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.FORBIDDEN, badPassword2.getStatusCode());
         clear();
@@ -175,7 +174,7 @@ class RegisterUserAPITest {
 
     @Test
     void negativePasswordRegisterUserAPI3() {
-        //Password too long / > 100 --> passes as not a BAD_REQUEST (returns 201 CREATED)
+        //Password too long / > 100
         ResponseEntity badPassword3 = authController.register(createNewUser(personnummerOK, emailOK, "negativePasswordRegisterUserAPInegativePasswordRegisterUserAPInegativePasswordRegisterUserAPInegative", nameOK, addressOK, phoneNumberOK));
         assertEquals(HttpStatus.FORBIDDEN, badPassword3.getStatusCode());
         clear();
@@ -312,7 +311,7 @@ class RegisterUserAPITest {
         //Phone number contains anything else than numbers
         ResponseEntity badPhoneNumber4 = authController.register(new User(personnummerOK, emailOK, passwordOK, nameOK, addressOK, "a123@¨¨-!"));
         assertEquals(HttpStatus.BAD_REQUEST, badPhoneNumber4.getStatusCode());
-        //Phone number with blanck spaces
+        //Phone number with blank spaces
         ResponseEntity badPhoneNumber5 = authController.register(new User(personnummerOK, emailOK, passwordOK, nameOK, addressOK, "1234 67890"));
         assertEquals(HttpStatus.BAD_REQUEST, badPhoneNumber5.getStatusCode());
 
