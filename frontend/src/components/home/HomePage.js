@@ -33,40 +33,44 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <div className ="column">
-                                <div className="row-full">
-                    <div className="column">
-                        <div className="card text-white estimated-spent">
-                            <h4 className="">Estimated spent:</h4>
-                            <br />
-                            <p className="">SEK 122,334,454.00</p>
+                <div className="column">
+                    <div className="row-full">
+                        <div className="column">
+                            <div className="card text-white estimated-spent">
+                                <h4 className="">Estimated cost:</h4>
+                                <br />
+                                <p className="">SEK 122,334,454.00</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
-                <div className ="column">
-                                    <div className="row-full">
-                    <div className="col-4 center-content">
-                        <a href="/item" className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>Photos / Items</p>
-                        </a>
-                    </div>
-                    <div className="col-4 center-content">
-                        <a href="/insurance" className="btn bg-cyan btn-circle btn-circle-lg m-1">
-                            <p>Insurances linked</p>
-                        </a>
-                    </div>
-                    <div className="col-4 center-content">
-                        <a href="/claims" className="btn bg-cyan btn-circle btn-circle-lg m-1">
+                <div className="column">
+                    <div className="row-full">
+                        <div className="col-4 center-content">
+                            <a href="/item">
+                                <img className="btn-circle btn-circle-lg" src="/images/photo.png " alt="item" />
+                            </a>
+                            <p>Items</p>
+                        </div>
+                        <div className="col-4 center-content">
+                            <a href="/insurance">
+                                <img className="btn-circle btn-circle-lg" src="/images/insurance.png " alt="insurance" />
+                            </a>
+                            <p>Insurance</p>
+                        </div>
+                        <div className="col-4 center-content">
+                            <a href="/claims">
+                                <img className="btn-circle btn-circle-lg" src="/images/claims.png " alt="claims" />
+                            </a>
                             <p>Claims</p>
-                        </a>
-                    </div>
-                    <div className="col-4 center-content">
-                        <a href="/quote" className="btn bg-cyan btn-circle btn-circle-lg m-1">
+                        </div>
+                        <div className="col-4 center-content">
+                            <a href="/quota">
+                                <img className="btn-circle btn-circle-lg" src="/images/quote.png " alt="quote" />
+                            </a>
                             <p>Get a quote</p>
-                        </a>
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div className="row-full">
                     <div className="bottomPadding"></div>

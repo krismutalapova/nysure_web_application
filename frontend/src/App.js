@@ -17,8 +17,9 @@ import LoginPage from "./components/auth/LoginPage";
 import HomePage from './components/home/HomePage';
 import ItemPage from "./components/item/ItemPage";
 import AboutUs from './components/infopages/AboutUs';
-import ContactDetails from './components/infopages/ContactDetails';
 import InsurancePage from './components/insurance/InsurancePage';
+import Quota from './components/Quota/Quota';
+import QuotaForm from './components/Quota/Form';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -37,8 +38,17 @@ function App() {
                             <AboutUs/>
                         </Route>
 
-                        <Route path="/infopages">
-                            <ContactDetails/>
+                        {/* <Route path="/quota/form/:type" render={(props) => <QuotaForm {...props}/>}> */}
+                        <Route path="/quota/form/:type" component={QuotaForm}>
+                            {/* <QuotaForm /> */}
+                        </Route>
+
+                        <Route path="/quota/form">
+                            <Quota/>
+                        </Route>
+
+                        <Route path="/quota">
+                            <Quota/>
                         </Route>
 
                         <Route path="/item">
