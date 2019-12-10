@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar({onLogout}) {
+function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark bottomBar">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
