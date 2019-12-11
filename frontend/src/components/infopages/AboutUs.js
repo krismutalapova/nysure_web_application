@@ -29,27 +29,30 @@ class AboutUs extends Component {
                         <p>Kris</p>
                     </div>
                     <div className="col-3 center-content">
-                        <img className="btn-circle btn-circle-lg" src="images/penny.jpg" alt="penny" />
+                        <a href="https://xkcd.com/2237/">
+                            <img className="btn-circle btn-circle-lg" src="images/penny.jpg" alt="penny" />
+                        </a>
                         <p>Penny</p>
+
                     </div>
                 </div>
                 <div className="row-100">
                     <div className="col-3 center-content">
                         <a href="https://www.linkedin.com/in/elmenqui/">
                             <img className="btn-circle btn-circle-lg" src="images/alberto.jpg" alt="alberto" />
-                            </a>
-                            <p>Alberto</p>
-                        
+                        </a>
+                        <p>Alberto</p>
+
                     </div>
                     <div className="col-3 center-content">
                         <a href="https://www.linkedin.com/in/sara-garabedian-24a8a999/">
-                        <img className="btn-circle btn-circle-lg" src="images/SG.png" alt="SG" />
+                            <img className="btn-circle btn-circle-lg" src="images/SG.png" alt="SG" />
                         </a>
                         <p>Sara </p>
                     </div>
                     <div className="col-3 center-content">
                         <a href="https://www.linkedin.com/in/mabmalia/">
-                        <img className="btn-circle btn-circle-lg" src="images/miguel1.png" alt="miguel1" />
+                            <img className="btn-circle btn-circle-lg" src="images/miguel1.png" alt="miguel1" />
                         </a>
                         <p>Miguel</p>
                     </div>
