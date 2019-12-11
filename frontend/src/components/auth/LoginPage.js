@@ -33,6 +33,8 @@ class LoginPage extends Component {
             var match = registrationData.email.match(regex);
             if(!match){
                 alert("Please enter valid email format")
+            }else{
+                alert("Personnummer already registered");
             }
             
         }
