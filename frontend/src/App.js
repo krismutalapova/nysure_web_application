@@ -18,7 +18,6 @@ import HomePage from './components/home/HomePage';
 import AboutUs from './components/infopages/AboutUs';
 import InsurancePage from './components/insurance/InsurancePage';
 import ItemPage from "./components/item/ItemPage";
-import ContactDetails from './components/infopages/ContactDetails';
 import ProfilePage from "./components/profile/ProfilePage";
 
 
