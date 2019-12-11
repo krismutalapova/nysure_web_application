@@ -48,7 +48,7 @@ class Claims extends React.Component {
                     
                     id: "hello",  
                     insurance: "bliwa",
-                    type: "pe", 
+                    type: "life", 
                     claim: "active",
                     
                 }, 
