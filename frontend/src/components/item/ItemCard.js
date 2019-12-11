@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { uploadFile, getAllFiles } from "./../../api/FileApi";
+import { uploadFile, getAllFiles, deleteFile} from "./../../api/FileApi";
 
 
 class ItemCard extends Component {
@@ -10,6 +10,17 @@ class ItemCard extends Component {
             selectedFiles: [],
         }
     };
+
+    handleDelete(id) { 
+        deleteFile(id)
+        .then(res => {
+            const newSelectedFiles = this.state.selectedFiles.filter(file => file.id !== id);
+            this.setState({
+                selectedFiles: newSelectedFiles
+            });
+        })
+        .catch(err => console.error(err));
+        };
 
     onFileChangeHandler = (e) => {
         e.preventDefault();
@@ -71,7 +82,7 @@ class ItemCard extends Component {
                     </div>
                         {
                             uploadedDocuments.length > 0
-                            ? <DownloadDocs uploadedDocuments={uploadedDocuments} />
+                            ? <DownloadDocs uploadedDocuments={uploadedDocuments} handleDelete={(id) => this.handleDelete(id)} />
                             : ""
                         }
                         {
@@ -85,18 +96,24 @@ class ItemCard extends Component {
     };
 }
 
-const DownloadDocs = ({uploadedDocuments}) =>
+const DownloadDocs = ({uploadedDocuments, handleDelete}) =>
     <div id="listOfDocuments">
         <label htmlFor="warrantyPlan"><b>Item documents:</b></label>
         <small className="text-muted float-right">{`${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? "" : "s"} uploaded`}</small>
             {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
                             return (
                                 <p key={id}>
-                                        {fileName} : <a className="float-right"
+                                        {fileName} : <a className="fa fa-trash float-right"
+                                                        style={buttonStyle}
+                                                        href="#"
+                                                        onClick={() => handleDelete(id)}>
+                                                    </a>
+                                                    <a className="fa fa-download float-right"
+                                                        style={buttonStyle}
                                                         download
                                                         href={
-                                                        "data:" + fileType +
-                                                        ";base64," + fileData }>download</a>
+                                                            "data:" + fileType +
+                                                            ";base64," + fileData}></a>
                                 </p>
                             )
                         })
@@ -138,7 +155,9 @@ const selectStyle = {
     margin: 'auto',
     marginBottom: '30px',
 }
-
+const buttonStyle = {
+    marginRight: '15px',
+}
 const cardStyle = {
     width: '80%',
     margin: 'auto',

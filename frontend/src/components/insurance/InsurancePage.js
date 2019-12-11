@@ -62,7 +62,7 @@ class InsurancePage extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title">{insurance.type}</h5>
                                     <p className="card-text">{insurance.company}</p>
-                                    <p className="card-text"><small className="text-muted">Last modified 3 weeks ago.</small></p>
+                                    <p className="card-text">{insurance.cost} SEK</p>
                                     <button type="button"
                                         className="btn btn-primary"
                                         data-toggle="modal"
