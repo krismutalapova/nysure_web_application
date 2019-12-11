@@ -34,7 +34,9 @@ public class InsuranceService {
     }
 
     public List<Insurance> changeStatus(String company) {
-       repository.changeStatus(company);
+       if (repository.changeStatus(company) == 0){
+          return null;
+       }
        return repository.findAllByCompanyAndStatus(company, true);
     }
 }
