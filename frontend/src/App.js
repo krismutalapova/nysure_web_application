@@ -43,16 +43,14 @@ function App() {
                             <AboutUs/>
                         </Route>
 
-                        {/* <Route path="/quota/form/:type" render={(props) => <QuotaForm {...props}/>}> */}
-                        <Route path="/quota/form/:type" component={QuotaForm}>
-                            {/* <QuotaForm /> */}
+                        <Route path="/quote/form/:type" component={QuotaForm}>
                         </Route>
 
-                        <Route path="/quota/form">
+                        <Route path="/quote/form">
                             <Quota/>
                         </Route>
 
-                        <Route path="/quota">
+                        <Route path="/quote">
                             <Quota/>
                         </Route>
 

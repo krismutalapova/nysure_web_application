@@ -27,7 +27,7 @@ function QuotaForm(props) {
                                     <div className="modal-dialog"> 
                                         <div className="modal-content">
                                             <div className="modal-header">
-                                                <h4 className="card-title">Calculated quota</h4>
+                                                <h4 className="card-title">Calculated quote</h4>
                                                 <button
                                                     type="button"
                                                     className="close"
@@ -79,7 +79,7 @@ function common() {
                                 inline
                                 type="radio"
                                 name="civilStatus"
-                                id={"civilStatus" + index}
+                                key={"civilStatus" + index}
                                 label={radioLabel}
                             />
                         ))

@@ -35,7 +35,7 @@ function HomePage() {
                             <p>Claims</p>
                         </div>
                         <div className="col-4 center-content">
-                            <a href="/quota">
+                            <a href="/quote">
                                 <img className="btn-circle btn-circle-lg" src="/images/quote.png " alt="quote" />
                             </a>
                             <p>Get a quote</p>
