@@ -19,6 +19,7 @@ import AboutUs from './components/infopages/AboutUs';
 import InsurancePage from './components/insurance/InsurancePage';
 import ItemPage from "./components/item/ItemPage";
 import ProfilePage from "./components/profile/ProfilePage";
+import ClaimsPage from "./components/claims/ClaimsPage";
 
 
 
@@ -48,13 +49,12 @@ function App() {
                             <ItemPage/>
                         </Route>
 
-<<<<<<< HEAD
                         <Route path="/claims">
                              <ClaimsPage/>
-=======
+                         </Route>
+
                         <Route path="/profile">
                             <ProfilePage/>
->>>>>>> master
                         </Route>
 
                         <Route path="/">
