@@ -35,7 +35,7 @@ class ItemCard extends Component {
     setInsurancePlan = (e) => {
         e.preventDefault();
         this.setState({
-            insurancePlan: e.target.valuet
+            insurancePlan: e.target.value
         });
     };
 

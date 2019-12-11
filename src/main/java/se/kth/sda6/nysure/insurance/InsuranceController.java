@@ -26,8 +26,8 @@ public class InsuranceController {
     }
 
     @PutMapping("/change_status")
-    public void changeStatus(@RequestParam(required = true) String company) {
-        insuranceService.changeStatus(company);
+    public List<Insurance> changeStatus(@RequestParam(required = true) String company) {
+      return insuranceService.changeStatus(company);
     }
 
     @DeleteMapping("/{id}")

@@ -33,7 +33,8 @@ public class InsuranceService {
         repository.deleteById(id);
     }
 
-    public void changeStatus(String company) {
-        repository.changeStatus(company);
+    public List<Insurance> changeStatus(String company) {
+       repository.changeStatus(company);
+       return repository.findAllByCompanyAndStatus(company, true);
     }
 }

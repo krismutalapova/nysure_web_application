@@ -51,50 +51,27 @@ class InsurancePage extends Component {
                     <button type="submit" disabled
                         className="btn btn-lg font-weight-bold"
                         style={buttonStyle}>Add an insurance </button>
-                    <div id="insuranceFormModal" className="modal fade" role="dialog">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title">Select and click on the insurance company</h5>
-                                    <button type="button" className="close" data-dismiss="modal"> &times;
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <InsuranceForm onClickCreateInsurance={(insuranceData) => this.onClickCreateInsurance(insuranceData)} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <Modal id="insuranceFormModal" title="Create an insurance">
+                                <InsuranceForm onClickCreateInsurance={(insuranceData) => this.onClickCreateInsurance(insuranceData)} />
+                        </Modal>
                 </div>
                 <div className="row">
                     {insurances.map(( insurance ) => {
                         return (
-                            <div key={insurance.insuranceId} className="card" style={cardStyle}>
+                            <div key={insurance.id} className="card" style={cardStyle}>
                                 <div className="card-body">
-                                    <h5 className="card-title">{insurance.insuranceType}</h5>
-                                    <p className="card-text">{!insurance.insurancePlan ? "no insurance plan" : insurance.insurancePlan}</p>
+                                    <h5 className="card-title">{insurance.type}</h5>
+                                    <p className="card-text">{insurance.company}</p>
                                     <p className="card-text"><small className="text-muted">Last modified 3 weeks ago.</small></p>
                                     <button type="button"
                                         className="btn btn-primary"
-
                                         data-toggle="modal"
-                                        data-target={"#insuranceCardModal"}> View insurance
+                                        data-target={`#insuranceCardModal-${insurance.id}`}> View insurance
                                         </button>
                                 </div>
-                                <div id="insuranceCardModal" className="modal fade" role="dialog">
-                                    <div className="modal-dialog">
-                                        <div className="modal-content">
-                                            <div className="modal-header">
-                                                <h4 className="modal-title">{insurance.insuranceType}</h4>
-                                                <button type="button" className="close" data-dismiss="modal"> &times;
-                                                    </button>
-                                            </div>
-                                            <div className="modal-body">
-                                                <InsuranceCard insurance={insurance}/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <Modal id={`insuranceCardModal-${insurance.id}`} title={insurance.type}>
+                                     <InsuranceCard insurance={insurance}/>
+                                </Modal>
                             </div>
                         );
                     })}
@@ -103,6 +80,22 @@ class InsurancePage extends Component {
         );
     }
 }
+const Modal = ({ children, id, title }) =>
+    <div id={id} className="modal fade" role="dialog">
+        <div className="modal-dialog" style={modalBorderStyle}>
+            <div className="modal-content" style={modalBorderStyle}>
+                <div className="modal-header">
+                    <h4 className="modal-title">{title}</h4>
+                    <button type="button" className="close" data-dismiss="modal"> &times;
+                                                    </button>
+                </div>
+                <div className="modal-body">
+                    {children}
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 const cardStyle = {
     width: '30%',
@@ -114,6 +107,10 @@ const buttonStyle = {
     marginRight: '10px',
     marginBottom: '10px',
 }
+
+const modalBorderStyle = {
+    borderRadius: '10px',
+  }
 
 
 

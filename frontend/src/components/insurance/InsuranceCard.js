@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import{ uploadFile, getAllFiles } from "./../../api/FileApi";
+import{ uploadInsuranceFile, getAllInsuranceFiles } from "./../../api/FileApi";
 
 
 class InsuranceCard extends Component {
@@ -7,53 +7,48 @@ class InsuranceCard extends Component {
         super(props)
         this.state = {
             selectedFiles: [],
-            insurancePlan: null,
         }
     };
 
-    onFileChangeHandler = (e) => {
+    onInsuranceFileChangeHandler = (e) => {
         e.preventDefault();
         const file = e.target.files[0];
         console.log(file);
+        console.log(this.props.insurance.id);
         const formData = new FormData();
         formData.append('file', file);
-        uploadFile(this.props.insurance.id, formData)
+
+        uploadInsuranceFile(this.props.insurance.id, formData)
             .then(res => {
                     const selectedFiles = this.state.selectedFiles.concat(res.data.data);
                     this.setState(
-                        {selectedFiles}
+                        { selectedFiles }
                     );
             })
             .catch(err => console.error(err));
     };
     
-    setInsurancePlan = (e) => {
-        e.preventDefault();
-        this.setState({
-            insurancePlan:e.target.value
-        });
-    };
 
     componentDidMount() {
         //get all files
-        getAllFiles(this.props.insurance.id)
+        getAllInsuranceFiles(this.props.insurance.id)
            .then(({ data }) => this.setState({ selectedFiles: data }))
            .catch(err => console.error(err));
     }
 
     render() {
-        const {selectedFiles, insurancePlan} = this.state;
+        const {selectedFiles} = this.state;
         const uploadedImages = selectedFiles.filter(image => image.fileType.includes("image"));
         const uploadedDocuments = selectedFiles.filter(image => !image.fileType.includes("image"));
 
 
-        if (selectedFiles.length>0){
+        if (uploadedImages.length>0){
            uploadedImages[0].isActive=true
         }
         return (
             <div className="card" style={cardStyle}>
             <div className="card-body" >
-                    <label htmlFor="type"> Insurance plan:</label>
+                    <label htmlFor="type"> Policy ID:</label>
                     <input disabled type="text" className="form-control" id="usr" style={selectStyle} value={this.props.insurance.id}></input>
 
                     <label htmlFor="type">Company: </label>
@@ -67,7 +62,7 @@ class InsuranceCard extends Component {
 
                     <div className="form-group files color" style={selectStyle}>
                         <label>Upload Your File</label>
-                        <input type="file" className="form-control" name="file" onChange={this.onFileChangeHandler}/>
+                        <input type="file" className="form-control" onChange={this.onInsuranceFileChangeHandler}/>
                     </div>
 
                     {
@@ -87,9 +82,9 @@ class InsuranceCard extends Component {
 }
                     const DownloadDocs = ({uploadedDocuments}) =>
                         <div id="listOfDocuments">
-                            <label htmlFor="warrantyPlan"><b>Insurance documents:</b></label>
+                            <label htmlFor="uploadDoc"><b>Insurance documents:</b></label>
                             <small className="text-muted float-right">{`${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? "" : "s"} uploaded`}</small>
-                                {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
+                                {uploadedDocuments.map(({ id, fileName, fileType, fileData, }) => {
                                                 return (
                                                     <p key={id}>
                                                             {fileName} : <a className="float-right"
