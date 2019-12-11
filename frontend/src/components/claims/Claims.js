@@ -103,6 +103,14 @@ class Claims extends React.Component {
         }
     }
 
+    <form>
+  <label>
+    Name:
+    <input type="text" name="name" />
+  </label>
+  <input type="submit" value="Submit" />
+</form>
+
 
 
 const tableStyle = {
