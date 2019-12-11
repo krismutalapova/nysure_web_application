@@ -19,24 +19,33 @@ class LoginPage extends Component {
         const registerSuccess = await Auth.register(registrationData);
         if (!registerSuccess) {
             //alert("Couldn't register check credentials and try again");
+            var alertMessage = "";
             const regexID = '[0-9]{8}-[0-9]{4}';
             var matchID = registrationData.id.match(regexID);
             if(!matchID){
-                alert("Please enter valid Person number format")
+                alertMessage = alertMessage + "Please enter valid Person number format\n";
             }
-            if(registrationData.password.length < 5) {
-                alert("The password must contain at least 5 characters")
-            }
-            if(registrationData.password.length > 100){
-                alert("The password must contain less than 100 characters")
-            }
-            if(!registrationData.password){
-                alert("Please enter password")
+            if(!registrationData.email){
+                alertMessage = alertMessage + "Please enter your email address\n";
             }
             const regexEmail = '[a-zA-Z]+@[a-zA-Z]+.[a-zA-Z]+';
             var matchEmail = registrationData.email.match(regexEmail);
             if(!matchEmail){
-                alert("Please enter valid email format")
+                alertMessage = alertMessage + "Please enter a valid email format\n";
+            }
+            if(!registrationData.password){
+                alertMessage = alertMessage + "Please enter password\n";
+            }
+            if(registrationData.password.length < 5) {
+                alertMessage = alertMessage + "The password must contain at least 5 characters\n";
+            }
+            if(registrationData.password.length > 100){
+                alertMessage = alertMessage + "The password must contain less than 100 characters\n";
+            }
+            if(alertMessage == ""){
+                alert("Couldn't register check credentials and try again\n");
+            }else {
+                alert(alertMessage)
             }
         }
         else{
