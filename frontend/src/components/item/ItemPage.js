@@ -27,6 +27,13 @@ class ItemPage extends Component {
         }
     }
 
+    componentDidMount() {
+        //get all the items in the database
+        ItemApi.getAllItem()
+            .then(({ data }) => this.setState({ items: data }))
+            .catch(err => console.error(err));
+    }
+
     render() {
         const { items } = this.state;
         console.log(items);
