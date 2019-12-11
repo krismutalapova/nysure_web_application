@@ -102,7 +102,7 @@ class Claims extends React.Component {
         
         }
     }
-      
+
 
 
 const tableStyle = {
