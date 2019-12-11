@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar({onLogout}) {
+function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark bottomBar">
             <button
@@ -23,7 +23,7 @@ function Navbar({onLogout}) {
                     </li>
 
                     <li className="nav-item">
-                        <Link to="/infopages" className="nav-link">
+                        <Link to="/aboutus" className="nav-link">
                             About us
                         </Link>
                     </li>
@@ -37,12 +37,6 @@ function Navbar({onLogout}) {
                     <li className="nav-item">
                         <Link to="/item" className="nav-link">
                             Item
-                        </Link>
-                    </li>
-
-                    <li className="nav-item">
-                        <Link to="/infopages" className="nav-link">
-                            Contact details
                         </Link>
                     </li>
 

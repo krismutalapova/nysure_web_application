@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import Auth from "../../services/Auth";
+import UserApi from "../../api/UserApi";
 
 class LoginPage extends Component {
     async login(loginData) {
@@ -9,12 +10,18 @@ class LoginPage extends Component {
         if (!loginSuccess) {
             alert("Invalid credentials");
         }
+        else{
+            UserApi.loadUser();
+        }
     }
 
     async register(registrationData) {
         const registerSuccess = await Auth.register(registrationData);
         if (!registerSuccess) {
             alert("Couldn't register check credentials and try again");
+        }
+        else{
+            UserApi.loadUser();
         }
     }
 
