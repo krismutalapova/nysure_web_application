@@ -1,6 +1,10 @@
 import Api from "./Api";
 
 class UserApi {
+    constructor(props) {
+        this.loadUser();
+    }
+
     currentUser = {
         id: "Loading...",
         name: "Loading...",
@@ -9,10 +13,6 @@ class UserApi {
         phone: "Loading...",
     }
     currentUserSet = () => {};
-
-    constructor(props) {
-        this.loadUser();
-    }
 
     current() {
         return Api.get('/user');
