@@ -22,4 +22,9 @@ public class UserController {
         return userService.getById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
+
+    @PatchMapping("")
+    public User update(@RequestBody User updatedUser) {
+        return userService.update(updatedUser);
+    }
 }

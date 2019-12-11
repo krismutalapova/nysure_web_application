@@ -27,9 +27,13 @@ class UserApi {
             console.error(e);
         }
     }
-
+    
     bindCurrentUserStateSetter(currentUserStateSetter) {
         this.currentUserSet = currentUserStateSetter;
+    }
+
+    updateUser(user) {
+        return Api.patch('/user', user);
     }
 }
 
