@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { uploadInsuranceFile, getAllInsuranceFiles } from "./../../api/FileApi";
+import { uploadInsuranceFile, getAllInsuranceFiles, deleteFile} from "./../../api/FileApi";
 
 
 class InsuranceCard extends Component {
@@ -11,8 +11,15 @@ class InsuranceCard extends Component {
     };
 
     handleDelete(id) { 
-        console.log(id);
-    }
+    deleteFile(id)
+    .then(res => {
+        const newSelectedFiles = this.state.selectedFiles.filter(file => file.id !== id);
+        this.setState({
+            selectedFiles: newSelectedFiles
+        });
+    })
+    .catch(err => console.error(err));
+    };
 
     onInsuranceFileChangeHandler = (e) => {
         e.preventDefault();
@@ -42,13 +49,7 @@ class InsuranceCard extends Component {
 
     render() {
         const { selectedFiles } = this.state;
-        const uploadedImages = selectedFiles.filter(image => image.fileType.includes("image"));
-        const uploadedDocuments = selectedFiles.filter(image => !image.fileType.includes("image"));
-
-
-        if (uploadedImages.length > 0) {
-            uploadedImages[0].isActive = true
-        }
+  
         return (
             <div className="card" style={cardStyle}>
                 <div className="card-body" >
@@ -70,26 +71,22 @@ class InsuranceCard extends Component {
                     </div>
 
                     {
-                        uploadedDocuments.length > 0
-                            ? <DownloadDocs uploadedDocuments={uploadedDocuments} handleDelete={(id) => this.handleDelete(id)}/>
+                        selectedFiles.length > 0
+                            ? <DownloadDocs selectedFiles={selectedFiles} handleDelete={(id) => this.handleDelete(id)}/>
                             : ""
                     }
-                    {
-                        uploadedImages.length > 0
-                            ? <Carousel uploadedImages={uploadedImages} />
-                            : ""
-                    }
+                    
                 </div>
             </div>
         )
     };
 }
 
-const DownloadDocs = ({ uploadedDocuments, handleDelete }) =>
+const DownloadDocs = ({ selectedFiles, handleDelete }) =>
     <div id="listOfDocuments">
         <label htmlFor="uploadDoc"><b>Insurance documents:</b></label>
-        <small className="text-muted float-right">{`${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? "" : "s"} uploaded`}</small>
-        {uploadedDocuments.map(({ id, fileName, fileType, fileData, }) => {
+        <small className="text-muted float-right">{`${selectedFiles.length} document${selectedFiles.length === 1 ? "" : "s"} uploaded`}</small>
+        {selectedFiles.map(({ id, fileName, fileType, fileData, }) => {
             return (
                 <p key={id}>
                     {fileName} :
@@ -108,37 +105,6 @@ const DownloadDocs = ({ uploadedDocuments, handleDelete }) =>
             )
         })
         }
-    </div>
-
-const Carousel = ({ uploadedImages }) =>
-    <div>
-        <label htmlFor="uploadPhoto"><b>Insurance photos:</b></label>
-        <small className="text-muted float-right">{`${uploadedImages.length} photo${uploadedImages.length === 1 ? "" : "s"} uploaded`}</small>
-        <div id="carouselItem" className="carousel slide" data-ride="carousel">
-            <div className="carousel-inner">
-                {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
-                    return (
-                        <div key={id} className={"carousel-item" + (isActive ? " active" : "")}>
-                            <img className="d-block w-100"
-                                src={
-                                    "data:" + fileType +
-                                    ";base64," + fileData
-                                } alt={fileName} />
-                        </div>
-                    )
-                })
-                }
-
-                <a className="carousel-control-prev" href="#carouselInsurance" role="button" data-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#carouselInsurance" role="button" data-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
     </div>
 
 const selectStyle = {
