@@ -33,7 +33,7 @@ class UserApi {
     }
 
     updateUser(user) {
-        return Api.patch('/user', user);
+        return Api.put('/user', user);
     }
 }
 
