@@ -14,13 +14,6 @@ function Navbar({onLogout}) {
                                 Home
                             </Link>
                         </li>
-
-                        <li className="nav-item">
-                            <Link to="/aboutus" className="nav-link">
-                                About us
-                            </Link>
-                        </li>
-
                         <li className="nav-item">
                             <Link to="/insurance" className="nav-link">
                                 Insurance
@@ -32,10 +25,14 @@ function Navbar({onLogout}) {
                                 Item 
                             </Link>
                         </li>
-
+                        <li className="nav-item">
+                            <Link to="/aboutus" className="nav-link">
+                                About us
+                            </Link>
+                        </li>
                         <li className="nav-item">
                             <Link to="/infopages" className="nav-link">
-                                Contact details
+                                FAQ
                             </Link>
                         </li>
                 </ul>
