@@ -16,11 +16,12 @@ class InsurancePage extends Component {
         try {
             const response = await InsuranceApi.changeStatus(insuranceData);
             const insurance = response.data;
-            const newInsurance = this.state.insurances.concat(insurance);
-
-            this.setState({
+            console.log("Miguel" + insurance);
+            if (insurance !== "") {
+                const newInsurance = this.state.insurances.concat(insurance);
+                this.setState({
                 insurances: newInsurance,
-            });
+            });}
         }
         catch (e) {
             console.error(e);
