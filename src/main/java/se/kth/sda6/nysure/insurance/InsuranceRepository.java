@@ -18,7 +18,7 @@ public interface InsuranceRepository extends JpaRepository<Insurance, Long>{
 
     @Modifying
     @Transactional
-    @Query("UPDATE Insurance SET status = true WHERE company = :company")
+    @Query("UPDATE Insurance SET status = true WHERE company = :company AND status = false")
     int changeStatus(@Param("company") String company);
 
 
