@@ -47,4 +47,9 @@ public class FileController {
     public @ResponseBody List<File> getFile() {
         return fileService.findAll();
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        fileService.delete(id);
+    }
 }
