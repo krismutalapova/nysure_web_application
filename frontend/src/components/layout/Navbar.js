@@ -41,12 +41,6 @@ function Navbar() {
                     </li>
 
                     <li className="nav-item">
-                        <Link to="/infopages" className="nav-link">
-                            Contact details
-                        </Link>
-                    </li>
-
-                    <li className="nav-item">
                         <Link to="/profile" className="nav-link">
                             Profile
                         </Link>

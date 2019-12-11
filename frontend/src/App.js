@@ -45,10 +45,6 @@ function App() {
                             <AboutUs/>
                         </Route>
 
-                        <Route path="/infopages">
-                            <ContactDetails/>
-                        </Route>
-
                         <Route path="/item">
                             <ItemPage/>
                         </Route>
