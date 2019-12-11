@@ -18,18 +18,22 @@ import HomePage from './components/home/HomePage';
 import AboutUs from './components/infopages/AboutUs';
 import InsurancePage from './components/insurance/InsurancePage';
 import ItemPage from "./components/item/ItemPage";
-import ContactDetails from './components/infopages/ContactDetails';
 import ProfilePage from "./components/profile/ProfilePage";
 
 
 
+import UserApi from "./api/UserApi";
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   Auth.bindLoggedInStateSetter(setLoggedIn);
+
+  const [user, setUser] = useState(UserApi.currentUser);
+  UserApi.bindCurrentUserStateSetter(setUser);
   
   const loggedInRouter = (
             <Router>
-                <Topbar onLogout={() => Auth.logout()} />
+                <Topbar onLogout={() => Auth.logout()} user={user} />
                 <div className="container mt-5">
                     <Switch>
                         <Route path="/insurance">
@@ -38,10 +42,6 @@ function App() {
 
                         <Route path="/aboutus">
                             <AboutUs/>
-                        </Route>
-
-                        <Route path="/infopages">
-                            <ContactDetails/>
                         </Route>
 
                         <Route path="/item">
@@ -57,7 +57,7 @@ function App() {
                         </Route>
                     </Switch>
                 </div>
-                <Navbar onLogout={() => Auth.logout()} />
+                <Navbar />
             </Router>
   );
 
