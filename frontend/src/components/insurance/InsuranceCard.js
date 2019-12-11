@@ -114,7 +114,6 @@ const selectStyle = {
 }
 const buttonStyle = {
     marginRight: '15px',
-
 }
 const cardStyle = {
     width: '80%',
