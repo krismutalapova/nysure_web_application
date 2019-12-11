@@ -46,15 +46,15 @@ function common() {
                 <Col>
                     {
                         ["Single", "Married", "Common law spouse", "Single-parent"]
-                        .map((radioLabel, index) => (
-                            <Form.Check
-                                inline
-                                type="radio"
-                                name="civilStatus"
-                                id={"civilStatus"+index}
-                                label={radioLabel}
-                            />
-                        ))
+                            .map((radioLabel, index) => (
+                                <Form.Check
+                                    inline
+                                    type="radio"
+                                    name="civilStatus"
+                                    id={"civilStatus" + index}
+                                    label={radioLabel}
+                                />
+                            ))
                     }
                 </Col>
             </Row>
@@ -91,7 +91,7 @@ function common() {
                 </Col>
             </Row>
             <Row className="m-1">
-            <Col>
+                <Col>
                     <Form.Label>Work number</Form.Label>
                     <Form.Control type="phone" placeholder="Enter work number" />
                     <Form.Text className="text-muted">We'll never share your work phone with anyone else.</Form.Text>
@@ -130,80 +130,107 @@ function specific(type) {
 }
 
 function vehicle() {
-    return <div className="row-full">               
-     <Col>
-    <Form.Label>Make and model</Form.Label>
-    <Form.Control type="text" placeholder="Enter make and model"/>
-</Col>
-<Col>
-    <Form.Label>Year of production </Form.Label>
-    <Form.Control type="text" placeholder="Enter year of production"/>
-</Col>
-</div>;
+    return <div className="row-full">
+        <Col>
+            <Form.Label>Make and model</Form.Label>
+            <Form.Control type="text" placeholder="Enter make and model" />
+        </Col>
+        <Col>
+            <Form.Label>Year of production </Form.Label>
+            <Form.Control type="text" placeholder="Enter year of production" />
+        </Col>
+    </div>;
 }
 
 function home() {
-    return <div className="row-full">    
-     <Col>
-    <Form.Label>Type of home </Form.Label>
-    <Form.Control type="text" placeholder="Enter type of home"/>
-</Col>
-<Col>
-    <Form.Label>Square footage</Form.Label>
-    <Form.Control type="text" placeholder="Enter square footage"/>
-</Col>
-</div>;
+    return <div className="row-full">
+        <Col>
+            <Form.Label>Type of home </Form.Label>
+            <Form.Control type="text" placeholder="Enter type of home" />
+        </Col>
+        <Col>
+            <Form.Label>Square footage</Form.Label>
+            <Form.Control type="text" placeholder="Enter square footage" />
+        </Col>
+    </div>;
 }
 
 function child() {
-    return <div className="row-full">    
-    <Col>
-    <Form.Label>Nuber of children</Form.Label>
-    <Form.Control type="text" placeholder="Nuber of children"/>
-</Col>
-<Col>
-    <Form.Label>Year of birth</Form.Label>
-    <Form.Control type="text" placeholder="Enter year of birth"/>
-</Col>
-</div>;
+    return <div className="row-full">
+        <Col>
+            <Form.Label>Nuber of children</Form.Label>
+            <Form.Control type="text" placeholder="Nuber of children" />
+        </Col>
+        <Col>
+            <Form.Label>Year of birth</Form.Label>
+            <Form.Control type="text" placeholder="Enter year of birth" />
+        </Col>
+    </div>;
 }
 
 function pet() {
-    return <div className="row-full">    
-    <Col>
-    <Form.Label>Nuber of pets</Form.Label>
-    <Form.Control type="text" placeholder="Enter nuber of pets"/>
-</Col>
-<Col>
-    <Form.Label>Year of birth</Form.Label>
-    <Form.Control type="text" placeholder="Enter year of birth"/>
-</Col>
-</div>;
+    return <div className="row-full">
+        <Col>
+            <Form.Label>Nuber of pets</Form.Label>
+            <Form.Control type="text" placeholder="Enter nuber of pets" />
+        </Col>
+        <Col>
+            <Form.Label>Year of birth</Form.Label>
+            <Form.Control type="text" placeholder="Enter year of birth" />
+        </Col>
+    </div>;
 }
 
 function travel() {
-    return <div className="row-full">    
-    <Col>
-    <Form.Label>Where are you traveling to?</Form.Label>
-    <Form.Control type="text" placeholder="Enter where are you traveling to"/>
-</Col>
-<Col>
-    <Form.Label>Nuber of days of stay</Form.Label>
-    <Form.Control type="text" placeholder="Enter nuber of days of stay"/>
-</Col>
-</div>;
+    return <div className="row-full">
+        <Col>
+            <Form.Label>Where are you traveling to?</Form.Label>
+            <Form.Control type="text" placeholder="Enter where are you traveling to" />
+        </Col>
+        <Col>
+            <Form.Label>Nuber of days of stay</Form.Label>
+            <Form.Control type="text" placeholder="Enter nuber of days of stay" />
+        </Col>
+    </div>;
 }
 
 function life() {
-    return <div className="row-full">life</div>;
+    return <div className="row-full">
+        <Col>
+            <Form.Label>Are you a smoker?</Form.Label>
+            <Form.Control type="text" placeholder="Are you a smoker" />
+        </Col>
+        <Col>
+            <Form.Label>Is your spouse a smoker?</Form.Label>
+            <Form.Control type="text" placeholder="Is your spouse a smoker" />
+        </Col>
+    </div>;
 }
 
 function health() {
-    return <div className="row-full">health</div>;
+    return <div className="row-full">
+        <Col>
+            <Form.Label>Are you a smoker?</Form.Label>
+            <Form.Control type="text" placeholder="Are you a smoker" />
+        </Col>
+        <Col>
+            <Form.Label>Is your spouse a smoker?</Form.Label>
+            <Form.Control type="text" placeholder="Is your spouse a smoker" />
+        </Col>
+    </div>;
 }
 
 function business() {
-    return <div className="row-full">business</div>;
+    return <div className="row-full">
+        <Col>
+            <Form.Label>Type of home </Form.Label>
+            <Form.Control type="text" placeholder="Enter type of home" />
+        </Col>
+        <Col>
+            <Form.Label>Square footage</Form.Label>
+            <Form.Control type="text" placeholder="Enter square footage" />
+        </Col>
+    </div>;
 }
 
 export default QuotaForm;
