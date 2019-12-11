@@ -87,12 +87,17 @@ class InsuranceCard extends Component {
                                 {uploadedDocuments.map(({ id, fileName, fileType, fileData, }) => {
                                                 return (
                                                     <p key={id}>
-                                                            {fileName} : <a className="float-right"
+                                                            {fileName} : <a className="fa fa-download float-right"
                                                                             download
                                                                             href={
                                                                             "data:" + fileType +
-                                                                            ";base64," + fileData }>download</a>
-                                                    </p>
+                                                                            ";base64," + fileData }></a>
+                                                                        <a className="fa fa-trash-alt"
+                                                                            erase
+                                                                            href={
+                                                                            "data:" + fileType +
+                                                                            ";base64," + fileData }>delete</a>
+                                                     </p>
                                                 )
                                             })
                                 }
