@@ -1,10 +1,6 @@
-import React, {useState} from 'react';
-import UserApi from "../../api/UserApi";
+import React from 'react';
 
-function Topbar({onLogout}) {
-    const [user, setUser] = useState(UserApi.currentUser);
-    UserApi.bindCurrentUserStateSetter(setUser);
-
+function Topbar({onLogout, user}) {
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark topBar">
             <a className="navbar-brand" href="/">
@@ -12,7 +8,7 @@ function Topbar({onLogout}) {
             </a>
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <p className="user">
-                    Hi, {user.email || 'N/A'}
+                    {user.email === undefined ? "Loading..." : `Hi, ${user.email}`}
                 </p>
             </div>
             <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>Logout</button>
