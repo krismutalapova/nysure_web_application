@@ -19,7 +19,11 @@ class LoginPage extends Component {
         const registerSuccess = await Auth.register(registrationData);
         if (!registerSuccess) {
             //alert("Couldn't register check credentials and try again");
-            
+            const regexID = '[0-9]{8}-[0-9]{4}';
+            var matchID = registrationData.id.match(regexID);
+            if(!matchID){
+                alert("Please enter valid Person number format")
+            }
             if(registrationData.password.length < 5) {
                 alert("The password must contain at least 5 characters")
             }
@@ -29,14 +33,11 @@ class LoginPage extends Component {
             if(!registrationData.password){
                 alert("Please enter password")
             }
-            const regex = '[a-zA-Z]+@[a-zA-Z]+.[a-zA-Z]+';
-            var match = registrationData.email.match(regex);
-            if(!match){
+            const regexEmail = '[a-zA-Z]+@[a-zA-Z]+.[a-zA-Z]+';
+            var matchEmail = registrationData.email.match(regexEmail);
+            if(!matchEmail){
                 alert("Please enter valid email format")
-            }else{
-                alert("Personnummer already registered");
             }
-            
         }
         else{
             UserApi.loadUser();
