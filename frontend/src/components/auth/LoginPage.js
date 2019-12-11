@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import Auth from "../../services/Auth";
+import UserApi from "../../api/UserApi";
 
 class LoginPage extends Component {
     async login(loginData) {
@@ -9,12 +10,36 @@ class LoginPage extends Component {
         if (!loginSuccess) {
             alert("Invalid credentials");
         }
+        else{
+            UserApi.loadUser();
+        }
     }
 
     async register(registrationData) {
         const registerSuccess = await Auth.register(registrationData);
         if (!registerSuccess) {
-            alert("Couldn't register check credentials and try again");
+            //alert("Couldn't register check credentials and try again");
+            
+            if(registrationData.password.length < 5) {
+                alert("The password must contain at least 5 characters")
+            }
+            if(registrationData.password.length > 100){
+                alert("The password must contain less than 100 characters")
+            }
+            if(!registrationData.password){
+                alert("Please enter password")
+            }
+            const regex = '[a-zA-Z]+@[a-zA-Z]+.[a-zA-Z]+';
+            var match = registrationData.email.match(regex);
+            if(!match){
+                alert("Please enter valid email format")
+            }else{
+                alert("Personnummer already registered");
+            }
+            
+        }
+        else{
+            UserApi.loadUser();
         }
     }
 

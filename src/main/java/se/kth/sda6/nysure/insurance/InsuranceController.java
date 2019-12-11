@@ -14,25 +14,20 @@ public class InsuranceController {
     private InsuranceService insuranceService;
 
     @GetMapping("")
-    public List<Insurance> getAll() {
+    public List<Insurance> getAll(@RequestParam(required = false) boolean status) {
+        if (true){
+            return insuranceService.getAllByStatus(status); }
         return insuranceService.getAll();
     }
-
-    @GetMapping("/{id}")
-    public Insurance getById(@PathVariable Long id) {
-        return insuranceService.getById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    }
-
 
     @PostMapping("")
     public Insurance create(@RequestBody Insurance newInsurance) {
         return insuranceService.create(newInsurance);
     }
 
-    @PutMapping("")
-    public Insurance update(@RequestBody Insurance updatedInsurance) {
-        return insuranceService.update(updatedInsurance);
+    @PutMapping("/change_status")
+    public List<Insurance> changeStatus(@RequestParam(required = true) String company) {
+      return insuranceService.changeStatus(company);
     }
 
     @DeleteMapping("/{id}")
