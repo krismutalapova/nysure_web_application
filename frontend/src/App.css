@@ -26,6 +26,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  font-family: 'Raleway', sans-serif;
   color: white;
 }
 
@@ -49,6 +50,7 @@ background-color: #a7b3b4;
     background-color: #a7b3b4;
     margin:-5px;
     border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .form-control {
@@ -130,6 +132,7 @@ background-color: #a7b3b4;
     background-color: #a7b3b4;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .modal-body {

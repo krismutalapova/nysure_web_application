@@ -5,8 +5,8 @@ class InsuranceApi {
         return Api.get('/insurances');
     }
 
-    getInsuranceById(id) {
-        return Api.get('/insurances/'+id);
+    getAllByStatus(status) {
+        return Api.get('/insurances?status='+  status);
     }
 
     createInsurance(insurance) {
@@ -15,6 +15,10 @@ class InsuranceApi {
 
     updateInsurance(insurance) {
         return Api.put('/insurances', insurance);
+    }
+
+    changeStatus(company){
+        return Api.put('/insurances/change_status?company=' + company);
     }
 
     deleteInsurance(id) {

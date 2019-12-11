@@ -16,8 +16,8 @@ public class InsuranceService {
         return repository.findAll();
     }
 
-    public Optional<Insurance> getById(Long id) {
-        return repository.findById(id);
+    public List<Insurance> getAllByStatus(boolean status) {
+        return repository.findAllByStatus(status);
     }
 
     public Insurance create(Insurance newInsurance) {
@@ -31,5 +31,10 @@ public class InsuranceService {
 
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    public List<Insurance> changeStatus(String company) {
+       repository.changeStatus(company);
+       return repository.findAllByCompanyAndStatus(company, true);
     }
 }
