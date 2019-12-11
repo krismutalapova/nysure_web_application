@@ -64,7 +64,7 @@ class Claims extends React.Component {
         return this.state.claims.map ((item, index) => {
             const {id, insurance, type, claim} = item // breaking down the table stucture
             return (
-                
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
                
                 <tr key={id} style={{padding:'20px', textAlign:'left'}}>
                     <td style={{padding:'5px 10px 5px 10px', width: '50%', textAlign:'left'}}>{insurance}</td> 
