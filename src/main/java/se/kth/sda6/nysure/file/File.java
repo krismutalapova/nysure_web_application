@@ -1,5 +1,6 @@
 package se.kth.sda6.nysure.file;
 
+import se.kth.sda6.nysure.insurance.Insurance;
 import se.kth.sda6.nysure.item.Item;
 
 import javax.persistence.*;
@@ -26,6 +27,9 @@ public class File {
     @ManyToOne
     private Item item;
 
+    @ManyToOne
+    private Insurance insurance;
+
     public File(){
 
     }
@@ -35,6 +39,13 @@ public class File {
         this.fileType = fileType;
         this.fileData = fileData;
         this.item = item;
+    }
+
+    public File(String fileName, String fileType, byte[] fileData, Insurance insurance){
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.fileData = fileData;
+        this.insurance = insurance;
     }
 
     public Long getId() {
@@ -75,5 +86,13 @@ public class File {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
     }
 }
