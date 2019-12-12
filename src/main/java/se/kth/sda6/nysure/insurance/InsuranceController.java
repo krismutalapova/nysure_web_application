@@ -30,9 +30,10 @@ public class InsuranceController {
         return insuranceService.create(newInsurance);
     }
 
-    @PutMapping("/change_status")
-    public List<Insurance> changeStatus(@RequestParam(required = true) String company) {
-      return insuranceService.changeStatus(company);
+    @PutMapping("/change_status/{id}")
+    public List<Insurance> changeStatus(@PathVariable String id,
+                                        @RequestParam(required = true) String company) {
+      return insuranceService.changeStatus(id, company);
     }
 
     @DeleteMapping("/{id}")

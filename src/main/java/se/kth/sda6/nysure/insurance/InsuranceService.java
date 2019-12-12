@@ -16,7 +16,6 @@ public class InsuranceService {
     }
 
     public List<Insurance> getAllByUserAndStatus(User user, boolean status) {
-        System.out.println(user.getId() + " " + status);
         //Create a new user from the id received and fetch the data from DB based on that id
         return repository.findAllByUserAndStatus(user, status);
     }
@@ -31,10 +30,11 @@ public class InsuranceService {
 
     public Insurance update(Insurance updatedInsurance) { return repository.save(updatedInsurance); }
 
-    public List<Insurance> changeStatus(String company) {
-        if (repository.changeStatus(company) == 0){
+    public List<Insurance> changeStatus(String userId, String company) {
+        if (repository.changeStatus(userId, company) == 0){
             return null;
         }
+        System.out.println("updated something in user " + userId);
         return repository.findAllByCompanyAndStatus(company, true);
     }
 
