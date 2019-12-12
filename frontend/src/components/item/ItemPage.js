@@ -35,10 +35,10 @@ class ItemPage extends Component {
             .catch(err => console.error(err));
     }
 
-    onClickDeleteItem(id) { 
-        ItemApi.deleteItem(id)
+    onClickDeleteItem(itemId) { 
+        ItemApi.deleteItem(itemId)
         .then(res => {
-            const newItems = this.state.items.filter(item => item.id !== id);
+            const newItems = this.state.items.filter(item => item.itemId !== itemId);
             this.setState({
                 items: newItems
             });
@@ -86,7 +86,7 @@ class ItemPage extends Component {
                                         </button>
                                 </div>
                                 <Modal id={`itemCardModal-${item.itemId}`} title={item.itemType}>
-                                    <ItemCard item={item} onClickDeleteItem={(id) => this.onClickDeleteItem(id)}/>
+                                    <ItemCard item={item} onClickDeleteItem={() => this.onClickDeleteItem(item.itemId)}/>
                                 </Modal>
                             </div>
                         );
