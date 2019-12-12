@@ -6,7 +6,7 @@ class ClaimsSelection extends Component {
             <div>
                 <div className="row-100">
                     <div className="col-4 center-content">
-                        <a href="/claims//vehicle">
+                        <a href="/claims/claimsSelection/vehicle"> {/*Add correct href*/}
                             <img className="btn-circle btn-circle" src="/images/car2.png" alt="car2" />
                         </a>
                         <p>Vehicle</p>
@@ -38,7 +38,7 @@ class ClaimsSelection extends Component {
                         <p>Travel</p>
                     </div>
                     <div className="col-4 center-content">
-                        <a href="/claims/claimsform/li">
+                        <a href="/claims/claimsform/life">
                         <img className="btn-circle btn-circle" src="/images/life.png" alt="life" />
                         </a>
                         <p>Life</p>                   

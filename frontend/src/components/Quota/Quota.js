@@ -7,7 +7,7 @@ class Quota extends Component {
             <div>
                 <div className="row-100">
                     <div className="col-4 center-content">
-                        <a href="/quote/form/vehicle"> //add correct href for claims folder
+                        <a href="/quote/form/vehicle"> 
                             <img className="btn-circle btn-circle-lg" src="/images/car2.png" alt="car2" />
                         </a>
                         <p>Vehicle</p>
