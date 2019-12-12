@@ -1,10 +1,8 @@
 package se.kth.sda6.nysure.item;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import se.kth.sda6.nysure.insurance.Insurance;
-
+import se.kth.sda6.nysure.user.User;
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "item")
@@ -21,8 +19,8 @@ public class Item {
     @ManyToOne()
     private Insurance insurance;
 
-    @Column(name="date")
-    private LocalDate date;
+    @ManyToOne()
+    private User user;
 
     public Item() {
     }
@@ -55,7 +53,11 @@ public class Item {
         this.insurance = insurance;
     }
 
-    public LocalDate getDate() { return date; }
+    public User getUser() {
+        return user;
+    }
 
-    public void setDate(LocalDate date) { this.date = date; }
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
