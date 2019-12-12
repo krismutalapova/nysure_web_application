@@ -24,20 +24,29 @@ public class InsuranceService {
         return repository.findAllByStatus(status);
     }
 
+    //Get the sum of all active insurances
+    public int sumInsurancesCost(String userId){
+        if(repository.countInsurancesCost(userId) == 0){
+            return 0;
+        }
+        return repository.sumInsurancesCost(userId);
+    }
+
     public Insurance create(Insurance newInsurance) {
         return repository.save(newInsurance);
     }
 
     public Insurance update(Insurance updatedInsurance) { return repository.save(updatedInsurance); }
 
+    //update the status of the insurances to true
     public List<Insurance> changeStatus(String userId, String company) {
         if (repository.changeStatus(userId, company) == 0){
             return null;
         }
-        System.out.println("updated something in user " + userId);
-        return repository.findAllByCompanyAndStatus(company, true);
+        return repository.findAllByCompanyAndStatusAndUser(company, true, new User(userId));
     }
 
+    //delete insurance by id
     public void delete(Long id) {
         repository.deleteById(id);
     }
