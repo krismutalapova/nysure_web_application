@@ -1,9 +1,9 @@
 package se.kth.sda6.nysure.insurance;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+import se.kth.sda6.nysure.item.Item;
+
 import java.util.List;
 
 @RestController
@@ -15,7 +15,12 @@ public class InsuranceController {
 
     @GetMapping("")
     public List<Insurance> getAll(@RequestParam(required = true) boolean status) {
-        return insuranceService.getAllByStatus(status);
+            return insuranceService.getAllByStatus(status);
+    }
+
+    @GetMapping("/user/{id}")
+    public List<Insurance> getAllByUser(@PathVariable String id) {
+        return insuranceService.getAllByUser(id);
     }
 
     @PostMapping("")

@@ -16,7 +16,6 @@ public class ItemService {
     }
 
     public List<Item> getAllByUser(String id) {
-        System.out.println(id);
         //Create a new user from the id received and fetch the data from DB based on that id
         return repository.findAllByUser(new User(id));
     }

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import se.kth.sda6.nysure.user.User;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ import java.util.List;
 public interface InsuranceRepository extends JpaRepository<Insurance, Long>{
 
     List<Insurance> findAllByStatus(boolean status);
+
+    List<Insurance> findAllByUser(User user);
 
     List<Insurance> findAllByCompanyAndStatus(String company, boolean status);
 
