@@ -1,4 +1,28 @@
-# NYSURE application
+#                                              _**NYSURE - The new insurance solution**_
+
+## Nysure is an application that helps end users gather their insurance information, get quotes that compare several insurance companies, and send claims directly to the appropriate insurance company. We work hand in hand with companies aiming at using new technologies to their full potential, in order to make their users’ experiences more effective, pleasant, and simple. 
+
+### I. Gathering insurance information
+The general gathering of information will be available through forms to fill with the appropriate information, as well as file uploading.
+
+### I.I. Insurance policies
+The user can register all their insurance policies, provided the company is our client.
+The user will be able to select the appropriate company, enter the concerned policy ID, the type of insurance, the cost of this policy per year, and file uploading (File Uploading: any type of file, such as picture and digital document conservation (Digital contracts, receipts, item pictures, etc.)).
+
+### I.II. Receipts
+The user can take pictures or scan their receipts, and upload them, no matter the origin of the purchase, therefore gathering all their insurance documentation digitally on Nysure.
+
+### I.III. Item pictures
+The user can store the pictures of items they purchased, with an insurance, simple included warranty or extended warranty, at any stage of the usage of the item.
+
+### II. Quotes
+The user is able to get quotes that compare several insurance companies.
+They can choose to compare solutions for the following options: vehicle, home, child, pet, travel, life, health, and business.
+The user fills in the appropriate form, and gets the prices from all the compared insurance companies, with categorised offers, depending on what options the user wishes to have.
+
+### III. Claims
+The user can send claims directly to the appropriate company they have registered an insurance policy for.
+
 
 ## Setup
 Our development environment for a full-stack web application will consist of three main parts:
