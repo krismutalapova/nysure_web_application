@@ -1,19 +1,19 @@
 import React from "react";
 
-function ItemForm( {onClickCreateItem} ) {
+function ItemForm( {onClickCreateItem, insurances} ) {
     const [itemType, setItemType] = React.useState("no-type");
-    const [insurancePlan, setInsurancePlan] = React.useState("no-insurance");
+    const [insurance, setInsurance] = React.useState("no-insurance");
 
     const handleSubmit = () => {
         // Invoke the passed in event callback
         onClickCreateItem({
             itemType: itemType,
-            insurancePlan: insurancePlan,
+            insurance: insurances.find(selectedInsurance => selectedInsurance.id === insurance),
         });
 
         // Clear the input field
         setItemType("no-type");
-        setInsurancePlan("no-insurance");
+        setInsurance("no-insurance");
     };
 
     return (
@@ -34,8 +34,12 @@ function ItemForm( {onClickCreateItem} ) {
         </div>
         <div className="form-group">
             <label htmlFor="type"> Insurance plan:</label>
-                <select type="text" value={insurancePlan} onChange={e => setInsurancePlan(e.target.value)} className="form-control">
-                <option value="no-insurance">No insurance plan</option>
+                <select type="text" value={insurance} onChange={e => setInsurance(e.target.value)} className="form-control">
+                <option key="initialOption" value="no-insurance">No insurance plan</option>
+                {insurances.map(insurancePlan => {
+                    return(
+                    <option key={insurancePlan.id} value={insurancePlan.id}>{`${insurancePlan.company} - policy id: ${insurancePlan.id}`}</option>);
+                })}
                 </select>
         </div>
         <button type="submit" className="btn btn-primary" data-dismiss="modal" onClick={handleSubmit}>Create</button>

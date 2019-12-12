@@ -1,9 +1,10 @@
 package se.kth.sda6.nysure.insurance;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+import se.kth.sda6.nysure.item.Item;
+import se.kth.sda6.nysure.user.User;
+
 import java.util.List;
 
 @RestController
@@ -14,10 +15,14 @@ public class InsuranceController {
     private InsuranceService insuranceService;
 
     @GetMapping("")
-    public List<Insurance> getAll(@RequestParam(required = false) boolean status) {
-        if (true){
-            return insuranceService.getAllByStatus(status); }
-        return insuranceService.getAll();
+    public List<Insurance> getAll(@RequestParam(required = true) boolean status) {
+            return insuranceService.getAllByStatus(status);
+    }
+
+    @GetMapping("/user/{id}")
+    public List<Insurance> getAllByUser(@PathVariable String id,
+                                        @RequestParam(required = true) boolean status) {
+        return insuranceService.getAllByUserAndStatus(new User(id), status);
     }
 
     @PostMapping("")
@@ -25,9 +30,10 @@ public class InsuranceController {
         return insuranceService.create(newInsurance);
     }
 
-    @PutMapping("/change_status")
-    public List<Insurance> changeStatus(@RequestParam(required = true) String company) {
-      return insuranceService.changeStatus(company);
+    @PutMapping("/change_status/{id}")
+    public List<Insurance> changeStatus(@PathVariable String id,
+                                        @RequestParam(required = true) String company) {
+      return insuranceService.changeStatus(id, company);
     }
 
     @DeleteMapping("/{id}")

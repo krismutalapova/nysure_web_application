@@ -14,7 +14,7 @@ class InsurancePage extends Component {
 
     async onClickCreateInsurance(insuranceData) {
         try {
-            const response = await InsuranceApi.changeStatus(insuranceData);
+            const response = await InsuranceApi.changeStatus(this.props.user.id, insuranceData);
             const insurance = response.data;
             if (insurance !== "") {
                 const newInsurance = this.state.insurances.concat(insurance);
@@ -29,7 +29,7 @@ class InsurancePage extends Component {
 
     componentDidMount() {
         //get all insurances by status
-        InsuranceApi.getAllByStatus("true")
+        InsuranceApi.getAllByUser(this.props.user.id, "true")
             .then(({ data }) => this.setState({ insurances: data }))
             .catch(err => console.error(err));
     }

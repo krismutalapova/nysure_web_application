@@ -40,7 +40,7 @@ function App() {
                 <div className="container mt-5">
                     <Switch>
                         <Route path="/insurance">
-                            <InsurancePage/>
+                            <InsurancePage user={user}/>
                         </Route>
 
                         <Route path="/aboutus">
@@ -59,7 +59,7 @@ function App() {
                         </Route>
 
                         <Route path="/item">
-                            <ItemPage/>
+                            <ItemPage user={user}/>
                         </Route>
 
                         <Route path="/claims">

@@ -42,7 +42,7 @@ class LoginPage extends Component {
             if(registrationData.password.length > 100){
                 alertMessage = alertMessage + "The password must contain less than 100 characters\n";
             }
-            if(alertMessage == ""){
+            if(alertMessage === ""){
                 alert("Couldn't register check credentials and try again\n");
             }else {
                 alert(alertMessage)
