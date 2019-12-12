@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import InsuranceForm from "./InsuranceForm";
 import InsuranceApi from "../../api/InsuranceApi";
+import UserApi from "../../api/UserApi";
 import InsuranceCard from "./InsuranceCard";
 
 class InsurancePage extends Component {
