@@ -91,7 +91,7 @@ class ItemPage extends Component {
                                 <div className="card-body">
                                 <a className="fa fa-trash float-right"
                                     style={buttonStyle}
-                                    href="#"
+                                    href="/item#"
                                     onClick={() => this.onClickDeleteItem(item.itemId)}>
                                 </a>
                                     <h5 className="card-title">{item.itemType}</h5>
