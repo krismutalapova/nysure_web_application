@@ -1,6 +1,6 @@
 #                                              _**NYSURE - The new insurance solution**_
 
-## Nysure is an application that helps end users gather their insurance information, get quotes that compare several insurance companies, and send claims directly to the appropriate insurance company. We work hand in hand with companies aiming at using new technologies to their full potential, in order to make their users’ experiences more effective, pleasant, and simple. 
+### Nysure is an application that helps end users gather their insurance information, get quotes that compare several insurance companies, and send claims directly to the appropriate insurance company. We work hand in hand with companies aiming at using new technologies to their full potential, in order to make their users’ experiences more effective, pleasant, and simple. 
 
 ### I. Gathering insurance information
 The general gathering of information will be available through forms to fill with the appropriate information, as well as file uploading.
