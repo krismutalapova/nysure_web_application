@@ -19,6 +19,11 @@ public class ItemController {
         return itemService.getAll();
     }
 
+    @GetMapping("/user/{id}")
+    public List<Item> getAllByUser(@PathVariable String id) {
+        return itemService.getAllByUser(id);
+    }
+
     @GetMapping("/{id}")
     public Item getById(@PathVariable Long id) {
         return itemService.getById(id)

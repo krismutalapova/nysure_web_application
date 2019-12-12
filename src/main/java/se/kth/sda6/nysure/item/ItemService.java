@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.kth.sda6.nysure.user.User;
 
 @Service
 public class ItemService {
@@ -12,6 +13,12 @@ public class ItemService {
 
     public List<Item> getAll() {
         return repository.findAll();
+    }
+
+    public List<Item> getAllByUser(String id) {
+        System.out.println(id);
+        //Create a new user from the id received and fetch the data from DB based on that id
+        return repository.findAllByUser(new User(id));
     }
 
     public Optional<Item> getById(Long id) {
