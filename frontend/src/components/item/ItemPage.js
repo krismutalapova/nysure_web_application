@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ItemForm from "./ItemForm";
 import ItemApi from "../../api/ItemApi";
+import InsuranceApi from "../../api/InsuranceApi";
 import ItemCard from "./ItemCard";
 
 class ItemPage extends Component {
@@ -9,14 +10,15 @@ class ItemPage extends Component {
 
         this.state = {
             items: [],
+            insurances: [],
         }
     }
 
-    async onClickCreateItem({itemType, insurancePlan}) {
+    async onClickCreateItem({itemType, insurance}) {
         try {
             const response = await ItemApi.createItem({
                 itemType: itemType,
-                insurance: insurancePlan,
+                insurance: insurance,
                 user: this.props.user
             });
             const item = response.data;
@@ -36,10 +38,15 @@ class ItemPage extends Component {
         ItemApi.getAllItemByUser(this.props.user.id)
             .then(({ data }) => this.setState({ items: data }))
             .catch(err => console.error(err));
+
+        //get all insurances by status
+        InsuranceApi.getAllByUser(this.props.user.id, "true")
+        .then(({ data }) => this.setState({ insurances: data }))
+        .catch(err => console.error(err));
     }
 
     render() {
-        const { items } = this.state;
+        const { items, insurances } = this.state;
         console.log(items);
 
         return (
@@ -55,7 +62,7 @@ class ItemPage extends Component {
                         className="btn btn-lg font-weight-bold"
                         style={buttonStyle}>Add a new item</button>
                     <Modal id="itemFormModal" title="Create an item">
-                        <ItemForm onClickCreateItem={(itemData) => this.onClickCreateItem(itemData)} />
+                        <ItemForm insurances={insurances} onClickCreateItem={(itemData) => this.onClickCreateItem(itemData)} />
                     </Modal>
                 </div>
                 <div className="row">
@@ -64,7 +71,7 @@ class ItemPage extends Component {
                             <div key={item.itemId} className="card" style={cardStyle}>
                                 <div className="card-body">
                                     <h5 className="card-title">{item.itemType}</h5>
-                                    <p className="card-text">{!item.insurancePlan ? "No insurance plan." : item.insurancePlan}</p>
+                                    <p className="card-text">{!item.insurance ? "No insurance plan." : `Insured by ${item.insurance.company}.`}</p>
                                     <button type="button"
                                         className="btn btn-primary"
                                         data-toggle="modal"
