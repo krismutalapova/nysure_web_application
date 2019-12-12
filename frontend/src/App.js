@@ -17,6 +17,8 @@ import LoginPage from "./components/auth/LoginPage";
 import HomePage from './components/home/HomePage';
 import AboutUs from './components/infopages/AboutUs';
 import InsurancePage from './components/insurance/InsurancePage';
+import Quota from './components/Quota/Quota';
+import QuotaForm from './components/Quota/Form';
 import ItemPage from "./components/item/ItemPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import ClaimsPage from "./components/claims/ClaimsPage";
@@ -43,6 +45,17 @@ function App() {
 
                         <Route path="/aboutus">
                             <AboutUs/>
+                        </Route>
+
+                        <Route path="/quote/form/:type" component={QuotaForm}>
+                        </Route>
+
+                        <Route path="/quote/form">
+                            <Quota/>
+                        </Route>
+
+                        <Route path="/quote">
+                            <Quota/>
                         </Route>
 
                         <Route path="/item">

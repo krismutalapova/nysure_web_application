@@ -63,4 +63,8 @@ public class FileService {
     public List<File> findAll() {
         return (List<File>) repository.findAll();
     }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }
