@@ -85,7 +85,7 @@ class ItemPage extends Component {
                                 <a className="fa fa-trash float-right"
                                     style={buttonStyle}
                                     href="#"
-                                    onClick={() => this.props.onClickDeleteItem(this.props.item.itemId)}>
+                                    onClick={() => this.onClickDeleteItem(item.itemId)}>
                                 </a>
                                     <h5 className="card-title">{item.itemType}</h5>
                                     <p className="card-text">{!item.insurance ? "No insurance plan." : `Insured by ${item.insurance.company}.`}</p>
@@ -97,7 +97,7 @@ class ItemPage extends Component {
                                         </button>
                                 </div>
                                 <Modal id={`itemCardModal-${item.itemId}`} title={item.itemType}>
-                                    <ItemCard item={item} onClickDeleteItem={() => this.onClickDeleteItem(item.itemId)}/>
+                                    <ItemCard item={item} />
                                 </Modal>
                             </div>
                         );
