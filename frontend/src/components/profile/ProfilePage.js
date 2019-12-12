@@ -37,9 +37,8 @@ state = {
                 <div className="container">
                     <div className="row mt-4">
                         <div className="col-md-6 " style={{color: "transparent"}}>
-                            <img
+                            <img alt="profile pic"
                                 className="img-circle"
-                                class="img-fluid img-circle"
                                 src="images/alberto.jpg"
                                 />
                             <p>ID</p>
