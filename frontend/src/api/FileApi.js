@@ -20,4 +20,8 @@ function deleteFile(id) {
     return Api.delete(`/upload/${id}`);
 }
 
-export { uploadFile, uploadInsuranceFile, getAllFiles, getAllInsuranceFiles, deleteFile };
+function deleteAllByItem(id) {
+    return Api.delete(`/upload/item/${id}`);
+}
+
+export { uploadFile, uploadInsuranceFile, getAllFiles, getAllInsuranceFiles, deleteFile, deleteAllByItem };
