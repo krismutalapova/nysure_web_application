@@ -92,15 +92,14 @@ const DownloadDocs = ({ selectedFiles, handleDelete }) =>
                     {fileName} :
                     <a className="fa fa-trash float-right"
                         style={buttonStyle}
-                        href="#"
-                        onClick={() => handleDelete(id)}
-                    ></a>
+                        href="/#"
+                        onClick={() => handleDelete(id)}> </a>
                     <a className="fa fa-download float-right"
                         style={buttonStyle}
                         download
                         href={
                             "data:" + fileType +
-                            ";base64," + fileData}></a>
+                            ";base64," + fileData}> </a>
                 </p>
             )
         })
