@@ -7,7 +7,7 @@ function Topbar({onLogout, user}) {
                 <img src="/images/NySure-Logo-96.png" alt="logo" />
             </a>
             <div className="collapse navbar-collapse" id="navbarColor01">
-                <p className="user">
+                <p small className="user">
                 Signed in as {user.email || 'N/A'}
                     <a href="/user">
                         <span className="edit-info"></span>
