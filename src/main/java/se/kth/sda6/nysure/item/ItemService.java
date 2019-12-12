@@ -29,7 +29,6 @@ public class ItemService {
     }
 
     public Item update(Item updatedItem) {
-
         return repository.save(updatedItem);
     }
 
