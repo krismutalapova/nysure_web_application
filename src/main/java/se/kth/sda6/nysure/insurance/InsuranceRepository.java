@@ -15,7 +15,7 @@ public interface InsuranceRepository extends JpaRepository<Insurance, Long>{
 
     List<Insurance> findAllByStatus(boolean status);
 
-    List<Insurance> findAllByUser(User user);
+    List<Insurance> findAllByUserAndStatus(User user, boolean status);
 
     List<Insurance> findAllByCompanyAndStatus(String company, boolean status);
 

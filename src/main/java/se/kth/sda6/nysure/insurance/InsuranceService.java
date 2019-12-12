@@ -15,9 +15,10 @@ public class InsuranceService {
         return repository.findAll();
     }
 
-    public List<Insurance> getAllByUser(String id) {
+    public List<Insurance> getAllByUserAndStatus(User user, boolean status) {
+        System.out.println(user.getId() + " " + status);
         //Create a new user from the id received and fetch the data from DB based on that id
-        return repository.findAllByUser(new User(id));
+        return repository.findAllByUserAndStatus(user, status);
     }
 
     public List<Insurance> getAllByStatus(boolean status) {

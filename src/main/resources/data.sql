@@ -3,7 +3,7 @@ INSERT INTO account VALUES ('20001212-0000', 'test@gmail.com', 'John Doe', '$2a$
 INSERT INTO insurance VALUES ('123456-2017', 'Folksam', 1000, false, 'Travel', '19841019-1234');
 INSERT INTO insurance VALUES ('123457-2014', 'Tre Kronor', 699, false, 'House','19841019-1234');
 INSERT INTO insurance VALUES ('132523-2018','Bliwa', 599, true, 'Auto', '19841019-1234');
-INSERT INTO insurance VALUES ('213435-2013', 'Dina Försäkringar', 1299, false, 'Auto', '19841019-1234');
+INSERT INTO insurance VALUES ('213435-2013', 'Dina Försäkringar', 1299, true, 'Auto', '19841019-1234');
 INSERT INTO insurance VALUES ('347459-2017', 'Gjensidige', 599, false, 'Health', '19841019-1234');
 INSERT INTO insurance VALUES ('214137-2011', 'Länsförsäkringar', 749, false, 'Travel', '19841019-1234');
 INSERT INTO insurance VALUES ('654547-2011', 'Volvia', 567, false, 'Pet', '19841019-1234');

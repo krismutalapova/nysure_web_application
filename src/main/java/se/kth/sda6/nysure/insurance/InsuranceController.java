@@ -3,6 +3,7 @@ package se.kth.sda6.nysure.insurance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import se.kth.sda6.nysure.item.Item;
+import se.kth.sda6.nysure.user.User;
 
 import java.util.List;
 
@@ -19,8 +20,9 @@ public class InsuranceController {
     }
 
     @GetMapping("/user/{id}")
-    public List<Insurance> getAllByUser(@PathVariable String id) {
-        return insuranceService.getAllByUser(id);
+    public List<Insurance> getAllByUser(@PathVariable String id,
+                                        @RequestParam(required = true) boolean status) {
+        return insuranceService.getAllByUserAndStatus(new User(id), status);
     }
 
     @PostMapping("")
