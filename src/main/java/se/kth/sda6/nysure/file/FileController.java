@@ -21,18 +21,6 @@ public class FileController {
     @Autowired
     FileService fileService;
 
-    @PostMapping("/{id}")
-    public @ResponseBody ResponseMetadata handleFileUpload(@PathVariable Long id,
-                                                           @RequestParam(value="file") MultipartFile file) throws IOException {
-        return fileService.save(new Item(id), file);
-    }
-
-    @PostMapping("/file_insurance/{id}")
-    public @ResponseBody ResponseMetadata handleInsuranceFileUpload(@PathVariable String id,
-                                                           @RequestParam(value="file") MultipartFile file) throws IOException {
-        return fileService.saveInsurance(new Insurance(id), file);
-    }
-
     @GetMapping("/{id}")
     public @ResponseBody List<File> getItemFiles(@PathVariable Long id) {
         return fileService.findAllByItem(new Item(id));
@@ -46,6 +34,19 @@ public class FileController {
     @GetMapping("")
     public @ResponseBody List<File> getFile() {
         return fileService.findAll();
+    }
+
+
+    @PostMapping("/{id}")
+    public @ResponseBody ResponseMetadata handleFileUpload(@PathVariable Long id,
+                                                           @RequestParam(value="file") MultipartFile file) throws IOException {
+        return fileService.save(new Item(id), file);
+    }
+
+    @PostMapping("/file_insurance/{id}")
+    public @ResponseBody ResponseMetadata handleInsuranceFileUpload(@PathVariable String id,
+                                                                    @RequestParam(value="file") MultipartFile file) throws IOException {
+        return fileService.saveInsurance(new Insurance(id), file);
     }
 
     @DeleteMapping("/{id}")

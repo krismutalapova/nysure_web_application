@@ -21,6 +21,10 @@ import Quota from './components/Quota/Quota';
 import QuotaForm from './components/Quota/Form';
 import ItemPage from "./components/item/ItemPage";
 import ProfilePage from "./components/profile/ProfilePage";
+import ClaimsPage from "./components/claims/ClaimsPage";
+
+
+
 import UserApi from "./api/UserApi";
 
 function App() {
@@ -36,7 +40,7 @@ function App() {
                 <div className="container mt-5">
                     <Switch>
                         <Route path="/insurance">
-                            <InsurancePage/>
+                            <InsurancePage user={user}/>
                         </Route>
 
                         <Route path="/aboutus">
@@ -55,16 +59,21 @@ function App() {
                         </Route>
 
                         <Route path="/item">
-                            <ItemPage/>
+                            <ItemPage user={user}/>
                         </Route>
+
+                        <Route path="/claims">
+                             <ClaimsPage/>
+                         </Route>
 
                         <Route path="/profile">
                             <ProfilePage/>
                         </Route>
 
                         <Route path="/">
-                          <HomePage/>
+                             <HomePage/>
                         </Route>
+
                     </Switch>
                 </div>
                 <Navbar />

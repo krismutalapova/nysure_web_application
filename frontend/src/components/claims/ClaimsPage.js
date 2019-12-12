@@ -1,25 +1,25 @@
 import React, { Component } from "react";
-import InsuranceForm from "./InsuranceForm";
-import InsuranceApi from "../../api/InsuranceApi";
-import InsuranceCard from "./InsuranceCard";
+import ClaimsForm from "./ClaimsForm";
+import ClaimsApi from "../../api/ClaimsApi";
+import ClaimsSelection from "./ClaimsSelection";
 
-class InsurancePage extends Component {
+class ClaimsPage extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            insurances: [],
+            claims: [],
         }
     }
 
-    async onClickCreateInsurance(insuranceData) {
+    async onClickCreateClaims(claimsData) {
         try {
-            const response = await InsuranceApi.changeStatus(this.props.user.id, insuranceData);
-            const insurance = response.data;
-            if (insurance !== "") {
-                const newInsurance = this.state.insurances.concat(insurance);
+            const response = await ClaimsApi.changeStatus(claimsData);
+            const claim = response.data;
+            if (claim !== "") {
+                const newclaim = this.state.claims.concat(claim);
                 this.setState({
-                insurances: newInsurance,
+                claims: newclaim,
             });}
         }
         catch (e) {
@@ -28,15 +28,15 @@ class InsurancePage extends Component {
     }
 
     componentDidMount() {
-        //get all insurances by status
-        InsuranceApi.getAllByUser(this.props.user.id, "true")
-            .then(({ data }) => this.setState({ insurances: data }))
+        //get all claims by status
+        ClaimsApi.getAllByStatus("true")
+            .then(({ data }) => this.setState({ claims: data }))
             .catch(err => console.error(err));
     }
 
     render() {
-        const { insurances } = this.state;
-        console.log(insurances);
+        const { claims } = this.state;
+        console.log(claims);
 
         return (
             <div id="main-group">
@@ -45,32 +45,32 @@ class InsurancePage extends Component {
                         className="btn btn-outline-secondary btn-lg"
                         style={buttonStyle}
                         data-toggle="modal"
-                        data-target={"#insuranceFormModal"}> <i className="fa fa-plus"></i>
+                        data-target={"#claimFormModal"}> <i className="fa fa-plus"></i>
                     </button>
 
                     <button type="submit" disabled
                         className="btn btn-lg font-weight-bold"
-                        style={buttonStyle}>Add an insurance </button>
-                        <Modal id="insuranceFormModal" title="Create an insurance">
-                                <InsuranceForm onClickCreateInsurance={(insuranceData) => this.onClickCreateInsurance(insuranceData)} />
+                        style={buttonStyle}>Add a claim </button>
+                        <Modal id="claimFormModal" title="Choose type of insurance">
+                                <ClaimsSelection />
                         </Modal>
                 </div>
                 <div className="row">
-                    {insurances.map(( insurance ) => {
+                    {claims.map(( claim ) => {
                         return (
-                            <div key={insurance.id} className="card" style={cardStyle}>
+                            <div key={claim.id} className="card" style={cardStyle}>
                                 <div className="card-body">
-                                    <h5 className="card-title">{insurance.type}</h5>
-                                    <p className="card-text">{insurance.company}</p>
-                                    <p className="card-text">{insurance.cost} SEK</p>
+                                    <h5 className="card-title">{claim.type}</h5>
+                                    <p className="card-text">{claim.company}</p>
+                                    <p className="card-text">{claim.cost} SEK</p>
                                     <button type="button"
                                         className="btn btn-primary"
                                         data-toggle="modal"
-                                        data-target={`#insuranceCardModal-${insurance.id}`}> View insurance
+                                        data-target={`#claimCardModal-${claim.id}`}> View claim
                                         </button>
                                 </div>
-                                <Modal id={`insuranceCardModal-${insurance.id}`} title={insurance.type}>
-                                     <InsuranceCard insurance={insurance}/>
+                                <Modal id={`claimCardModal-${claim.id}`} title={claim.type}>
+                                     <claimCard claim={claim}/>
                                 </Modal>
                             </div>
                         );
@@ -82,7 +82,7 @@ class InsurancePage extends Component {
 }
 const Modal = ({ children, id, title }) =>
     <div id={id} className="modal fade" role="dialog">
-        <div className="modal-dialog" style={modalBorderStyle}>
+        <div className="modal-dialog modal-xl" style={modalBorderStyle}>
             <div className="modal-content" style={modalBorderStyle}>
                 <div className="modal-header">
                     <h4 className="modal-title">{title}</h4>
@@ -98,7 +98,7 @@ const Modal = ({ children, id, title }) =>
 
 
 const cardStyle = {
-    width: '30%',
+    width: '100%',
     maxWidth: '400px',
     margin: '10px',
 }
@@ -110,8 +110,13 @@ const buttonStyle = {
 
 const modalBorderStyle = {
     borderRadius: '10px',
+    width: 'auto', 
+  }
+
+  const modalForm= {
+      width: '100%', 
   }
 
 
 
-export default InsurancePage;
+export default ClaimsPage;
