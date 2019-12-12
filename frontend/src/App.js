@@ -55,7 +55,7 @@ function App() {
                         </Route>
 
                         <Route path="/item">
-                            <ItemPage/>
+                            <ItemPage user={user}/>
                         </Route>
 
                         <Route path="/profile">
