@@ -17,17 +17,17 @@ function ClaimsForm(props) {
                 type="btn btn-block"
                 className="btn btn-info btn-block"
                 data-toggle="modal"
-                data-target="#myModal">
+                data-target="#claimsPage">
                 Submit
             </button>
-            <div id="myModal" className="wrapper modal fade" role="dialog">
+            <div id="claimsPage" className="wrapper modal fade" role="dialog">
                 <div className="container">
                     <div className="row mt-4">
                             <div className="card-body">
                                     <div className="modal-dialog"> 
                                         <div className="modal-content">
                                             <div className="modal-header">
-                                                <h4 className="card-title">Calculated quote</h4>
+                                                <h4 className="card-title">Quote</h4>
                                                 <button
                                                     type="button"
                                                     className="close"
@@ -36,7 +36,7 @@ function ClaimsForm(props) {
                                                 </button>
                                             </div>
                                             <div className="modal-body">
-                                                {calculated(type)} Kr
+                                
                                             </div>
                                         </div>
                                     </div>
@@ -71,20 +71,7 @@ function common() {
             <Col>
                 <Form.Label>Civil status</Form.Label>
             </Col>
-            <Col>
-                {
-                    ["Single", "Married", "Common law spouse", "Single-parent"]
-                        .map((radioLabel, index) => (
-                            <Form.Check
-                                inline
-                                type="radio"
-                                name="civilStatus"
-                                key={"civilStatus" + index}
-                                label={radioLabel}
-                            />
-                        ))
-                }
-            </Col>
+        
         </Row>
         <Row className="m-1">
             <Col>
@@ -114,8 +101,8 @@ function common() {
         </Row>
         <Row className="m-1">
             <Col>
-                <Form.Label>Address</Form.Label>
-                <Form.Control as="textarea" rows="2" type="address" placeholder="Enter adress" />
+                <Form.Label>Claim description</Form.Label>
+                <Form.Control as="textarea" rows="2" type="text" placeholder="Enter claim description" />
             </Col>
         </Row>
         <Row className="m-1">
@@ -276,31 +263,5 @@ function business() {
     </Form.Group>;
 }
 
-function calculated(type) {
-    switch (type) {
-        case "vehicle":
-            return randomValue(5000, 10000);
-        case "home":
-            return randomValue(20000, 40000);
-        case "child":
-            return randomValue(2000, 5000);
-        case "pet":
-            return randomValue(1000, 3000);
-        case "travel":
-            return randomValue(500, 2500);
-        case "life":
-            return randomValue(2000, 5000);
-        case "health":
-            return randomValue(1000, 7000);
-        case "business":
-            return randomValue(25000, 75000);
-        default:
-            return randomValue(100000, 500000);
-    }
-}
-
-function randomValue(min, max) {
-    return Math.floor(min + Math.random() * (max - min));
-}
 
 export default ClaimsForm;

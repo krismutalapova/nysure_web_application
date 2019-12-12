@@ -112,7 +112,6 @@ const modalBorderStyle = {
     borderRadius: '10px',
     width: 'auto', 
   }
-  
 
   const modalForm= {
       width: '100%', 
