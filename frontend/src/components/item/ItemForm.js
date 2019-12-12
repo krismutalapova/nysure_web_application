@@ -22,10 +22,14 @@ function ItemForm( {onClickCreateItem} ) {
             <label htmlFor="type"> Item type:</label> 
                 <select type="text" value={itemType} onChange={e => setItemType(e.target.value)} className="form-control">
                 <option value="no-type">No type selected</option>
-                <option value="Person">Person</option>
+                <option value="Vehicle">Vehicle</option>
                 <option value="Home">Home</option>
-                <option value="Motor vehicle">Motor vehicle</option>
-                <option value="Electronic device">Electronic device</option>
+                <option value="Child">Child</option>
+                <option value="Pet">Pet</option>
+                <option value="Travel">Travel</option>
+                <option value="Life">Life</option>
+                <option value="Health">Health</option>
+                <option value="Business">Business</option>
                 </select>       
         </div>
         <div className="form-group">
