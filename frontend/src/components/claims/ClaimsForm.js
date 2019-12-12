@@ -18,7 +18,7 @@ function ClaimsForm(props) {
                 className="btn btn-info btn-block"
                 data-toggle="modal"
                 data-target="#claimsPage">
-                Submit
+                Create claim
             </button>
             <div id="claimsPage" className="wrapper modal fade" role="dialog">
                 <div className="container">
@@ -27,7 +27,7 @@ function ClaimsForm(props) {
                                     <div className="modal-dialog"> 
                                         <div className="modal-content">
                                             <div className="modal-header">
-                                                <h4 className="card-title">Quote</h4>
+                                                <h4 className="card-title">Claim</h4>
                                                 <button
                                                     type="button"
                                                     className="close"
@@ -52,69 +52,44 @@ function ClaimsForm(props) {
 function common() {
     return <Form.Group controlId="formCommonInfo">
         <Row className="m-1">
-            <Col>
-                <Form.Label>First name</Form.Label>
-                <Form.Control type="text" placeholder="Enter first name" />
-            </Col>
-            <Col>
-                <Form.Label>Last name</Form.Label>
-                <Form.Control type="text" placeholder="Enter last name" />
-            </Col>
+        
+        </Row>
+        <Row className="m-1">
+
         </Row>
         <Row className="m-1">
             <Col>
-                <Form.Label>Date of birth</Form.Label>
-                <Form.Control type="date" />
-            </Col>
-        </Row>
-        <Row className="m-1">
-            <Col>
-                <Form.Label>Civil status</Form.Label>
+                <Form.Label></Form.Label>
             </Col>
         
         </Row>
         <Row className="m-1">
             <Col>
-                <Form.Label>Occupation</Form.Label>
-                <Form.Control type="text" placeholder="Enter occupation" />
+                <Form.Label>Item</Form.Label>
+                <Form.Control type="text" placeholder="Choose item" />
             </Col>
             <Col>
-                <Form.Label>Annual salary</Form.Label>
-                <Form.Control type="number" placeholder="Enter annual salary" />
+                <Form.Label>Insurance</Form.Label>
+                <Form.Control type="text" placeholder="Choose insurance" />
             </Col>
         </Row>
         <Row className="m-1">
             <Col>
-                <Form.Label>Spouse's date of birth</Form.Label>
+                <Form.Label>Claim event date</Form.Label>
                 <Form.Control type="date" />
             </Col>
         </Row>
-        <Row className="m-1">
-            <Col>
-                <Form.Label>Spouse occupation</Form.Label>
-                <Form.Control type="text" placeholder="Enter occupation" />
-            </Col>
-            <Col>
-                <Form.Label>Spouse annual salary</Form.Label>
-                <Form.Control type="number" placeholder="Enter annual salary" />
-            </Col>
-        </Row>
+       
         <Row className="m-1">
             <Col>
                 <Form.Label>Claim description</Form.Label>
-                <Form.Control as="textarea" rows="2" type="text" placeholder="Enter claim description" />
+                <Form.Control as="textarea" rows="2" type="text" placeholder="Enter claim description" maxLength='500'/>
             </Col>
         </Row>
         <Row className="m-1">
             <Col>
-                <Form.Label>Work number</Form.Label>
-                <Form.Control type="phone" placeholder="Enter work number" />
-                <Form.Text className="text-muted">We'll never share your work phone with anyone else.</Form.Text>
-            </Col>
-            <Col>
-                <Form.Label>Home number</Form.Label>
-                <Form.Control type="phone" placeholder="Enter home number" />
-                <Form.Text className="text-muted">We'll never share your home phone with anyone else.</Form.Text>
+                
+                <Form.Text className="text-muted">All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>
@@ -124,8 +99,6 @@ function specific(type) {
     switch (type) {
         case "vehicle":
             return vehicle();
-        case "home":
-            return home();
         case "child":
             return child();
         case "pet":
@@ -158,20 +131,6 @@ function vehicle() {
     </Form.Group>;
 }
 
-function home() {
-    return <Form.Group controlId="formHomeInfo">
-        <Row className="m-1">
-            <Col>
-                <Form.Label>Type of home </Form.Label>
-                <Form.Control type="text" placeholder="Enter type of home" />
-            </Col>
-            <Col>
-                <Form.Label>Square meters</Form.Label>
-                <Form.Control type="number" placeholder="Enter square meters" />
-            </Col>
-        </Row>
-    </Form.Group>;
-}
 
 function child() {
     return <Form.Group controlId="formChildInfo">

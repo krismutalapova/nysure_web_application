@@ -6,7 +6,7 @@ class ClaimsSelection extends Component {
             <div>
                 <div className="row-100">
                     <div className="col-4 center-content">
-                        <a href="/claims/claimsSelection/vehicle"> {/*Add correct href*/}
+                        <a href="/claims/claimsSelection/vehicle"> 
                             <img className="btn-circle btn-circle" src="/images/car2.png" alt="car2" />
                         </a>
                         <p>Vehicle</p>
