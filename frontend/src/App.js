@@ -22,6 +22,7 @@ import QuotaForm from './components/Quota/Form';
 import ItemPage from "./components/item/ItemPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import ClaimsPage from "./components/claims/ClaimsPage";
+import ClaimsForm from "./components/claims/ClaimsForm";
 
 
 
@@ -60,6 +61,13 @@ function App() {
 
                         <Route path="/item">
                             <ItemPage user={user}/>
+                        </Route>
+
+                        <Route path="/claims/form/:type" component={ClaimsForm}>
+                        </Route>
+
+                        <Route path="/claims/form">
+                            <Quota/>
                         </Route>
 
                         <Route path="/claims">
