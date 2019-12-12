@@ -23,10 +23,10 @@ class ClaimsCard extends Component {
     render() {
         return (
 
-            <div className="card" style={cardStyle}>
-                <div className="claims-body"></div>
+            <div className="card" style={cardStyle} >
+                <div className="card-body"></div>
                 <label htmlFor="type">Company:</label>
-                <select type="text" >
+                <select type="text" style={{boarderRadius:'10px', padding:'20px'}}>
                     <option value="1">TreKronor</option>
                     <option value="2">Bliwa</option>
                     <option value="3">Dina</option>
@@ -67,10 +67,10 @@ class ClaimsCard extends Component {
                     value="YYYY-MM-DD"
                     min="2019-01-01" max="2019-12-31"></input>
 
-                <input name="description" type="text" placeholder="Claim description"/>
+                <input name="description" type="text" placeholder="Claim description" style={{width:'200px', height:'100px', borderRadius:'10px'}}/>
 
 
-                <button className="create-claim" type="button">
+                <button className="button btn-primary" type="button" style={{borderRadius:'10px', padding:'10px'}}>
                     Create
                     </button>
             </div>
@@ -81,8 +81,12 @@ class ClaimsCard extends Component {
 }
 
 const cardStyle= {
-    width: '80%',
-    margin: 'auto', 
+    width: '30%',
+    maxWidth:'400px', 
+    margin: '10px', 
+    borderRadius: '10px'
+
+    
 
 
 

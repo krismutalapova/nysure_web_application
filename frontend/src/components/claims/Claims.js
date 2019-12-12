@@ -89,6 +89,7 @@ class Claims extends React.Component {
 
     render(){
             return (
+                <div>
                 <div className= "table">
                     <h1 className="claims-title" style={{color:'#899b9b'}}>Claims</h1>
                     <table id="claims" style={tableStyle}>
@@ -98,18 +99,24 @@ class Claims extends React.Component {
                         </tbody>
                     </table>
                 </div>
+                
+
+                <div class="card-body"> 
+    <h5 class="card-title">Auto</h5>
+        <p class="card-text">Bliwa</p>
+        <p class="card-text">
+            <small class="text-muted">Last modified 3 weeks ago.</small>
+                </p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insuranceCardModal-132523-2018"> View insurance</button>
+        </div>  
+            </div>
             )
         
-        }
+     
+     
+      }
     }
 
-    <form>
-  <label>
-    Name:
-    <input type="text" name="name" />
-  </label>
-  <input type="submit" value="Submit" />
-</form>
 
 
 
