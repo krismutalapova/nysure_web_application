@@ -4,6 +4,7 @@ import ItemApi from "../../api/ItemApi";
 import InsuranceApi from "../../api/InsuranceApi";
 import ItemCard from "./ItemCard";
 
+
 class ItemPage extends Component {
     constructor(props) {
         super(props)
@@ -45,6 +46,17 @@ class ItemPage extends Component {
         .catch(err => console.error(err));
     }
 
+    onClickDeleteItem(itemId) { 
+        ItemApi.deleteItem(itemId)
+        .then(res => {
+            const newItems = this.state.items.filter(item => item.itemId !== itemId);
+            this.setState({
+                items: newItems
+            });
+        })
+        .catch(err => console.error(err));
+        };
+
     render() {
         const { items, insurances } = this.state;
         console.log(items);
@@ -70,6 +82,11 @@ class ItemPage extends Component {
                         return (
                             <div key={item.itemId} className="card" style={cardStyle}>
                                 <div className="card-body">
+                                <a className="fa fa-trash float-right"
+                                    style={buttonStyle}
+                                    href="#"
+                                    onClick={() => this.onClickDeleteItem(item.itemId)}>
+                                </a>
                                     <h5 className="card-title">{item.itemType}</h5>
                                     <p className="card-text">{!item.insurance ? "No insurance plan." : `Insured by ${item.insurance.company}.`}</p>
                                     <button type="button"
