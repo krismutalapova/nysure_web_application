@@ -72,10 +72,10 @@ class ItemPage extends Component {
                             <div key={item.itemId} className="card" style={cardStyle}>
                                 <div className="card-body">
                                 <a className="fa fa-trash float-right"
-                            style={buttonStyle}
-                            href="#"
-                            onClick={() => this.props.onClickDeleteItem(this.props.item.itemId)}>
-                        </a>
+                                    style={buttonStyle}
+                                    href="#"
+                                    onClick={() => this.props.onClickDeleteItem(this.props.item.itemId)}>
+                                </a>
                                     <h5 className="card-title">{item.itemType}</h5>
                                     <p className="card-text">{!item.insurancePlan ? "No insurance plan." : item.insurancePlan}</p>
                                     <button type="button"
