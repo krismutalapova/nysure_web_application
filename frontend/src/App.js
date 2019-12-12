@@ -22,9 +22,6 @@ import QuotaForm from './components/Quota/Form';
 import ItemPage from "./components/item/ItemPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import ClaimsPage from "./components/claims/ClaimsPage";
-
-
-
 import UserApi from "./api/UserApi";
 
 function App() {
