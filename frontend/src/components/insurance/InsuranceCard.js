@@ -59,7 +59,7 @@ class InsuranceCard extends Component {
                     <label htmlFor="type">Company: </label>
                     <input disabled type="text" className="form-control" id="usr" style={selectStyle} value={this.props.insurance.company}></input>
 
-                    <label htmlFor="type">Cost: </label>
+                    <label htmlFor="type">Cost (SEK): </label>
                     <input disabled type="text" className="form-control" id="usr" style={selectStyle} value={this.props.insurance.cost}></input>
 
                     <label htmlFor="type">Type: </label>
@@ -92,7 +92,7 @@ const DownloadDocs = ({ selectedFiles, handleDelete }) =>
                     {fileName} :
                     <a className="fa fa-trash float-right"
                         style={buttonStyle}
-                        href="/#"
+                        href="/insurance#"
                         onClick={() => handleDelete(id)}> </a>
                     <a className="fa fa-download float-right"
                         style={buttonStyle}
