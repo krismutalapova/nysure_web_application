@@ -108,6 +108,7 @@ const DownloadDocs = ({ uploadedDocuments, handleDelete }) =>
     <div id="listOfDocuments">
         <label htmlFor="warrantyPlan"><b>Item documents:</b></label>
         <small className="text-muted float-right">{`${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? "" : "s"} uploaded`}</small>
+<<<<<<< HEAD
         {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
             return (
                 <p key={id}>
@@ -126,6 +127,26 @@ const DownloadDocs = ({ uploadedDocuments, handleDelete }) =>
             )
         })
         }
+=======
+            {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
+                            return (
+                                <p key={id}>
+                                        {fileName} : <a className="fa fa-trash float-right"
+                                                        style={buttonStyle}
+                                                        href="/item#"
+                                                        onClick={() => handleDelete(id)}>
+                                                    </a>
+                                                    <a className="fa fa-download float-right"
+                                                        style={buttonStyle}
+                                                        download
+                                                        href={
+                                                            "data:" + fileType +
+                                                            ";base64," + fileData}> </a>
+                                </p>
+                            )
+                        })
+            }
+>>>>>>> master
     </div>
 
 const Carousel = ({ uploadedImages }) =>

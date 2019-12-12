@@ -21,6 +21,9 @@ class InsurancePage extends Component {
                 this.setState({
                 insurances: newInsurance,
             });}
+            else {
+                alert("Sorry, it seems you don't have a new insurance with this company.\n");
+            }
         }
         catch (e) {
             console.error(e);

@@ -7,7 +7,12 @@
 
 body {
   min-height: 100vh;
+<<<<<<< HEAD
   background: linear-gradient(to bottom, #fffff, #ececec);
+=======
+  background: linear-gradient(to bottom, #ffffff, #ececec);
+  font-family: 'Raleway', sans-serif;
+>>>>>>> master
 }
 
 .App {
