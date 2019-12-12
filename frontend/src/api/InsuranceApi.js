@@ -9,6 +9,10 @@ class InsuranceApi {
         return Api.get('/insurances?status='+  status);
     }
 
+    getAllByUser(id, status) {
+        return Api.get(`/insurances/user/${id}?status=${status}`);
+    }
+
     createInsurance(insurance) {
         return Api.post('/insurances', insurance);
     }
