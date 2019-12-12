@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ItemForm from "./ItemForm";
 import ItemApi from "../../api/ItemApi";
+import {deleteAllByItem} from "../../api/FileApi";
 import InsuranceApi from "../../api/InsuranceApi";
 import ItemCard from "./ItemCard";
 
@@ -32,7 +33,24 @@ class ItemPage extends Component {
         catch (e) {
             console.error(e);
         }
-    }
+    };
+
+    onClickDeleteItem(itemId) { 
+        //delete files by item id and the item
+        deleteAllByItem(itemId)
+        .then((res) => {
+            // do something with Google res
+        
+            return ItemApi.deleteItem(itemId);
+        })
+        .then(res => {
+            const newItems = this.state.items.filter(item => item.itemId !== itemId);
+            this.setState({
+                items: newItems
+            });
+        })
+        .catch(err => console.error(err));
+    };
 
     componentDidMount() {
         //get all the items in the database
@@ -44,18 +62,7 @@ class ItemPage extends Component {
         InsuranceApi.getAllByUser(this.props.user.id, "true")
         .then(({ data }) => this.setState({ insurances: data }))
         .catch(err => console.error(err));
-    }
-
-    onClickDeleteItem(itemId) { 
-        ItemApi.deleteItem(itemId)
-        .then(res => {
-            const newItems = this.state.items.filter(item => item.itemId !== itemId);
-            this.setState({
-                items: newItems
-            });
-        })
-        .catch(err => console.error(err));
-        };
+    };
 
     render() {
         const { items, insurances } = this.state;

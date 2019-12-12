@@ -15,5 +15,8 @@ public interface FileRepository extends CrudRepository<File, Long>{
     List<File> findAllByItem(Item item);
 
     @Transactional
+    int deleteAllByItem(Item item);
+
+    @Transactional
     List<File> findAllByInsurance(Insurance insurance);
 }

@@ -67,4 +67,9 @@ public class FileService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    public void deleteAllByItem(Long id) {
+
+        repository.deleteAllByItem(new Item(id));
+    }
 }
