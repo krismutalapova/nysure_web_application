@@ -6,14 +6,13 @@ class ItemCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            insurancePlan: "no-insurance",
             selectedFiles: [],
         }
     };
 
     handleDelete(id) { 
         deleteFile(id)
-        .then(res => {
+        .then((res) => {
             const newSelectedFiles = this.state.selectedFiles.filter(file => file.id !== id);
             this.setState({
                 selectedFiles: newSelectedFiles
@@ -43,13 +42,6 @@ class ItemCard extends Component {
             .catch(err => console.error(err));
     };
 
-    setInsurancePlan = (e) => {
-        e.preventDefault();
-        this.setState({
-            insurancePlan: e.target.value
-        });
-    };
-
     componentDidMount() {
         //get all files
         getAllFiles(this.props.item.itemId)
@@ -58,7 +50,7 @@ class ItemCard extends Component {
     }
 
     render() {
-        const { selectedFiles, insurancePlan } = this.state;
+        const { selectedFiles } = this.state;
 
         const uploadedImages = selectedFiles.filter(image => image.fileType.includes("image"));
 
@@ -72,8 +64,10 @@ class ItemCard extends Component {
             <div className="card" style={cardStyle}>
                 <div className="card-body" >
                     <label htmlFor="insurancePlan">Insurance plan:</label>
-                    <select disabled style={selectStyle} type="text" value={insurancePlan} onChange={this.setInsurancePlan} className="form-control">
-                        <option value="no-insurance">No insurance plan</option>
+                    <select disabled style={selectStyle} type="text" value={`${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`} className="form-control">
+                        <option value={`${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`}>
+                            {`${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`}
+                        </option>
                     </select>
 
                     <div className="form-group files color" style={selectStyle}>

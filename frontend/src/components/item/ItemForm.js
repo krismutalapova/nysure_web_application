@@ -38,7 +38,7 @@ function ItemForm( {onClickCreateItem, insurances} ) {
                 <option key="initialOption" value="no-insurance">No insurance plan</option>
                 {insurances.map(insurancePlan => {
                     return(
-                    <option key={insurancePlan.id} value={insurancePlan.id}>{`${insurancePlan.company}, policy id: ${insurancePlan.id}`}</option>);
+                    <option key={insurancePlan.id} value={insurancePlan.id}>{`${insurancePlan.company} - policy id: ${insurancePlan.id}`}</option>);
                 })}
                 </select>
         </div>
