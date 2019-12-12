@@ -14,10 +14,8 @@ public class InsuranceController {
     private InsuranceService insuranceService;
 
     @GetMapping("")
-    public List<Insurance> getAll(@RequestParam(required = false) boolean status) {
-        if (true){
-            return insuranceService.getAllByStatus(status); }
-        return insuranceService.getAll();
+    public List<Insurance> getAll(@RequestParam(required = true) boolean status) {
+        return insuranceService.getAllByStatus(status);
     }
 
     @PostMapping("")

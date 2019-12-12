@@ -4,6 +4,10 @@ class ItemApi {
         return Api.get('/items');
     }
 
+    getAllItemByUser(id) {
+        return Api.get('/items/user/'+id);
+    }
+
     getItemById(id) {
         return Api.get('/items/'+id);
     }

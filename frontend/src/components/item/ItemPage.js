@@ -33,7 +33,7 @@ class ItemPage extends Component {
 
     componentDidMount() {
         //get all the items in the database
-        ItemApi.getAllItem()
+        ItemApi.getAllItemByUser(this.props.user.id)
             .then(({ data }) => this.setState({ items: data }))
             .catch(err => console.error(err));
     }
