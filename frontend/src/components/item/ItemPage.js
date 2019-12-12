@@ -3,6 +3,7 @@ import ItemForm from "./ItemForm";
 import ItemApi from "../../api/ItemApi";
 import ItemCard from "./ItemCard";
 
+
 class ItemPage extends Component {
     constructor(props) {
         super(props)
@@ -34,6 +35,17 @@ class ItemPage extends Component {
             .catch(err => console.error(err));
     }
 
+    onClickDeleteItem(id) { 
+        ItemApi.deleteItem(id)
+        .then(res => {
+            const newItems = this.state.items.filter(item => item.id !== id);
+            this.setState({
+                items: newItems
+            });
+        })
+        .catch(err => console.error(err));
+        };
+
     render() {
         const { items } = this.state;
         console.log(items);
@@ -59,6 +71,11 @@ class ItemPage extends Component {
                         return (
                             <div key={item.itemId} className="card" style={cardStyle}>
                                 <div className="card-body">
+                                <a className="fa fa-trash float-right"
+                            style={buttonStyle}
+                            href="#"
+                            onClick={() => this.props.onClickDeleteItem(this.props.item.itemId)}>
+                        </a>
                                     <h5 className="card-title">{item.itemType}</h5>
                                     <p className="card-text">{!item.insurancePlan ? "No insurance plan." : item.insurancePlan}</p>
                                     <button type="button"
@@ -69,7 +86,7 @@ class ItemPage extends Component {
                                         </button>
                                 </div>
                                 <Modal id={`itemCardModal-${item.itemId}`} title={item.itemType}>
-                                    <ItemCard item={item} />
+                                    <ItemCard item={item} onClickDeleteItem={(id) => this.onClickDeleteItem(id)}/>
                                 </Modal>
                             </div>
                         );
