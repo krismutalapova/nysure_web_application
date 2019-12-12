@@ -13,8 +13,52 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long itemId;
 
+    @Column(name = "itemBrand")
+    private String itemBrand;
+
+    @Column(name = "itemModel")
+    private String itemModel;
+
+    public String getItemBrand() {
+        return itemBrand;
+    }
+
+    public void setItemBrand(String itemBrand) {
+        this.itemBrand = itemBrand;
+    }
+
+    public String getItemModel() {
+        return itemModel;
+    }
+
+    public void setItemModel(String itemModel) {
+        this.itemModel = itemModel;
+    }
+
+    @Column(name = "itemDate")
+    private String itemDate;
+
+    @Column(name = "itemPrice")
+    private Double itemPrice;
+
     @Column(name = "itemType")
     private String itemType;
+
+    public Double getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(Double itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public String getItemDate() {
+        return itemDate;
+    }
+
+    public void setItemDate(String itemDate) {
+        this.itemDate = itemDate;
+    }
 
     @ManyToOne()
     private Insurance insurance;
@@ -40,6 +84,7 @@ public class Item {
     public String getItemType() {
         return itemType;
     }
+
 
     public void setItemType(String itemType) {
         this.itemType = itemType;
