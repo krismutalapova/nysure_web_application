@@ -36,7 +36,7 @@ function App() {
                 <div className="container mt-5">
                     <Switch>
                         <Route path="/insurance">
-                            <InsurancePage/>
+                            <InsurancePage user={user}/>
                         </Route>
 
                         <Route path="/aboutus">
