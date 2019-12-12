@@ -12,9 +12,13 @@ class ItemPage extends Component {
         }
     }
 
-    async onClickCreateItem(itemData) {
+    async onClickCreateItem({itemType, insurancePlan}) {
         try {
-            const response = await ItemApi.createItem(itemData);
+            const response = await ItemApi.createItem({
+                itemType: itemType,
+                insurance: insurancePlan,
+                user: this.props.user
+            });
             const item = response.data;
             const newItem = this.state.items.concat(item);
 

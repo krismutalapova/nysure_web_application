@@ -8,7 +8,7 @@ function ItemForm( {onClickCreateItem} ) {
         // Invoke the passed in event callback
         onClickCreateItem({
             itemType: itemType,
-            insurancePlan: insurancePlan,
+            insurance: insurancePlan,
         });
 
         // Clear the input field
