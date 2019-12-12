@@ -129,7 +129,7 @@ const Carousel = ({ uploadedImages, handleDelete }) =>
                 {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
                     return (
 
-                        <div key={id} className={"carousel-item" + (isActive ? " active" : "")}>
+                        <div key={id} className={"carousel-item" + (isActive ? "active" : "")}>
                             
                                 {fileName}
                         
