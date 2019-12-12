@@ -6,6 +6,7 @@ class ItemCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            insurancePlan: "no insurance plan",
             selectedFiles: [],
         }
     };
@@ -43,6 +44,13 @@ class ItemCard extends Component {
     };
 
     componentDidMount() {
+        //change state to update value in the select
+        if(this.props.item.insurance !== null){
+            this.setState({
+                insurancePlan: `${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`
+            });
+        }
+
         //get all files
         getAllFiles(this.props.item.itemId)
             .then(({ data }) => this.setState({ selectedFiles: data }))
@@ -50,7 +58,7 @@ class ItemCard extends Component {
     }
 
     render() {
-        const { selectedFiles } = this.state;
+        const { selectedFiles, insurancePlan } = this.state;
 
         const uploadedImages = selectedFiles.filter(image => image.fileType.includes("image"));
 
@@ -64,10 +72,8 @@ class ItemCard extends Component {
             <div className="card" style={cardStyle}>
                 <div className="card-body" >
                     <label htmlFor="insurancePlan">Insurance plan:</label>
-                    <select disabled style={selectStyle} type="text" value={`${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`} className="form-control">
-                        <option value={`${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`}>
-                            {`${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`}
-                        </option>
+                    <select disabled style={selectStyle} type="text" value="no-insurance" className="form-control">
+                        <option value="no-insurance">{insurancePlan}</option>
                     </select>
 
                     <div className="form-group files color" style={selectStyle}>
