@@ -131,12 +131,6 @@ function common(item, incidentDate, incidentDescription, setIncidentDate, setInc
 
             </Col>
         </Row>
-
-        <Row className="m-1">
-            <Col>
-                <Form.Text className="text-muted">All information is confidential</Form.Text>
-            </Col>
-        </Row>
     </Form.Group>
 }
 
@@ -175,6 +169,14 @@ function vehicle(fieldA, setFieldA, fieldB, setFieldB) {
                 <Form.Control type="text" placeholder="responsibility" value={fieldB} onChange={e => setFieldB(e.target.value)} />
             </Col>
         </Row>
+
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
+            </Col>
+        </Row>
+
+
     </Form.Group>;
 }
 
@@ -188,6 +190,11 @@ function home(fieldA, setFieldA, fieldB, setFieldB) {
             <Col>
                 <Form.Label>Square meters</Form.Label>
                 <Form.Control type="text" placeholder="Enter square meters" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
@@ -206,6 +213,11 @@ function child(fieldA, setFieldA, fieldB, setFieldB) {
                 <Form.Control type="text" placeholder="concerned child" value={fieldB} onChange={e => setFieldB(e.target.value)} />
             </Col>
         </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
+            </Col>
+        </Row>
     </Form.Group>;
 }
 
@@ -219,6 +231,11 @@ function pet(fieldA, setFieldA, fieldB, setFieldB) {
             <Col>
                 <Form.Label>Other parties involved</Form.Label>
                 <Form.Control type="text" placeholder="parties involved" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
@@ -236,6 +253,11 @@ function travel(fieldA, setFieldA, fieldB, setFieldB) {
                 <Form.Control type="number" placeholder="Enter duration of journey" value={fieldB} onChange={e => setFieldB(e.target.value)} />
             </Col>
         </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
+            </Col>
+        </Row>
     </Form.Group>;
 }
 
@@ -249,6 +271,11 @@ function life(fieldA, setFieldA, fieldB, setFieldB) {
             <Col>
                 <Form.Label>Witnesses</Form.Label>
                 <Form.Control type="text" placeholder="witnesses" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
@@ -266,6 +293,11 @@ function health(fieldA, setFieldA, fieldB, setFieldB) {
                 <Form.Control type="text" placeholder="general practioner" value={fieldB} onChange={e => setFieldB(e.target.value)} />
             </Col>
         </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
+            </Col>
+        </Row>
     </Form.Group>;
 }
 
@@ -279,6 +311,11 @@ function business(fieldA, setFieldA, fieldB, setFieldB) {
             <Col>
                 <Form.Label>Witnesses</Form.Label>
                 <Form.Control type="text" placeholder="witnesses" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
