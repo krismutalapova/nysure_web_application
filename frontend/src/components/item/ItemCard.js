@@ -137,7 +137,7 @@ const Carousel = ({ uploadedImages, handleDelete }) =>
             <div className="carousel-inner">
                 {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
                     return (
-                        <div key={id} id={id } style={carouselItem} className={"carousel-item test" + (isActive ? " active" : "")}>
+                        <div key={id} id={id } style={carouselItem} className={"carousel-item del" + (isActive ? " active" : "")}>
                             <img className="d-block w-100" style={imageStyle}
                                 src={
                                     "data:" + fileType +

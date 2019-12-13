@@ -190,7 +190,7 @@ background-color: #a7b3b4;
   color: #ffffff;
 }
 
-.test {
+.del {
   position: relative;
   float: left;
 }
@@ -205,14 +205,14 @@ a.remImage img {
   transition: all .5s ease-in-out;
 }
 
-.test:hover a.remImage img {
+.del:hover a.remImage img {
   opacity: 1;
   z-index: 99;
   position: absolute;
   top: 5px;
 }
 
-.test:after {
+.del:after {
   content: '';
   width: 450px;
   height: 400px;
@@ -225,6 +225,6 @@ a.remImage img {
   transition: all .5s ease-in-out;
 }
 
-.test:hover:after{
+.del:hover:after{
   opacity: 1;
 }
