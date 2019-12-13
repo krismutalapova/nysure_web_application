@@ -23,6 +23,10 @@ public class ClaimController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/user/{id}")
+    public List<Claim> getAllByUser(@PathVariable String id) {
+        return claimService.getAllByUser(id);
+    }
 
     @PostMapping("")
     public Claim create(@RequestBody Claim newClaim) {
