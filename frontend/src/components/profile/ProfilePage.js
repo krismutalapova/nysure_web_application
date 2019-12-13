@@ -3,33 +3,6 @@ import ProfileForm from "./ProfileForm";
 import UserApi from "../../api/UserApi.js";
 
 class ProfilePage extends Component {
-state = {
-        user: {
-            id: "Loading...",
-            name: "Loading...",
-            email: "Loading...",
-            address: "Loading...",
-            phone: "Loading...",
-        }
-    }
-
-    setCurrentUser(userObject) {
-        this.setState({ user: userObject.data });
-    }
-
-    constructor(props) {
-        super(props);
-        this.loadUser();
-    }
-
-    async loadUser() {
-        try {
-            let userObject = await UserApi.current();
-            this.setState({ user: userObject.data });
-        } catch (e) {
-            console.error(e);
-        }
-    }
 
     render() {
         return (
@@ -47,7 +20,7 @@ state = {
                         <div className="card-body">
                             <div>
                                 <div className="col-12  strong-shadow">
-                                    <ProfileForm/>
+                                    <ProfileForm user={ this.props.user }/>
                                 </div>
                             </div>
                         </div>

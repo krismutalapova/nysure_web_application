@@ -6,6 +6,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -21,5 +23,10 @@ public class UserController {
     public User getById(@PathVariable String id) {
         return userService.getById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping("")
+    public User update(@RequestBody User updatedUser) {
+        return userService.update(updatedUser);
     }
 }
