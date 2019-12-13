@@ -7,8 +7,6 @@ import ItemApi from "../../api/ItemApi";
 import UserApi from "../../api/UserApi";
 
 function ClaimsForm(props) {
-
-
     const { type } = props.match.params;
 
     const [items, setItems] = React.useState([]);
@@ -42,7 +40,6 @@ function ClaimsForm(props) {
             .then(({ data }) => console.log(data))
             .catch(err => console.error(err));
     }
-
 
     return (
         <div>
@@ -89,10 +86,6 @@ function ClaimsForm(props) {
 }
 
 function common(item, incidentDate, incidentDescription, setIncidentDate, setIncidentDescription, setItem, items) {
-
-
-
-
     return <Form.Group controlId="formCommonInfo">
         <Row className="m-1">
 
@@ -157,6 +150,7 @@ function specific(type, fieldA, setFieldA, fieldB, setFieldB) {
             return <div className="row-full"></div>;
     }
 }
+
 function vehicle(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formVehicleInfo">
         <Row className="m-1">
@@ -199,7 +193,6 @@ function home(fieldA, setFieldA, fieldB, setFieldB) {
         </Row>
     </Form.Group>;
 }
-
 
 function child(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formChildInfo">
