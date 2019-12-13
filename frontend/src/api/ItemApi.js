@@ -17,6 +17,10 @@ class ItemApi {
         return Api.post('/items', item);
     }
 
+    changeStatus(id, date){
+        return Api.put(`/items/change_status/${id}?date=${date}`);
+    }
+
     updateItem(item) {
         return Api.put('/items', item);
     }
