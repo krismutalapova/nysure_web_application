@@ -13,6 +13,10 @@ class InsuranceApi {
         return Api.get(`/insurances/user/${id}?status=${status}`);
     }
 
+    getSumByUser(id) {
+        return Api.get(`/insurances/user/sum/${id}`);
+    }
+
     createInsurance(insurance) {
         return Api.post('/insurances', insurance);
     }

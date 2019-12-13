@@ -43,8 +43,6 @@ class ItemPage extends Component {
         //delete files by item id and the item
         deleteAllByItem(itemId)
         .then((res) => {
-            // do something with Google res
-        
             return ItemApi.deleteItem(itemId);
         })
         .then(res => {
