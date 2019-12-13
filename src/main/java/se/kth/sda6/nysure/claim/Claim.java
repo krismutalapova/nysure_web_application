@@ -92,7 +92,7 @@ public class Claim {
     public void setItem(Item item) {
         this.item = item;
     }
-    
+
     public User getUser() {
         return user;
     }
