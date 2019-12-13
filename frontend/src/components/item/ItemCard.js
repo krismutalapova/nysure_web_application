@@ -137,13 +137,13 @@ const Carousel = ({ uploadedImages }) =>
             <div className="carousel-inner">
                 {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
                     return (
-                        <div key={id} id={id} className={"carousel-item test" + (isActive ? " active" : "")}>
-                            <img className="d-block w-100"
+                        <div key={id} id={id } style={carouselItem} className={"carousel-item test" + (isActive ? " active" : "")}>
+                            <img className="d-block w-100" style={imageStyle}
                                 src={
                                     "data:" + fileType +
                                     ";base64," + fileData
                                 } alt={fileName} />
-                            <a className="remImage" href="#" id="delete">
+                            <a className="remImage" href="/item#" id="delete">
                                 <img src="https://image.flaticon.com/icons/svg/261/261935.svg" style={{width:"40px",height:"40px"}} alt="delete button"/>
 	                        </a>
                         </div>
@@ -174,5 +174,16 @@ const cardStyle = {
             width: '80%',
         margin: 'auto',
     }
+const carouselItem= {
+    height: '400px',
+}
+
+const imageStyle= {
+    top: '50%',
+    position: 'absolute',
+    transform: "translateY(-50%)"
+
+}
+
     
 export default ItemCard;
