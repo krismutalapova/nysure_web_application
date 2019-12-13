@@ -1,6 +1,7 @@
 package se.kth.sda6.nysure.claim;
 
 import se.kth.sda6.nysure.item.Item;
+import se.kth.sda6.nysure.user.User;
 
 import javax.persistence.*;
 
@@ -29,6 +30,9 @@ public class Claim {
 
     @ManyToOne()
     private Item item;
+
+    @ManyToOne()
+    private User user;
 
     public Claim() {
     }
@@ -87,6 +91,14 @@ public class Claim {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 
