@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ClaimsForm from "./ClaimsForm";
 import ClaimsApi from "../../api/ClaimsApi";
 import ClaimsSelection from "./ClaimsSelection";
 
@@ -112,11 +111,5 @@ const modalBorderStyle = {
     borderRadius: '10px',
     width: 'auto', 
   }
-
-  const modalForm= {
-      width: '100%', 
-  }
-
-
 
 export default ClaimsPage;
