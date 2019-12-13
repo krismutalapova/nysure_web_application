@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 function QuotaForm(props) {
 
     const { type } = props.match.params;
+    
 
     return (
         <div>

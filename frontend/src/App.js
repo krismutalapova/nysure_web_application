@@ -75,8 +75,8 @@ function App() {
                             <Quota/>
                         </Route>
 
-                        <Route path="/claims">
-                             <ClaimsPage/>
+                        <Route path="/claims"> 
+                             <ClaimsPage user={user}/ >
                          </Route>
 
                         <Route path="/profile">
