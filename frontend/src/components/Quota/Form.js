@@ -265,11 +265,11 @@ function business() {
     return <Form.Group controlId="formBusinessInfo">
         <Row className="m-1">
             <Col>
-                <Form.Label>Type of home</Form.Label>
+                <Form.Label>Type of business</Form.Label>
                 <Form.Control type="text" placeholder="Enter type of home" />
             </Col>
             <Col>
-                <Form.Label>Square footage</Form.Label>
+                <Form.Label>Square meters</Form.Label>
                 <Form.Control type="text" placeholder="Enter square footage" />
             </Col>
         </Row>
