@@ -24,6 +24,9 @@ public class Claim {
     @Column(name = "fieldB")
     private String fieldB;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne()
     private Item item;
 
@@ -68,6 +71,14 @@ public class Claim {
 
     public void setFieldB(String fieldB) {
         this.fieldB = fieldB;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Item getItem() {
