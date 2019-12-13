@@ -1,7 +1,6 @@
 # Nysure
 ​
-Nysure is an application that helps people gather all their different insurance and warranty information in one single place. The difference from other solutions out there is that Nysure prioritizes the items you want to keep safe, rather than just the policies you possess. For example, if you purchase a new item (e.g. a new mobile phone), you can create a card for this item, include the date of purchase, cost, and even photos of the item itself, no matter if an insurance or warranty policy cover it, or if it’s for simple filing purposes. With the quote function inside Nysure, the user can get quotes that compare several companies, and send claims directly to the appropriate insurance company.​
-We work hand in hand with companies aiming at using new technologies to their full potential, in order to make their users’ experiences more effective, pleasant, and simple.
+Nysure is an application that helps people gather all their different insurance and warranty information in one single place. The difference from other solutions out there is that Nysure prioritizes the items you want to keep safe, rather than just the policies you possess. For example, if you purchase a new item (e.g. a new mobile phone), you can create a card for this item, include the date of purchase, cost, and even photos of the item itself, no matter if an insurance or warranty policy cover it, or if it’s for simple filing purposes. With the quote function inside Nysure, the user can get quotes that compare several companies, and send claims directly to the appropriate insurance company. We work hand in hand with companies aiming at using new technologies to their full potential, in order to make their users’ experiences more effective, pleasant, and simple.
 ​
 ## Gathering insurance information
 ​
@@ -35,6 +34,8 @@ The user can send claims directly to the appropriate company they have registere
 ​
 ​
 ## Setup
+For Mac
+
 Our development environment for a full-stack web application will consist of three main parts:
 ​
 1. Database (Postgres).
