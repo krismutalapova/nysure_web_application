@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { uploadFile, getAllFiles, deleteFile} from "./../../api/FileApi";
+import { uploadFile, getAllFiles, deleteFile } from "./../../api/FileApi";
 
 
 class ItemCard extends Component {
@@ -11,16 +11,16 @@ class ItemCard extends Component {
         }
     };
 
-    handleDelete(id) { 
+    handleDelete(id) {
         deleteFile(id)
-        .then((res) => {
-            const newSelectedFiles = this.state.selectedFiles.filter(file => file.id !== id);
-            this.setState({
-                selectedFiles: newSelectedFiles
-            });
-        })
-        .catch(err => console.error(err));
-        };
+            .then((res) => {
+                const newSelectedFiles = this.state.selectedFiles.filter(file => file.id !== id);
+                this.setState({
+                    selectedFiles: newSelectedFiles
+                });
+            })
+            .catch(err => console.error(err));
+    };
 
     onFileChangeHandler = (e) => {
         e.preventDefault();
@@ -45,7 +45,7 @@ class ItemCard extends Component {
 
     componentDidMount() {
         //change state to update value in the select
-        if(this.props.item.insurance !== null){
+        if (this.props.item.insurance !== null) {
             this.setState({
                 insurancePlan: `${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`
             });
@@ -71,6 +71,14 @@ class ItemCard extends Component {
         return (
             <div className="card" style={cardStyle}>
                 <div className="card-body" >
+                    <label htmlFor="ItemBrand">Item Brand:</label>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={this.props.item.itemBrand}></input>
+                    <label htmlFor="ItemModel">Item Model:</label>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={this.props.item.itemModel}></input>
+                    <label htmlFor="ItemPurchaseDate">Date of Purchase:</label>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={this.props.item.itemDate}></input>
+                    <label htmlFor="insurancePlan">Price of Item:</label>
+                    <input disabled type="number" className="form-control" style={selectStyle} value={this.props.item.itemPrice}></input>
                     <label htmlFor="insurancePlan">Insurance plan:</label>
                     <select disabled style={selectStyle} type="text" value="no-insurance" className="form-control">
                         <option value="no-insurance">{insurancePlan}</option>
@@ -80,23 +88,23 @@ class ItemCard extends Component {
                         <label htmlFor="uploadPhoto">Upload a file:</label>
                         <input type="file" className="form-control" onChange={this.onFileChangeHandler} />
                     </div>
-                        {
-                            uploadedDocuments.length > 0
+                    {
+                        uploadedDocuments.length > 0
                             ? <DownloadDocs uploadedDocuments={uploadedDocuments} handleDelete={(id) => this.handleDelete(id)} />
                             : ""
-                        }
-                        {
-                            uploadedImages.length > 0
+                    }
+                    {
+                        uploadedImages.length > 0
                             ? <Carousel uploadedImages={uploadedImages} />
                             : ""
-                        }
+                    }
                 </div>
             </div>
         )
     };
 }
 
-const DownloadDocs = ({uploadedDocuments, handleDelete}) =>
+const DownloadDocs = ({ uploadedDocuments, handleDelete }) =>
     <div id="listOfDocuments">
         <label htmlFor="warrantyPlan"><b>Item documents:</b></label>
         <small className="text-muted float-right">{`${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? "" : "s"} uploaded`}</small>
@@ -120,34 +128,34 @@ const DownloadDocs = ({uploadedDocuments, handleDelete}) =>
             }
     </div>
 
-const Carousel = ({uploadedImages}) =>
+const Carousel = ({ uploadedImages }) =>
     <div>
-    <label htmlFor="uploadPhoto"><b>Item photos:</b></label>
-    <small className="text-muted float-right">{`${uploadedImages.length} photo${uploadedImages.length === 1 ? "" : "s"} uploaded`}</small>
-    <div id="carouselItem" className="carousel slide" data-ride="carousel">
-        <div className="carousel-inner">
-            {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
-                return (
-                    <div key={id} className={"carousel-item" + (isActive ? " active" : "")}>
-                        <img className="d-block w-100"
-                            src={
-                                "data:" + fileType +
-                                ";base64," + fileData
-                            } alt={fileName} />
-                    </div>
-                )
-            })
-            }
+        <label htmlFor="uploadPhoto"><b>Item photos:</b></label>
+        <small className="text-muted float-right">{`${uploadedImages.length} photo${uploadedImages.length === 1 ? "" : "s"} uploaded`}</small>
+        <div id="carouselItem" className="carousel slide" data-ride="carousel">
+            <div className="carousel-inner">
+                {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
+                    return (
+                        <div key={id} className={"carousel-item" + (isActive ? " active" : "")}>
+                            <img className="d-block w-100"
+                                src={
+                                    "data:" + fileType +
+                                    ";base64," + fileData
+                                } alt={fileName} />
+                        </div>
+                    )
+                })
+                }
+            </div>
+            <a className="carousel-control-prev" href="#carouselItem" role="button" data-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span className="sr-only">Previous</span>
+            </a>
+            <a className="carousel-control-next" href="#carouselItem" role="button" data-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                <span className="sr-only">Next</span>
+            </a>
         </div>
-        <a className="carousel-control-prev" href="#carouselItem" role="button" data-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="sr-only">Previous</span>
-        </a>
-        <a className="carousel-control-next" href="#carouselItem" role="button" data-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="sr-only">Next</span>
-        </a>
-    </div>
     </div>
 
 const selectStyle = {

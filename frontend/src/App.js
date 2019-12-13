@@ -23,10 +23,11 @@ import ItemPage from "./components/item/ItemPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import ClaimsPage from "./components/claims/ClaimsPage";
 import ClaimsForm from "./components/claims/ClaimsForm";
+import FaqPage from "./components/FAQ/FaqPage";
 
-
-
+// Import API
 import UserApi from "./api/UserApi";
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -42,6 +43,10 @@ function App() {
                     <Switch>
                         <Route path="/insurance">
                             <InsurancePage user={user}/>
+                        </Route>
+                        
+                        <Route path="/faq">
+                            <FaqPage/>
                         </Route>
 
                         <Route path="/aboutus">

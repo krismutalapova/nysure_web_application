@@ -53,4 +53,9 @@ public class FileController {
     public void delete(@PathVariable Long id) {
         fileService.delete(id);
     }
+
+    @DeleteMapping("/item/{id}")
+    public void deleteAllByItem(@PathVariable Long id) {
+        fileService.deleteAllByItem(id);
+    }
 }

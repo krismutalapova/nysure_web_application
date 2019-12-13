@@ -8,6 +8,7 @@
 body {
   min-height: 100vh;
   background: linear-gradient(to bottom, #ffffff, #ececec);
+  font-family: 'Raleway', sans-serif;
 }
 
 .App {
@@ -169,3 +170,16 @@ background-color: #a7b3b4;
   color: gray;
 }
 
+.faq-btn-collapse {
+  background-color: transparent;
+  border-color: transparent;
+  text-decoration: underline;
+}
+
+.faq-btn-collapse:focus {
+  color: #ffffff;
+}
+
+.faq-btn-collapse:hover:not(:focus) {
+  color: #ffffff77;
+}
