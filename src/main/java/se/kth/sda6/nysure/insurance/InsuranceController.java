@@ -25,6 +25,11 @@ public class InsuranceController {
         return insuranceService.getAllByUserAndStatus(new User(id), status);
     }
 
+    @GetMapping("/user/sum/{id}")
+    public int getSumInsurancesCost(@PathVariable String id) {
+        return insuranceService.sumInsurancesCost(id);
+    }
+
     @PostMapping("")
     public Insurance create(@RequestBody Insurance newInsurance) {
         return insuranceService.create(newInsurance);
