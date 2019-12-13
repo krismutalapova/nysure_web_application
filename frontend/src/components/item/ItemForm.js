@@ -7,8 +7,8 @@ function ItemForm( {onClickCreateItem, insurances } ) {
     const [itemBrand, setItemBrand] = React.useState("");
     const [itemModel, setItemModel] = React.useState("");
     const [insurance, setInsurance] = React.useState("no-insurance");
-    const [itemPrice, setItemPrice] = React.useState("000.00");
-    const [itemDate, setItemDate] = React.useState("yyyy-MM-dd");
+    const [itemPrice, setItemPrice] = React.useState("");
+    const [itemDate, setItemDate] = React.useState("");
 
     const handleSubmit = () => {
         // Invoke the passed in event callback
@@ -57,19 +57,19 @@ function ItemForm( {onClickCreateItem, insurances } ) {
         </div>
         <div className="form-group">
             <Form.Label htmlFor="start">Item Brand:</Form.Label>
-            <Form.Control type="text" value={itemBrand} onChange={e => setItemBrand(e.target.value)} className="form-control"/>
+            <Form.Control type="text" placeholder="What is your item's brand?" value={itemBrand} onChange={e => setItemBrand(e.target.value)} className="form-control"/>
         </div>
         <div className="form-group">
             <Form.Label htmlFor="start">Item Model:</Form.Label>
-            <Form.Control type="text" value={itemModel} onChange={e => setItemModel(e.target.value)} className="form-control"/>
+            <Form.Control type="text" placeholder="What is your item's model?" value={itemModel} onChange={e => setItemModel(e.target.value)} className="form-control"/>
         </div>
         <div className="form-group">
             <Form.Label htmlFor="start">Date of Purchase:</Form.Label>
-            <Form.Control type="date" value={itemDate} onChange={e => setItemDate(e.target.value)} className="form-control"/>
+            <Form.Control type="date" placeholder="yyyy-MM-dd" value={itemDate} onChange={e => setItemDate(e.target.value)} className="form-control"/>
         </div>
         <div className="form-group">
             <Form.Label htmlFor="start">Price of Item:</Form.Label>
-            <Form.Control type="text" value={itemPrice} onChange={e => setItemPrice(e.target.value)} className="form-control"/>
+            <Form.Control type="text" placeholder="What is your item's price?" value={itemPrice} onChange={e => setItemPrice(e.target.value)} className="form-control"/>
         </div>
         <div className="form-group">
             <label htmlFor="type"> Insurance plan:</label>
@@ -90,10 +90,6 @@ function ItemForm( {onClickCreateItem, insurances } ) {
 
 const itemStyle= {
     color: 'black'
-}
-
-const dateStyle= {
-    
 }
   
 export default ItemForm;
