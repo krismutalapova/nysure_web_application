@@ -96,7 +96,7 @@ class ItemCard extends Component {
                     }
                     {
                         uploadedImages.length > 0
-                            ? <Carousel uploadedImages={uploadedImages} />
+                            ? <Carousel uploadedImages={uploadedImages} handleDelete={(id) => this.handleDelete(id)} />
                             : ""
                     }
                 </div>
@@ -129,7 +129,7 @@ const DownloadDocs = ({ uploadedDocuments, handleDelete }) =>
         }
     </div>
 
-const Carousel = ({ uploadedImages }) =>
+const Carousel = ({ uploadedImages, handleDelete }) =>
     <div>
         <label htmlFor="uploadPhoto"><b>Item photos:</b></label>
         <small className="text-muted float-right">{`${uploadedImages.length} photo${uploadedImages.length === 1 ? "" : "s"} uploaded`}</small>
@@ -143,7 +143,7 @@ const Carousel = ({ uploadedImages }) =>
                                     "data:" + fileType +
                                     ";base64," + fileData
                                 } alt={fileName} />
-                            <a className="remImage" href="/item#" id="delete">
+                            <a className="remImage" href="/item#" id="delete" onClick={() => handleDelete(id)}> 
                                 <img src="https://image.flaticon.com/icons/svg/261/261935.svg" style={{width:"40px",height:"40px"}} alt="delete button"/>
 	                        </a>
                         </div>
