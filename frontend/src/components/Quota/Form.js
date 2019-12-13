@@ -74,7 +74,7 @@ function common() {
             </Col>
             <Col>
                 {
-                    ["Single", "Married", "Common law spouse", "Single-parent"]
+                    ["Single", "Married", "Common law spouse", "Other"]
                         .map((radioLabel, index) => (
                             <Form.Check
                                 inline
@@ -92,27 +92,8 @@ function common() {
                 <Form.Label>Occupation</Form.Label>
                 <Form.Control type="text" placeholder="Enter occupation" />
             </Col>
-            <Col>
-                <Form.Label>Annual salary</Form.Label>
-                <Form.Control type="number" placeholder="Enter annual salary" />
-            </Col>
         </Row>
-        <Row className="m-1">
-            <Col>
-                <Form.Label>Spouse's date of birth</Form.Label>
-                <Form.Control type="date" />
-            </Col>
-        </Row>
-        <Row className="m-1">
-            <Col>
-                <Form.Label>Spouse occupation</Form.Label>
-                <Form.Control type="text" placeholder="Enter occupation" />
-            </Col>
-            <Col>
-                <Form.Label>Spouse annual salary</Form.Label>
-                <Form.Control type="number" placeholder="Enter annual salary" />
-            </Col>
-        </Row>
+
         <Row className="m-1">
             <Col>
                 <Form.Label>Address</Form.Label>
@@ -121,14 +102,9 @@ function common() {
         </Row>
         <Row className="m-1">
             <Col>
-                <Form.Label>Work number</Form.Label>
+                <Form.Label>Contact number</Form.Label>
                 <Form.Control type="phone" placeholder="Enter work number" />
                 <Form.Text className="text-muted">We'll never share your work phone with anyone else.</Form.Text>
-            </Col>
-            <Col>
-                <Form.Label>Home number</Form.Label>
-                <Form.Control type="phone" placeholder="Enter home number" />
-                <Form.Text className="text-muted">We'll never share your home phone with anyone else.</Form.Text>
             </Col>
         </Row>
     </Form.Group>
