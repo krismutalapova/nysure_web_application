@@ -143,7 +143,7 @@ const Carousel = ({ uploadedImages }) =>
                                     "data:" + fileType +
                                     ";base64," + fileData
                                 } alt={fileName} />
-                            <a class="remImage" href="#" id="delete">
+                            <a className="remImage" href="#" id="delete">
                                 <img src="https://image.flaticon.com/icons/svg/261/261935.svg" style={{width:"40px",height:"40px"}} alt="delete button"/>
 	                        </a>
                         </div>
