@@ -111,11 +111,7 @@ function common(item, incidentDate, incidentDescription, setIncidentDate, setInc
                 <Form.Label>Item</Form.Label>
                 <Form.Control as="select" placeholder="Choose item" value={item} onChange={e => setItem(e.target.value)}>
                     <option>No item selected</option>
-                    {items.map(item => {
-                        if (item.insurance !== null) {
-                            <option key={item.itemId} value={item.itemId}>{`${item.itemType} - insurance: ${item.insurance.company}`}</option>)}
-                    }
-                }
+                    {items.filter(item => item.insurance !== null).map(item => <option key={item.itemId} value={item.itemId}>{`${item.itemType} - insurance: ${item.insurance.company}`}</option>)}
                 </Form.Control>
             </Col>
 
