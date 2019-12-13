@@ -59,7 +59,7 @@ class ItemCard extends Component {
 
     render() {
         const { selectedFiles, insurancePlan } = this.state;
-        const { itemBrand, itemModel, itemDate, itemPrice} = this.props.item;
+        const { itemBrand, itemModel, itemDate, itemPrice } = this.props.item;
 
         const uploadedImages = selectedFiles.filter(image => image.fileType.includes("image"));
 
@@ -73,13 +73,13 @@ class ItemCard extends Component {
             <div className="card" style={cardStyle}>
                 <div className="card-body" >
                     <label htmlFor="ItemBrand">Item Brand:</label>
-                    <input disabled type="text" className="form-control" style={selectStyle} value={itemBrand !==null ? itemBrand : ""}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={itemBrand !== null ? itemBrand : ""}></input>
                     <label htmlFor="ItemModel">Item Model:</label>
-                    <input disabled type="text" className="form-control" style={selectStyle} value={itemModel !==null ? itemModel : ""}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={itemModel !== null ? itemModel : ""}></input>
                     <label htmlFor="ItemPurchaseDate">Date of Purchase:</label>
-                    <input disabled type="text" className="form-control" style={selectStyle} value={itemDate !==null ? itemDate : ""}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={itemDate !== null ? itemDate : ""}></input>
                     <label htmlFor="insurancePlan">Price of Item:</label>
-                    <input disabled type="number" className="form-control" style={selectStyle} value={itemPrice !==null ? itemPrice : ""}></input>
+                    <input disabled type="number" className="form-control" style={selectStyle} value={itemPrice !== null ? itemPrice : ""}></input>
                     <label htmlFor="insurancePlan">Insurance plan:</label>
                     <select disabled style={selectStyle} type="text" value="no-insurance" className="form-control">
                         <option value="no-insurance">{insurancePlan}</option>
@@ -109,24 +109,24 @@ const DownloadDocs = ({ uploadedDocuments, handleDelete }) =>
     <div id="listOfDocuments">
         <label htmlFor="warrantyPlan"><b>Item documents:</b></label>
         <small className="text-muted float-right">{`${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? "" : "s"} uploaded`}</small>
-            {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
-                            return (
-                                <p key={id}>
-                                        {fileName} : <a className="fa fa-trash float-right"
-                                                        style={buttonStyle}
-                                                        href="/item#"
-                                                        onClick={() => handleDelete(id)}>
-                                                    </a>
-                                                    <a className="fa fa-download float-right"
-                                                        style={buttonStyle}
-                                                        download
-                                                        href={
-                                                            "data:" + fileType +
-                                                            ";base64," + fileData}> </a>
-                                </p>
-                            )
-                        })
-            }
+        {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
+            return (
+                <p key={id}>
+                    {fileName} : <a className="fa fa-trash float-right"
+                        style={buttonStyle}
+                        href="/item#"
+                        onClick={() => handleDelete(id)}>
+                    </a>
+                    <a className="fa fa-download float-right"
+                        style={buttonStyle}
+                        download
+                        href={
+                            "data:" + fileType +
+                            ";base64," + fileData}> </a>
+                </p>
+            )
+        })
+        }
     </div>
 
 const Carousel = ({ uploadedImages }) =>
@@ -137,39 +137,42 @@ const Carousel = ({ uploadedImages }) =>
             <div className="carousel-inner">
                 {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
                     return (
-                        <div key={id} className={"carousel-item" + (isActive ? " active" : "")}>
+                        <div key={id} id={id} className={"carousel-item test" + (isActive ? " active" : "")}>
                             <img className="d-block w-100"
                                 src={
                                     "data:" + fileType +
                                     ";base64," + fileData
                                 } alt={fileName} />
+                            <a class="remImage" href="#" id="delete">
+                                <img src="https://image.flaticon.com/icons/svg/261/261935.svg" style={{width:"40px",height:"40px"}} alt="delete button"/>
+	                        </a>
                         </div>
-                    )
-                })
-                }
+                            )
+                        })
+                        }
             </div>
-            <a className="carousel-control-prev" href="#carouselItem" role="button" data-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="sr-only">Previous</span>
-            </a>
-            <a className="carousel-control-next" href="#carouselItem" role="button" data-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="sr-only">Next</span>
-            </a>
+                        <a className="carousel-control-prev" href="#carouselItem" role="button" data-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="sr-only">Previous</span>
+                        </a>
+                        <a className="carousel-control-next" href="#carouselItem" role="button" data-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="sr-only">Next</span>
+                        </a>
         </div>
-    </div>
+        </div>
 
-const selectStyle = {
-    width: '100%',
-    margin: 'auto',
-    marginBottom: '30px',
-}
+        const selectStyle = {
+            width: '100%',
+        margin: 'auto',
+        marginBottom: '30px',
+    }
 const buttonStyle = {
-    marginRight: '15px',
-}
+            marginRight: '15px',
+    }
 const cardStyle = {
-    width: '80%',
-    margin: 'auto',
-}
-
+            width: '80%',
+        margin: 'auto',
+    }
+    
 export default ItemCard;

@@ -183,3 +183,42 @@ background-color: #a7b3b4;
 .faq-btn-collapse:hover:not(:focus) {
   color: #ffffff;
 }
+
+.test {
+  position: relative;
+  float: left;
+}
+a.remImage img {
+  box-shadow: none;
+  position: absolute;
+  right: 7px;
+  top: -5px;
+  margin-top: 4px;
+  opacity: 0;
+  display: block;
+  transition: all .5s ease-in-out;
+}
+
+.test:hover a.remImage img {
+  opacity: 1;
+  z-index: 99;
+  position: absolute;
+  top: 5px;
+}
+
+.test:after {
+  content: '';
+  width: 450px;
+  height: 300px;
+  position: absolute;
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0px;
+  z-index: 0;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+.test:hover:after{
+  opacity: 1;
+}
