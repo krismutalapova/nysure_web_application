@@ -26,8 +26,8 @@ function ItemForm( {onClickCreateItem, insurances } ) {
         setItemModel("");
         setItemType("no-type");
         setInsurance("no-insurance");
-        setItemDate("yyyy-MM-dd");
-        setItemPrice("000.00");
+        setItemDate("");
+        setItemPrice("");
         
     };
 

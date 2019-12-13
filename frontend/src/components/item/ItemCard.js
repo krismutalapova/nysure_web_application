@@ -59,6 +59,7 @@ class ItemCard extends Component {
 
     render() {
         const { selectedFiles, insurancePlan } = this.state;
+        const { itemBrand, itemModel, itemDate, itemPrice} = this.props.item;
 
         const uploadedImages = selectedFiles.filter(image => image.fileType.includes("image"));
 
@@ -72,13 +73,13 @@ class ItemCard extends Component {
             <div className="card" style={cardStyle}>
                 <div className="card-body" >
                     <label htmlFor="ItemBrand">Item Brand:</label>
-                    <input disabled type="text" className="form-control" style={selectStyle} value={this.props.item.itemBrand}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={itemBrand !==null ? itemBrand : ""}></input>
                     <label htmlFor="ItemModel">Item Model:</label>
-                    <input disabled type="text" className="form-control" style={selectStyle} value={this.props.item.itemModel}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={itemModel !==null ? itemModel : ""}></input>
                     <label htmlFor="ItemPurchaseDate">Date of Purchase:</label>
-                    <input disabled type="text" className="form-control" style={selectStyle} value={this.props.item.itemDate}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={itemDate !==null ? itemDate : ""}></input>
                     <label htmlFor="insurancePlan">Price of Item:</label>
-                    <input disabled type="number" className="form-control" style={selectStyle} value={this.props.item.itemPrice}></input>
+                    <input disabled type="number" className="form-control" style={selectStyle} value={itemPrice !==null ? itemPrice : ""}></input>
                     <label htmlFor="insurancePlan">Insurance plan:</label>
                     <select disabled style={selectStyle} type="text" value="no-insurance" className="form-control">
                         <option value="no-insurance">{insurancePlan}</option>
