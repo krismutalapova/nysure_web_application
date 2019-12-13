@@ -114,11 +114,6 @@ function common(item, incidentDate, incidentDescription, setIncidentDate, setInc
                     {items.filter(item => item.insurance !== null).map(item => <option key={item.itemId} value={item.itemId}>{`${item.itemType} - insurance: ${item.insurance.company}`}</option>)}
                 </Form.Control>
             </Col>
-
-            <Col>
-                <Form.Label>Insurance</Form.Label>
-                <Form.Control type="text" placeholder="Choose insurance" />
-            </Col>
         </Row>
 
         <Row className="m-1">
