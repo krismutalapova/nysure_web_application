@@ -144,7 +144,7 @@ const Carousel = ({ uploadedImages, handleDelete }) =>
                                     ";base64," + fileData
                                 } alt={fileName} />
                             <a className="remImage" href="/item#" id="delete" onClick={() => handleDelete(id)}> 
-                                <img src="https://image.flaticon.com/icons/svg/261/261935.svg" style={{width:"40px",height:"40px"}} alt="delete button"/>
+                                <img src="icons/recycling-bin.svg" style={{width:"30px",height:"30px"}} alt="delete button"/>
 	                        </a>
                         </div>
                             )
