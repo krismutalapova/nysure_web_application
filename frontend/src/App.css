@@ -82,6 +82,17 @@ background-color: #a7b3b4;
   vertical-align: center;
 }
 
+.topbar-brand {
+
+  display: block;
+    height: 5vmin;
+    shape-image-threshold: 5px;
+
+}
+
+display: block;
+    height: 30vmin;
+
 .border-content-left {
   display: inline-block;
   width: 100%;

@@ -4,7 +4,7 @@ function Topbar({onLogout, user}) {
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark topBar">
             <a className="navbar-brand" href="/">
-                <img src="/images/NySure-Logo-96.png" alt="logo" />
+                <img src="/images/NySureLogoWhite-2.png" alt="logo" />
             </a>
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <p className="user">
