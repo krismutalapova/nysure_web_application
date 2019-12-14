@@ -50,7 +50,7 @@ function Navbar() {
                     <li className="nav-item">
                         <Link to="/faq" className="nav-link">
                             FAQ
-                            </Link>
+                        </Link>
                     </li>
                 </ul>
             </div>

@@ -4,11 +4,16 @@ function Topbar({ onLogout, user }) {
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark topBar">
             <a className="navbar-brand" href="/" alt="Home">
-                <img src="/images/NySureLogoWhite.png" style={{ width: "140px", height: "auto" }} alt="logo" />
+                <img 
+                    src="/images/NySureLogoWhite.png" 
+                    style={{ width: "140px", height: "auto" }} 
+                    alt="logo" />
             </a>
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <p className="user">
-                    Welcome  <strong style={{fontSize: "25px"}}> {user.name || user.email } ,</strong>
+                    Welcome  
+                    <strong style={{fontSize: "25px"}}> 
+                        {user.name || user.email } ,</strong>
                     <br></br>
                     what would you like to keep safe today?
 
@@ -27,7 +32,11 @@ function Topbar({ onLogout, user }) {
                     </div>
                 </a>
             </div>
-            <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>Logout</button>
+            <button 
+                className="btn btn-outline-info my-2 my-sm-0" 
+                onClick={onLogout}>
+                    Logout
+            </button>
         </nav>
     );
 }
