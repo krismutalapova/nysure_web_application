@@ -11,6 +11,7 @@ function ClaimsForm(props) {
 
     const [items, setItems] = React.useState([]);
     const [item, setItem] = React.useState("");
+    const [user, setUser] = React.useState({});
     const [incidentDate, setIncidentDate] = React.useState("");
     const [incidentDescription, setIncidentDescription] = React.useState("");
     const [fieldA, setFieldA] = React.useState("");
@@ -19,7 +20,8 @@ function ClaimsForm(props) {
     React.useEffect(() => {
         UserApi.current()
             .then((res) => {
-                return ItemApi.getAllItemByUser(res.data.id)
+                setUser(res.data.id);
+                return ItemApi.getAllItemByUser(res.data.id);
             })
             .then((res) => {
                 setItems(res.data)
@@ -35,7 +37,8 @@ function ClaimsForm(props) {
             fieldA: fieldA,
             fieldB: fieldB,
             status: "pending",
-            item: item,
+            item: {itemId: item},
+            user: user,
         })
             .then(({ data }) => console.log(data))
             .catch(err => console.error(err));
@@ -142,9 +145,7 @@ function vehicle(fieldA, setFieldA, fieldB, setFieldB) {
                 <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
-
-
-    </Form.Group>;
+    </Form.Group>
 }
 
 function home(fieldA, setFieldA, fieldB, setFieldB) {

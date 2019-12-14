@@ -8,12 +8,15 @@ class ClaimsApi {
     getAllById(id) {
         return Api.get('/claims/'+id);
     }
+
     getAllByStatus(status) {
         return Api.get('/claims?status='+  status);
     }
+
     getAllClaimsByUser(id) {
         return Api.get('/claims/user/'+id);
     }
+    
     createClaims(claims) {
         return Api.post('/claims', claims);
     }
