@@ -37,17 +37,16 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-<<<<<<< HEAD
 .edit-info {
   margin-left: 15px;
   margin-right: 20px;
   object-position: center;
-
 }
 
 .strong-shadow{
   background-color: #a7b3b4;
-=======
+}
+
 .border-content-left {
   display: inline-block;
   width: 100%;
@@ -56,7 +55,7 @@ body {
   font-size: 16pt;
   border: lightblue 1pt solid;
   padding: 5pt;
->>>>>>> 0c8c81141da09490071497a72fbce622b3d03cbc
+
 }
 
 .btn-circle, .btn-circle:hover {
@@ -91,8 +90,7 @@ body {
   margin-top: 20%;
 }
 
-.carousel-control-next-icon:after
-{
+.carousel-control-next-icon:after {
   content: '>';
   font-size: 45px;
   color: black;
@@ -112,17 +110,16 @@ body {
   vertical-align: center;
 }
 
-<<<<<<< HEAD
 .topbar-brand {
 
   display: block;
     height: 5vmin;
     shape-image-threshold: 5px;
-
 }
 
 display: block;
     height: 30vmin;
+}
 
 .border-content-left {
   display: inline-block;
@@ -132,11 +129,11 @@ display: block;
   font-size: 16pt;
   border: lightblue 1pt solid;
   padding: 5pt;
-=======
+}
+  
 .form-control {
   margin: none;
   background: linear-gradient(to right, #d0d7d7, #ececec);
->>>>>>> 0c8c81141da09490071497a72fbce622b3d03cbc
 }
 
 .logincard {
@@ -232,16 +229,11 @@ display: block;
 }
 
 .navbar-brand {
-<<<<<<< HEAD
   margin-left: 20px;
 }
 
 .btn-outline-info{
   margin-right: 20px;
-}
-
-
-=======
   margin-left: 30px;
   shape-image-threshold: initial;
 }
@@ -250,7 +242,6 @@ display: block;
   margin-right: 30px;
 }
 
->>>>>>> 0c8c81141da09490071497a72fbce622b3d03cbc
 .faq-btn-collapse:focus {
   color: #ffffff;
 }
