@@ -66,7 +66,7 @@ class ClaimsPage extends Component {
                         return (
                             <div key={claim.claimId} className="card" style={cardStyle}>
                                 <div className="card-body">
-                                    <h5 className="card-title">{claim.incidentDate === "" ? "Incident date not available" : claim.incidentDate}</h5>
+                                    <h5 className="card-title">{claim.incidentDate === "" ? "Date not available" : claim.incidentDate}</h5>
                                     <p className="card-text">{`Item insured: ${claim.item.itemType}`}</p>
                                     <p className="card-text">{`Company: ${claim.item.insurance.company}`}</p>
                                     <button type="button"
@@ -75,7 +75,7 @@ class ClaimsPage extends Component {
                                         data-target={`#claimCardModal-${claim.id}`}> View claim
                                         </button>
                                 </div>
-                                <Modal id={`claimCardModal-${claim.id}`} title={claim.type}>
+                                <Modal id={`claimCardModal-${claim.id}`} title={`Claim no. ${claim.claimId}`}>
                                      <ClaimsCard claim={claim} />
                                 </Modal>
                             </div>
