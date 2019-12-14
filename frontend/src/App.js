@@ -76,7 +76,7 @@ function App() {
                         </Route>
 
                         <Route path="/claims"> 
-                             <ClaimsPage user={user}/ >
+                             <ClaimsPage user={user} />
                          </Route>
 
                         <Route path="/profile">
