@@ -45,7 +45,7 @@ function ClaimsForm(props) {
             item: { itemId: item },
             user: user,
         })
-            .then(({ data }) => console.log(data))
+            .then(({ data }) => { window.location.href = "/claims";})
             .catch(err => console.error(err));
     }
 
