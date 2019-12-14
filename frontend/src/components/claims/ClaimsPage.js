@@ -72,10 +72,10 @@ class ClaimsPage extends Component {
                                     <button type="button"
                                         className="btn btn-primary"
                                         data-toggle="modal"
-                                        data-target={`#claimCardModal-${claim.id}`}> View claim
+                                        data-target={`#claimCardModal-${claim.claimId}`}> View claim
                                         </button>
                                 </div>
-                                <Modal id={`claimCardModal-${claim.id}`} title={`Claim no. ${claim.claimId}`}>
+                                <Modal id={`claimCardModal-${claim.claimId}`} title={`Claim no. ${claim.claimId}`}>
                                      <ClaimsCard claim={claim} />
                                 </Modal>
                             </div>
@@ -105,7 +105,7 @@ const Modal = ({ children, id, title }) =>
 
 const cardStyle = {
     width: '100%',
-    maxWidth: '400px',
+    maxWidth: '350px',
     margin: '10px',
 }
 
