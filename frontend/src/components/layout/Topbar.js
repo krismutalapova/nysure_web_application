@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 function Topbar({ onLogout, user }) {
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark topBar">
+<<<<<<< HEAD
+            <a className="navbar-brand" href="/">
+                <img src="/images/NySureLogoWhite-2.png" alt="logo" />
+=======
             <a className="navbar-brand" href="/" alt="Home">
                 <img 
                     src="/images/NySureLogoWhite.png" 
                     style={{ width: "140px", height: "auto" }} 
                     alt="logo" />
+>>>>>>> 0c8c81141da09490071497a72fbce622b3d03cbc
             </a>
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <p className="user">

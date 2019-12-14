@@ -112,9 +112,31 @@ body {
   vertical-align: center;
 }
 
+<<<<<<< HEAD
+.topbar-brand {
+
+  display: block;
+    height: 5vmin;
+    shape-image-threshold: 5px;
+
+}
+
+display: block;
+    height: 30vmin;
+
+.border-content-left {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  color: white;
+  font-size: 16pt;
+  border: lightblue 1pt solid;
+  padding: 5pt;
+=======
 .form-control {
   margin: none;
   background: linear-gradient(to right, #d0d7d7, #ececec);
+>>>>>>> 0c8c81141da09490071497a72fbce622b3d03cbc
 }
 
 .logincard {
