@@ -37,24 +37,25 @@ class ProfileForm extends React.Component {
 
         return (
             <div className="card">
-                <div className="card-body">
-                    <div className="row">
-                        <div className="form-group">
-                            <label>Full Name:</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={this.state.name}
-                                onChange={e => this.setState({ name: e.target.value })}
-                                placeholder="What shall we call you?" />
-                        </div>
-                        <button type="button"
-                            className="btn"
-                            onClick={e => this.handleSubmit()}>
-                            <i className="edit-info"></i>
-                        </button>
+                <div className="card-item">
+                <label>Username:</label>
+                    <div className="form-group card-title">
+                        
+                        <input
+                            type="text"
+                            className="form-control"
+                            value={this.state.name}
+                            onChange={e => this.setState({ name: e.target.value })}
+                            placeholder="What shall we call you?" />
                     </div>
-                    <div div className="row">
+                    <button 
+                        type="button"
+                        className="btn"
+                        onClick={e => this.handleSubmit()}>
+                            <i className="edit-info"></i>
+                    </button>
+                </div>
+                <div className="card-item">
                         <div className="form-group">
                             <label>Email:</label>
                             <input
@@ -70,7 +71,7 @@ class ProfileForm extends React.Component {
                             <i className="edit-info"></i>
                         </button>
                     </div>
-                    <div div className="row">
+                    <div className="row">
                         <div className="form-group">
                             <label>Password:</label>
                             <input
@@ -88,7 +89,6 @@ class ProfileForm extends React.Component {
                         </button>
                     </div>
                 </div>
-            </div>
         );
     }
 }
