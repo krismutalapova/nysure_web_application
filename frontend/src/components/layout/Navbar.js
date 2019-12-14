@@ -15,6 +15,7 @@ function Navbar() {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarColor01">
+                
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <Link to="/" className="nav-link">
@@ -49,7 +50,7 @@ function Navbar() {
                     <li className="nav-item">
                         <Link to="/faq" className="nav-link">
                             FAQ
-                            </Link>
+                        </Link>
                     </li>
                 </ul>
             </div>
