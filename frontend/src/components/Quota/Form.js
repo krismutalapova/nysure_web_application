@@ -43,6 +43,11 @@ function QuotaForm(props) {
 function common() {
     return <Form.Group controlId="formCommonInfo">
         <Row className="m-1">
+        <Form.Text className="text-muted"> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
+        </Row>
+        <Row className="m-1">
+        
             <Col>
                 <Form.Label>First name</Form.Label>
                 <Form.Control type="text" placeholder="Enter first name" />
@@ -93,8 +98,7 @@ function common() {
         <Row className="m-1">
             <Col>
                 <Form.Label>Contact number</Form.Label>
-                <Form.Control type="phone" placeholder="Enter work number" />
-                <Form.Text className="text-muted">We'll never share your work phone with anyone else.</Form.Text>
+                <Form.Control type="phone" placeholder="Enter number" />
             </Col>
         </Row>
     </Form.Group>
@@ -237,7 +241,7 @@ function business() {
             </Col>
             <Col>
                 <Form.Label>Square meters</Form.Label>
-                <Form.Control type="text" placeholder="Enter square footage" />
+                 <Form.Control type="text" placeholder="Enter square footage" />
             </Col>
         </Row>
     </Form.Group>;
