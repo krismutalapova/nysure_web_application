@@ -1,7 +1,11 @@
 import React from "react";
+
+//Bootstrap elements
 import Form from 'react-bootstrap/Form';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+
+//Api's to fetch data
 import ClaimsApi from "../../api/ClaimsApi";
 import ItemApi from "../../api/ItemApi";
 import UserApi from "../../api/UserApi";
@@ -37,7 +41,7 @@ function ClaimsForm(props) {
             fieldA: fieldA,
             fieldB: fieldB,
             status: "pending",
-            item: {itemId: item},
+            item: { itemId: item },
             user: user,
         })
             .then(({ data }) => console.log(data))
