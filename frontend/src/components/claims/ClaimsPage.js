@@ -75,7 +75,7 @@ class ClaimsPage extends Component {
                                         </button>
                                 </div>
                                 <Modal id={`claimCardModal-${claim.id}`} title={claim.type}>
-                                     <claimsCard claim={claim} />
+                                     <ClaimsCard claim={claim} />
                                 </Modal>
                             </div>
                         );
