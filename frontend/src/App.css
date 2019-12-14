@@ -5,11 +5,7 @@
 @import "css/Cols.css";
 /* @import "css/Rows.css"; */
 
-body {
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #ffffff, #ececec);
-  font-family: 'Raleway', sans-serif;
-}
+
 
 .App {
   text-align: center;
@@ -35,51 +31,10 @@ body {
   color: #09d3ac;
 }
 
-.card {
-    background-color: #a7b3b4;
-}
-
-.strong-shadow{
-background-color: #a7b3b4;
-}
-.logincard {
-    background-color: #a7b3b4;
-    border-color: #a7b3b4;
-}
-
-.card-body {
-    background-color: #a7b3b4;
-    margin:-5px;
-    border-radius: 10px;
-    font-family: 'Raleway', sans-serif;
-}
-
-.form-control {
-    margin: none;
-    background: linear-gradient(to right, #d0d7d7, #ececec);
-}
-
-.NySureLogo {
-    display: block;
-    height: 30vmin;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.LoginSlogan {
-  text-align-last: center;
-  font-size: calc(7px + 2vmin);
-  color: black;
-  margin-top: 20px;
-}
-
-.center-content {
-  text-align: center;
-  align-content: center;
-  justify-content: center;
-  margin-top: 10pt;
-  margin-bottom: 10pt;
-  vertical-align: center;
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, #ececec);
+  font-family: 'Raleway', sans-serif;
 }
 
 .border-content-left {
@@ -96,7 +51,95 @@ background-color: #a7b3b4;
   color: white;
 }
 
+.card {
+    background-color: #a7b3b4;
+}
+
+.card-body {
+  background-color: #a7b3b4;
+  margin:-5px;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: none;
+  background-image: none;
+}
+
+.carousel-control-next, 
+.carousel-control-prev {
+  height: 50%;
+  margin-top: 20%;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 45px;
+  color: black;
+}
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 45px;
+  color: black;
+}
+
+.center-content {
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  vertical-align: center;
+}
+
+.form-control {
+  margin: none;
+  background: linear-gradient(to right, #d0d7d7, #ececec);
+}
+
+.logincard {
+  background-color: #a7b3b4;
+  border-color: #a7b3b4;
+}
+
+.LoginSlogan {
+  text-align-last: center;
+  font-size: calc(7px + 2vmin);
+  color: black;
+  margin-top: 20px;
+}
+
+.NySureLogo {
+  display: block;
+  height: 30vmin;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.strong-shadow{
+  background-color: #a7b3b4;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: rgb(91, 91, 99);
+}
 .text-white {
+  color: white;
+}
+
+.nav-link {
   color: white;
 }
 
@@ -117,7 +160,7 @@ background-color: #a7b3b4;
 }
 
 .bg-dark {
-  background-color: #a7b3b4 !important;
+  background: linear-gradient(to bottom, #899b9b, #a7b3b4);
 }
 
 
@@ -148,38 +191,19 @@ background-color: #a7b3b4;
   display: block;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
-  outline: black;
-  background-size: 100%, 100%;
-  border-radius: 50%;
-  border: none;
-  background-image: none;
-}
-.carousel-control-next, 
-.carousel-control-prev {
-  height: 50%;
-  margin-top: 20%;
-}
-
-.carousel-control-next-icon:after
-{
-  content: '>';
-  font-size: 45px;
-  color: black;
-}
-.carousel-control-prev-icon:after {
-  content: '<';
-  font-size: 45px;
-  color: black;
-}
-
 .faq-btn-collapse {
   background-color: transparent;
   border-color: transparent;
   text-decoration: underline;
+}
+
+.navbar-brand {
+  margin-left: 30px;
+  shape-image-threshold: initial;
+}
+
+.btn-outline-info{
+  margin-right: 30px;
 }
 
 .faq-btn-collapse:focus {
@@ -188,6 +212,40 @@ background-color: #a7b3b4;
 
 .faq-btn-collapse:hover:not(:focus) {
   color: #ffffff;
+}
+
+.profileIcon {
+  position: absolute;
+  top: 45px;
+  right: 150px;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .3s ease;
+  opacity: 0;
+  position: absolute;
+  top: 80%;
+  right: 105px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-40%, -40%);
+}
+
+.userContainer:hover .image {
+  opacity: 0.3;
+}
+
+.userContainer:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #82b1b7;
+  color: white;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 20px;
 }
 
 .del {
