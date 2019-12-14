@@ -36,6 +36,7 @@ function ClaimsForm(props) {
 
     const handleSubmit = () => {
         ClaimsApi.createClaims({
+            type: type,
             incidentDate: incidentDate,
             incidentDescription: incidentDescription,
             fieldA: fieldA,
