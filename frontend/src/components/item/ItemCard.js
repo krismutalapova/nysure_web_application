@@ -73,13 +73,17 @@ class ItemCard extends Component {
             <div className="card" style={cardStyle}>
                 <div className="card-body" >
                     <label htmlFor="ItemBrand">Item Brand:</label>
-                    <input disabled type="text" className="form-control" style={selectStyle} value={itemBrand !==null ? itemBrand : ""}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={itemBrand !== "" ? itemBrand : "not defined"}></input>
+                    
                     <label htmlFor="ItemModel">Item Model:</label>
-                    <input disabled type="text" className="form-control" style={selectStyle} value={itemModel !==null ? itemModel : ""}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={itemModel !== "" ? itemModel : "not defined"}></input>
+                    
                     <label htmlFor="ItemPurchaseDate">Date of Purchase:</label>
-                    <input disabled type="text" className="form-control" style={selectStyle} value={itemDate !==null ? itemDate : ""}></input>
+                    <input disabled type="text" className="form-control" style={selectStyle} value={itemDate !== "" ? itemDate : "not defined"}></input>
+                    
                     <label htmlFor="insurancePlan">Price of Item:</label>
-                    <input disabled type="number" className="form-control" style={selectStyle} value={itemPrice !==null ? itemPrice : ""}></input>
+                    <input disabled type={itemPrice !== null ? "number" : "text"} className="form-control" style={selectStyle} value={itemPrice !== null ? itemPrice : "not defined"}></input>
+                    
                     <label htmlFor="insurancePlan">Insurance plan:</label>
                     <select disabled style={selectStyle} type="text" value="no-insurance" className="form-control">
                         <option value="no-insurance">{insurancePlan}</option>
