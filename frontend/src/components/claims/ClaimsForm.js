@@ -52,8 +52,9 @@ function ClaimsForm(props) {
             </Form>
 
             <button
+                style={{ padding: "10px", margin:"10px 20px 10px 20px"}}
                 type="btn btn-block"
-                className="btn btn-info btn-block"
+                className="btn btn-info"
                 data-toggle="modal"
                 data-target="#claimsPage"
                 onClick={handleSubmit}>
