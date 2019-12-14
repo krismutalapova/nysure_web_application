@@ -59,7 +59,7 @@ class ItemCard extends Component {
 
     render() {
         const { selectedFiles, insurancePlan } = this.state;
-        const { itemBrand, itemModel, itemDate, itemPrice} = this.props.item;
+        const { itemBrand, itemModel, itemDate, itemPrice } = this.props.item;
 
         const uploadedImages = selectedFiles.filter(image => image.fileType.includes("image"));
 
@@ -100,7 +100,7 @@ class ItemCard extends Component {
                     }
                     {
                         uploadedImages.length > 0
-                            ? <Carousel uploadedImages={uploadedImages} />
+                            ? <Carousel uploadedImages={uploadedImages} handleDelete={(id) => this.handleDelete(id)} />
                             : ""
                     }
                 </div>
@@ -113,27 +113,27 @@ const DownloadDocs = ({ uploadedDocuments, handleDelete }) =>
     <div id="listOfDocuments">
         <label htmlFor="warrantyPlan"><b>Item documents:</b></label>
         <small className="text-muted float-right">{`${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? "" : "s"} uploaded`}</small>
-            {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
-                            return (
-                                <p key={id}>
-                                        {fileName} : <a className="fa fa-trash float-right"
-                                                        style={buttonStyle}
-                                                        href="/item#"
-                                                        onClick={() => handleDelete(id)}>
-                                                    </a>
-                                                    <a className="fa fa-download float-right"
-                                                        style={buttonStyle}
-                                                        download
-                                                        href={
-                                                            "data:" + fileType +
-                                                            ";base64," + fileData}> </a>
-                                </p>
-                            )
-                        })
-            }
+        {uploadedDocuments.map(({ id, fileName, fileType, fileData }) => {
+            return (
+                <p key={id}>
+                    {fileName} : <a className="fa fa-trash float-right"
+                        style={buttonStyle}
+                        href="/item#"
+                        onClick={() => handleDelete(id)}>
+                    </a>
+                    <a className="fa fa-download float-right"
+                        style={buttonStyle}
+                        download
+                        href={
+                            "data:" + fileType +
+                            ";base64," + fileData}> </a>
+                </p>
+            )
+        })
+        }
     </div>
 
-const Carousel = ({ uploadedImages }) =>
+const Carousel = ({ uploadedImages, handleDelete }) =>
     <div>
         <label htmlFor="uploadPhoto"><b>Item photos:</b></label>
         <small className="text-muted float-right">{`${uploadedImages.length} photo${uploadedImages.length === 1 ? "" : "s"} uploaded`}</small>
@@ -141,39 +141,53 @@ const Carousel = ({ uploadedImages }) =>
             <div className="carousel-inner">
                 {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
                     return (
-                        <div key={id} className={"carousel-item" + (isActive ? " active" : "")}>
-                            <img className="d-block w-100"
+                        <div key={id} id={id } style={carouselItem} className={"carousel-item del" + (isActive ? " active" : "")}>
+                            <img className="d-block w-100" style={imageStyle}
                                 src={
                                     "data:" + fileType +
                                     ";base64," + fileData
                                 } alt={fileName} />
+                            <a className="remImage" href="/item#" id="delete" onClick={() => handleDelete(id)}> 
+                                <img src="icons/recycling-bin.svg" style={{width:"30px",height:"30px"}} alt="delete button"/>
+	                        </a>
                         </div>
-                    )
-                })
-                }
+                            )
+                        })
+                        }
             </div>
-            <a className="carousel-control-prev" href="#carouselItem" role="button" data-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="sr-only">Previous</span>
-            </a>
-            <a className="carousel-control-next" href="#carouselItem" role="button" data-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="sr-only">Next</span>
-            </a>
+                        <a className="carousel-control-prev" href="#carouselItem" role="button" data-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="sr-only">Previous</span>
+                        </a>
+                        <a className="carousel-control-next" href="#carouselItem" role="button" data-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="sr-only">Next</span>
+                        </a>
         </div>
-    </div>
+        </div>
 
-const selectStyle = {
-    width: '100%',
-    margin: 'auto',
-    marginBottom: '30px',
-}
+        const selectStyle = {
+            width: '100%',
+        margin: 'auto',
+        marginBottom: '30px',
+    }
 const buttonStyle = {
-    marginRight: '15px',
-}
+            marginRight: '15px',
+    }
 const cardStyle = {
-    width: '80%',
-    margin: 'auto',
+            width: '80%',
+        margin: 'auto',
+    }
+const carouselItem= {
+    height: '400px',
 }
 
+const imageStyle= {
+    top: '50%',
+    position: 'absolute',
+    transform: "translateY(-50%)"
+
+}
+
+    
 export default ItemCard;
