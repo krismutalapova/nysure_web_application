@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.kth.sda6.nysure.user.User;
 
 @Service
 public class ClaimService {
@@ -30,5 +31,10 @@ public class ClaimService {
 
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    public List<Claim> getAllByUser(String id) {
+        //Create a new user from the id received and fetch the data from DB based on that id
+        return repository.findAllByUser(new User(id));
     }
 }

@@ -1,6 +1,8 @@
 package se.kth.sda6.nysure.claim;
 
-import se.kth.sda6.nysure.insurance.Insurance;
+import se.kth.sda6.nysure.item.Item;
+import se.kth.sda6.nysure.user.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,10 +14,25 @@ public class Claim {
     private Long claimId;
 
     @Column(name = "incidentDescription")
-    private String inDescr;
+    private String incidentDescription;
+
+    @Column(name = "incidentDate")
+    private String incidentDate;
+
+    @Column(name = "fieldA")
+    private String fieldA;
+
+    @Column(name = "fieldB")
+    private String fieldB;
+
+    @Column(name = "status")
+    private String status;
 
     @ManyToOne()
-    private Insurance insurance;
+    private Item item;
+
+    @ManyToOne()
+    private User user;
 
     public Claim() {
     }
@@ -28,20 +45,60 @@ public class Claim {
         this.claimId = claimId;
     }
 
-    public String getInDescr() {
-        return inDescr;
+    public String getIncidentDescription() {
+        return incidentDescription;
     }
 
-    public void setInDescr(String inDescr) {
-        this.inDescr = inDescr;
+    public void setIncidentDescription(String incidentDescription) {
+        this.incidentDescription = incidentDescription;
     }
 
-    public Insurance getInsurance() {
-        return insurance;
+    public String getIncidentDate() {
+        return incidentDate;
     }
 
-    public void setInsurance(Insurance insurance) {
-        this.insurance = insurance;
+    public void setIncidentDate(String incidentDate) {
+        this.incidentDate = incidentDate;
+    }
+
+    public String getFieldA() {
+        return fieldA;
+    }
+
+    public void setFieldA(String fieldA) {
+        this.fieldA = fieldA;
+    }
+
+    public String getFieldB() {
+        return fieldB;
+    }
+
+    public void setFieldB(String fieldB) {
+        this.fieldB = fieldB;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 
