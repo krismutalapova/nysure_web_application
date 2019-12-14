@@ -44,18 +44,21 @@ class ItemCard extends Component {
     };
 
     componentDidMount() {
-        //change state to update value in the select
-        if (this.props.item.insurance !== null) {
-            this.setState({
-                insurancePlan: `${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`
-            });
-        }
+        window.setTimeout(() => {
+            //change state to update value in the select
+            if (this.props.item.insurance !== null) {
+                this.setState({
+                    insurancePlan: `${this.props.item.insurance.company} - policy id: ${this.props.item.insurance.id}`
+                });
+            }
 
-        //get all files
-        getAllFiles(this.props.item.itemId)
-            .then(({ data }) => this.setState({ selectedFiles: data }))
-            .catch(err => console.error(err));
+            //get all files
+            getAllFiles(this.props.item.itemId)
+                .then(({ data }) => this.setState({ selectedFiles: data }))
+                .catch(err => console.error(err));
+        }, 400)
     }
+
 
     render() {
         const { selectedFiles, insurancePlan } = this.state;
@@ -74,16 +77,16 @@ class ItemCard extends Component {
                 <div className="card-body" >
                     <label htmlFor="ItemBrand">Item Brand:</label>
                     <input disabled type="text" className="form-control" style={selectStyle} value={itemBrand !== "" ? itemBrand : "not defined"}></input>
-                    
+
                     <label htmlFor="ItemModel">Item Model:</label>
                     <input disabled type="text" className="form-control" style={selectStyle} value={itemModel !== "" ? itemModel : "not defined"}></input>
-                    
+
                     <label htmlFor="ItemPurchaseDate">Date of Purchase:</label>
                     <input disabled type="text" className="form-control" style={selectStyle} value={itemDate !== "" ? itemDate : "not defined"}></input>
-                    
+
                     <label htmlFor="insurancePlan">Price of Item:</label>
                     <input disabled type={itemPrice !== null ? "number" : "text"} className="form-control" style={selectStyle} value={itemPrice !== null ? itemPrice : "not defined"}></input>
-                    
+
                     <label htmlFor="insurancePlan">Insurance plan:</label>
                     <select disabled style={selectStyle} type="text" value="no-insurance" className="form-control">
                         <option value="no-insurance">{insurancePlan}</option>
@@ -141,53 +144,53 @@ const Carousel = ({ uploadedImages, handleDelete }) =>
             <div className="carousel-inner">
                 {uploadedImages.map(({ id, fileName, fileType, fileData, isActive }) => {
                     return (
-                        <div key={id} id={id } style={carouselItem} className={"carousel-item del" + (isActive ? " active" : "")}>
+                        <div key={id} id={id} style={carouselItem} className={"carousel-item del" + (isActive ? " active" : "")}>
                             <img className="d-block w-100" style={imageStyle}
                                 src={
                                     "data:" + fileType +
                                     ";base64," + fileData
                                 } alt={fileName} />
-                            <a className="remImage" href="/item#" id="delete" onClick={() => handleDelete(id)}> 
-                                <img src="icons/recycling-bin.svg" style={{width:"30px",height:"30px"}} alt="delete button"/>
-	                        </a>
+                            <a className="remImage" href="/item#" id="delete" onClick={() => handleDelete(id)}>
+                                <img src="icons/recycling-bin.svg" style={{ width: "30px", height: "30px" }} alt="delete button" />
+                            </a>
                         </div>
-                            )
-                        })
-                        }
+                    )
+                })
+                }
             </div>
-                        <a className="carousel-control-prev" href="#carouselItem" role="button" data-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Previous</span>
-                        </a>
-                        <a className="carousel-control-next" href="#carouselItem" role="button" data-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Next</span>
-                        </a>
+            <a className="carousel-control-prev" href="#carouselItem" role="button" data-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span className="sr-only">Previous</span>
+            </a>
+            <a className="carousel-control-next" href="#carouselItem" role="button" data-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                <span className="sr-only">Next</span>
+            </a>
         </div>
-        </div>
+    </div>
 
-        const selectStyle = {
-            width: '100%',
-        margin: 'auto',
-        marginBottom: '30px',
-    }
+const selectStyle = {
+    width: '100%',
+    margin: 'auto',
+    marginBottom: '30px',
+}
 const buttonStyle = {
-            marginRight: '15px',
-    }
+    marginRight: '15px',
+}
 const cardStyle = {
-            width: '80%',
-        margin: 'auto',
-    }
-const carouselItem= {
+    width: '80%',
+    margin: 'auto',
+}
+const carouselItem = {
     height: '400px',
 }
 
-const imageStyle= {
+const imageStyle = {
     top: '50%',
     position: 'absolute',
     transform: "translateY(-50%)"
 
 }
 
-    
+
 export default ItemCard;
