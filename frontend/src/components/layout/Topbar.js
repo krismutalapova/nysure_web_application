@@ -11,15 +11,16 @@ function Topbar({ onLogout, user }) {
             </a>
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <p className="user">
-                    Welcome  
-                    <strong style={{fontSize: "25px"}}> 
-                        {user.name || user.email } ,</strong>
+                    Welcome &nbsp; 
+                    <strong style={{fontSize: "25px"}}>   
+                        {user.name || user.email } ,
+                    </strong>
                     <br></br>
                     what would you like to keep safe today?
 
                 </p>
             </div>
-            <div class="userContainer">
+            <div className="userContainer">
                 <a href="/profile">
                     <img 
                         className="profileIcon" 
@@ -27,8 +28,8 @@ function Topbar({ onLogout, user }) {
                         style={{ width: "40px", height: "40px" }} 
                         alt="Edit User"
                     />
-                    <div class="middle">
-                        <div class="text">Edit User</div>
+                    <div className="middle">
+                        <div className="text">Edit User</div>
                     </div>
                 </a>
             </div>
