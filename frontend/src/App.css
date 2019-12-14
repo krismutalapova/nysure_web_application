@@ -158,16 +158,22 @@ background-color: #a7b3b4;
   border: none;
   background-image: none;
 }
+.carousel-control-next, 
+.carousel-control-prev {
+  height: 50%;
+  margin-top: 20%;
+}
+
 .carousel-control-next-icon:after
 {
   content: '>';
-  font-size: 55px;
-  color: gray;
+  font-size: 45px;
+  color: black;
 }
 .carousel-control-prev-icon:after {
   content: '<';
-  font-size: 55px;
-  color: gray;
+  font-size: 45px;
+  color: black;
 }
 
 .faq-btn-collapse {
@@ -182,4 +188,43 @@ background-color: #a7b3b4;
 
 .faq-btn-collapse:hover:not(:focus) {
   color: #ffffff;
+}
+
+.del {
+  position: relative;
+  float: left;
+}
+a.remImage img {
+  box-shadow: none;
+  position: absolute;
+  right: 7px;
+  top: -5px;
+  margin-top: 4px;
+  opacity: 0;
+  display: block;
+  transition: all .5s ease-in-out;
+}
+
+.del:hover a.remImage img {
+  opacity: 1;
+  z-index: 99;
+  position: absolute;
+  top: 5px;
+}
+
+.del:after {
+  content: '';
+  width: 450px;
+  height: 400px;
+  position: absolute;
+  display: block;
+  background: rgba(0, 0, 0, 0.3);
+  top: 0px;
+  z-index: 0;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+.del:hover:after{
+  opacity: 1;
 }

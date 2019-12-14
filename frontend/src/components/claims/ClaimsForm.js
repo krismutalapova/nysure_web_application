@@ -1,18 +1,21 @@
 import React from "react";
+
+//Bootstrap elements
 import Form from 'react-bootstrap/Form';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+
+//Api's to fetch data
 import ClaimsApi from "../../api/ClaimsApi";
 import ItemApi from "../../api/ItemApi";
 import UserApi from "../../api/UserApi";
 
 function ClaimsForm(props) {
-
-
     const { type } = props.match.params;
 
     const [items, setItems] = React.useState([]);
     const [item, setItem] = React.useState("");
+    const [user, setUser] = React.useState({});
     const [incidentDate, setIncidentDate] = React.useState("");
     const [incidentDescription, setIncidentDescription] = React.useState("");
     const [fieldA, setFieldA] = React.useState("");
@@ -21,7 +24,8 @@ function ClaimsForm(props) {
     React.useEffect(() => {
         UserApi.current()
             .then((res) => {
-                return ItemApi.getAllItemByUser(res.data.id)
+                setUser(res.data.id);
+                return ItemApi.getAllItemByUser(res.data.id);
             })
             .then((res) => {
                 setItems(res.data)
@@ -32,17 +36,18 @@ function ClaimsForm(props) {
 
     const handleSubmit = () => {
         ClaimsApi.createClaims({
+            type: type,
             incidentDate: incidentDate,
             incidentDescription: incidentDescription,
             fieldA: fieldA,
             fieldB: fieldB,
             status: "pending",
-            item: item,
+            item: { itemId: item },
+            user: user,
         })
             .then(({ data }) => console.log(data))
             .catch(err => console.error(err));
     }
-
 
     return (
         <div>
@@ -54,46 +59,15 @@ function ClaimsForm(props) {
             <button
                 style={{ padding: "10px", margin:"10px 20px 10px 20px"}}
                 type="btn btn-block"
-                className="btn btn-info"
-                data-toggle="modal"
-                data-target="#claimsPage"
+                className="btn btn-info btn-block"
                 onClick={handleSubmit}>
                 Create claim
             </button>
-            <div id="claimsPage" className="wrapper modal fade" role="dialog">
-                <div className="container">
-                    <div className="row mt-4">
-                        <div className="card-body">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h4 className="card-title">Claim</h4>
-                                        <button
-                                            type="button"
-                                            className="close"
-                                            data-dismiss="modal">
-                                            &times;
-                                                </button>
-                                    </div>
-                                    <div className="modal-body">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     )
 }
 
 function common(item, incidentDate, incidentDescription, setIncidentDate, setIncidentDescription, setItem, items) {
-
-
-
-
     return <Form.Group controlId="formCommonInfo">
         <Row className="m-1">
 
@@ -158,6 +132,7 @@ function specific(type, fieldA, setFieldA, fieldB, setFieldB) {
             return <div className="row-full"></div>;
     }
 }
+
 function vehicle(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formVehicleInfo">
         <Row className="m-1">
@@ -176,9 +151,7 @@ function vehicle(fieldA, setFieldA, fieldB, setFieldB) {
                 <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
-
-
-    </Form.Group>;
+    </Form.Group>
 }
 
 function home(fieldA, setFieldA, fieldB, setFieldB) {
@@ -200,7 +173,6 @@ function home(fieldA, setFieldA, fieldB, setFieldB) {
         </Row>
     </Form.Group>;
 }
-
 
 function child(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formChildInfo">
