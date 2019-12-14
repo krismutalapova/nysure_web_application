@@ -1,263 +1,293 @@
 import React from "react";
+
+//Bootstrap elements
 import Form from 'react-bootstrap/Form';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-function ClaimsForm(props) {
+//Api's to fetch data
+import ClaimsApi from "../../api/ClaimsApi";
+import ItemApi from "../../api/ItemApi";
+import UserApi from "../../api/UserApi";
 
+function ClaimsForm(props) {
     const { type } = props.match.params;
+
+    const [items, setItems] = React.useState([]);
+    const [item, setItem] = React.useState("");
+    const [user, setUser] = React.useState({});
+    const [incidentDate, setIncidentDate] = React.useState("");
+    const [incidentDescription, setIncidentDescription] = React.useState("");
+    const [fieldA, setFieldA] = React.useState("");
+    const [fieldB, setFieldB] = React.useState("");
+
+    React.useEffect(() => {
+        UserApi.current()
+            .then((res) => {
+                setUser(res.data.id);
+                return ItemApi.getAllItemByUser(res.data.id);
+            })
+            .then((res) => {
+                setItems(res.data)
+            })
+            .catch(err => console.error(err));
+
+    }, []);
+
+    const handleSubmit = () => {
+        ClaimsApi.createClaims({
+            type: type,
+            incidentDate: incidentDate,
+            incidentDescription: incidentDescription,
+            fieldA: fieldA,
+            fieldB: fieldB,
+            status: "pending",
+            item: { itemId: item },
+            user: user,
+        })
+            .then(({ data }) => { window.location.href = "/claims";})
+            .catch(err => console.error(err));
+    }
 
     return (
         <div>
             <Form>
-                {common()}
-                {specific(type)}
+                {common(item, incidentDate, incidentDescription, setIncidentDate, setIncidentDescription, setItem, items)}
+                {specific(type, fieldA, setFieldA, fieldB, setFieldB)}
             </Form>
+
             <button
                 type="btn btn-block"
                 className="btn btn-info btn-block"
-                data-toggle="modal"
-                data-target="#claimsPage">
-                Submit
+                onClick={handleSubmit}>
+                Create claim
             </button>
-            <div id="claimsPage" className="wrapper modal fade" role="dialog">
-                <div className="container">
-                    <div className="row mt-4">
-                            <div className="card-body">
-                                    <div className="modal-dialog"> 
-                                        <div className="modal-content">
-                                            <div className="modal-header">
-                                                <h4 className="card-title">Quote</h4>
-                                                <button
-                                                    type="button"
-                                                    className="close"
-                                                    data-dismiss="modal">
-                                                    &times;
-                                                </button>
-                                            </div>
-                                            <div className="modal-body">
-                                
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            
         </div>
     )
 }
 
-function common() {
+function common(item, incidentDate, incidentDescription, setIncidentDate, setIncidentDescription, setItem, items) {
     return <Form.Group controlId="formCommonInfo">
         <Row className="m-1">
-            <Col>
-                <Form.Label>First name</Form.Label>
-                <Form.Control type="text" placeholder="Enter first name" />
-            </Col>
-            <Col>
-                <Form.Label>Last name</Form.Label>
-                <Form.Control type="text" placeholder="Enter last name" />
-            </Col>
+
+        </Row>
+        <Row className="m-1">
+
         </Row>
         <Row className="m-1">
             <Col>
-                <Form.Label>Date of birth</Form.Label>
-                <Form.Control type="date" />
+                <Form.Label></Form.Label>
             </Col>
+
         </Row>
         <Row className="m-1">
             <Col>
-                <Form.Label>Civil status</Form.Label>
-            </Col>
-        
-        </Row>
-        <Row className="m-1">
-            <Col>
-                <Form.Label>Occupation</Form.Label>
-                <Form.Control type="text" placeholder="Enter occupation" />
-            </Col>
-            <Col>
-                <Form.Label>Annual salary</Form.Label>
-                <Form.Control type="number" placeholder="Enter annual salary" />
+                <Form.Label>Item</Form.Label>
+                <Form.Control as="select" placeholder="Choose item" value={item} onChange={e => setItem(e.target.value)}>
+                    <option>No item selected</option>
+                    {items.filter(item => item.insurance !== null).map(item => <option key={item.itemId} value={item.itemId}>{`${item.itemType} - insurance: ${item.insurance.company}`}</option>)}
+                </Form.Control>
             </Col>
         </Row>
+
         <Row className="m-1">
             <Col>
-                <Form.Label>Spouse's date of birth</Form.Label>
-                <Form.Control type="date" />
+                <Form.Label>Incident date</Form.Label>
+                <Form.Control type="date" value={incidentDate} onChange={e => setIncidentDate(e.target.value)} />
             </Col>
         </Row>
+
         <Row className="m-1">
             <Col>
-                <Form.Label>Spouse occupation</Form.Label>
-                <Form.Control type="text" placeholder="Enter occupation" />
-            </Col>
-            <Col>
-                <Form.Label>Spouse annual salary</Form.Label>
-                <Form.Control type="number" placeholder="Enter annual salary" />
-            </Col>
-        </Row>
-        <Row className="m-1">
-            <Col>
-                <Form.Label>Claim description</Form.Label>
-                <Form.Control as="textarea" rows="2" type="text" placeholder="Enter claim description" />
-            </Col>
-        </Row>
-        <Row className="m-1">
-            <Col>
-                <Form.Label>Work number</Form.Label>
-                <Form.Control type="phone" placeholder="Enter work number" />
-                <Form.Text className="text-muted">We'll never share your work phone with anyone else.</Form.Text>
-            </Col>
-            <Col>
-                <Form.Label>Home number</Form.Label>
-                <Form.Control type="phone" placeholder="Enter home number" />
-                <Form.Text className="text-muted">We'll never share your home phone with anyone else.</Form.Text>
+                <Form.Label>Incident description</Form.Label>
+                <Form.Control as="textarea" rows="2" type="text" placeholder="Enter incident description" maxLength='500'
+                    value={incidentDescription} onChange={e => setIncidentDescription(e.target.value)} />
+
             </Col>
         </Row>
     </Form.Group>
 }
 
-function specific(type) {
+
+function specific(type, fieldA, setFieldA, fieldB, setFieldB) {
     switch (type) {
         case "vehicle":
-            return vehicle();
-        case "home":
-            return home();
+            return vehicle(fieldA, setFieldA, fieldB, setFieldB);
         case "child":
-            return child();
+            return child(fieldA, setFieldA, fieldB, setFieldB);
+        case "home":
+            return home(fieldA, setFieldA, fieldB, setFieldB);
         case "pet":
-            return pet();
+            return pet(fieldA, setFieldA, fieldB, setFieldB);
         case "travel":
-            return travel();
+            return travel(fieldA, setFieldA, fieldB, setFieldB);
         case "life":
-            return life();
+            return life(fieldA, setFieldA, fieldB, setFieldB);
         case "health":
-            return health();
+            return health(fieldA, setFieldA, fieldB, setFieldB);
         case "business":
-            return business();
+            return business(fieldA, setFieldA, fieldB, setFieldB);
         default:
             return <div className="row-full"></div>;
     }
 }
 
-function vehicle() {
+function vehicle(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formVehicleInfo">
         <Row className="m-1">
             <Col>
-                <Form.Label>Make and model</Form.Label>
-                <Form.Control type="text" placeholder="Enter make and model" />
+                <Form.Label>Location of incident</Form.Label>
+                <Form.Control type="text" placeholder="location of incident" value={fieldA} onChange={e => setFieldA(e.target.value)} />
             </Col>
             <Col>
-                <Form.Label>Year of production </Form.Label>
-                <Form.Control type="date" placeholder="Enter year of production" />
+                <Form.Label> Responsibility </Form.Label>
+                <Form.Control type="text" placeholder="responsibility" value={fieldB} onChange={e => setFieldB(e.target.value)} />
             </Col>
         </Row>
-    </Form.Group>;
+
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
+            </Col>
+        </Row>
+    </Form.Group>
 }
 
-function home() {
+function home(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formHomeInfo">
         <Row className="m-1">
             <Col>
                 <Form.Label>Type of home </Form.Label>
-                <Form.Control type="text" placeholder="Enter type of home" />
+                <Form.Control type="text" placeholder="Enter type of home" value={fieldA} onChange={e => setFieldA(e.target.value)} />
             </Col>
             <Col>
                 <Form.Label>Square meters</Form.Label>
-                <Form.Control type="number" placeholder="Enter square meters" />
+                <Form.Control type="text" placeholder="Enter square meters" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
 }
 
-function child() {
+function child(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formChildInfo">
         <Row className="m-1">
             <Col>
-                <Form.Label>Number of children</Form.Label>
-                <Form.Control type="number" placeholder="Number of children" />
+                <Form.Label>Location of incident</Form.Label>
+                <Form.Control type="text" placeholder="location of incident" value={fieldA} onChange={e => setFieldA(e.target.value)} />
             </Col>
             <Col>
-                <Form.Label>Year of birth</Form.Label>
-                <Form.Control type="text" placeholder="Enter year(s) of birth" />
+                <Form.Label>Specify concerned child </Form.Label>
+                <Form.Control type="text" placeholder="concerned child" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
 }
 
-function pet() {
+function pet(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formPetInfo">
         <Row className="m-1">
             <Col>
-                <Form.Label>Number of pets</Form.Label>
-                <Form.Control type="number" placeholder="Enter number of pets" />
+                <Form.Label>Specify concerned pet</Form.Label>
+                <Form.Control type="text" placeholder="concerned pet" value={fieldA} onChange={e => setFieldA(e.target.value)} />
             </Col>
             <Col>
-                <Form.Label>Year of birth</Form.Label>
-                <Form.Control type="text" placeholder="Enter year(s) of birth" />
+                <Form.Label>Other parties involved</Form.Label>
+                <Form.Control type="text" placeholder="parties involved" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
 }
 
-function travel() {
+function travel(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formTravelInfo">
         <Row className="m-1">
             <Col>
-                <Form.Label>Where are you traveling to?</Form.Label>
-                <Form.Control type="text" placeholder="Enter where are you traveling to" />
+                <Form.Label>Destination</Form.Label>
+                <Form.Control type="text" placeholder="Enter destination" value={fieldA} onChange={e => setFieldA(e.target.value)} />
             </Col>
             <Col>
-                <Form.Label>Number of days of stay</Form.Label>
-                <Form.Control type="number" placeholder="Enter number of days of stay" />
+                <Form.Label>Duration of journey</Form.Label>
+                <Form.Control type="number" placeholder="Enter duration of journey" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
 }
 
-function life() {
+function life(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formLifeInfo">
         <Row className="m-1">
             <Col>
-                <Form.Label>Are you a smoker?</Form.Label>
-                <Form.Control type="text" placeholder="Are you a smoker" />
+                <Form.Label>Location of the incident</Form.Label>
+                <Form.Control type="text" placeholder="location of incident" value={fieldA} onChange={e => setFieldA(e.target.value)} />
             </Col>
             <Col>
-                <Form.Label>Is your spouse a smoker?</Form.Label>
-                <Form.Control type="text" placeholder="Is your spouse a smoker" />
+                <Form.Label>Witnesses</Form.Label>
+                <Form.Control type="text" placeholder="witnesses" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
 }
 
-function health() {
+function health(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formHealthInfo">
         <Row className="m-1">
             <Col>
-                <Form.Label>Are you a smoker?</Form.Label>
-                <Form.Control type="text" placeholder="Are you a smoker" />
+                <Form.Label>Location of the incident</Form.Label>
+                <Form.Control type="text" placeholder="location of incident" value={fieldA} onChange={e => setFieldA(e.target.value)} />
             </Col>
             <Col>
-                <Form.Label>Is your spouse a smoker?</Form.Label>
-                <Form.Control type="text" placeholder="Is your spouse a smoker" />
+                <Form.Label>Name of general practitioner</Form.Label>
+                <Form.Control type="text" placeholder="general practioner" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;
 }
 
-function business() {
+function business(fieldA, setFieldA, fieldB, setFieldB) {
     return <Form.Group controlId="formBusinessInfo">
         <Row className="m-1">
             <Col>
-                <Form.Label>Type of home</Form.Label>
-                <Form.Control type="text" placeholder="Enter type of home" />
+                <Form.Label>Location of business</Form.Label>
+                <Form.Control type="text" placeholder="location of business" value={fieldA} onChange={e => setFieldA(e.target.value)} />
             </Col>
             <Col>
-                <Form.Label>Square footage</Form.Label>
-                <Form.Control type="text" placeholder="Enter square footage" />
+                <Form.Label>Witnesses</Form.Label>
+                <Form.Control type="text" placeholder="witnesses" value={fieldB} onChange={e => setFieldB(e.target.value)} />
+            </Col>
+        </Row>
+        <Row className="m-1">
+            <Col>
+                <Form.Text className="text-muted">*All information is confidential</Form.Text>
             </Col>
         </Row>
     </Form.Group>;

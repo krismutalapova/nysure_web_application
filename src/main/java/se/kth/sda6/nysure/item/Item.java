@@ -19,22 +19,6 @@ public class Item {
     @Column(name = "itemModel")
     private String itemModel;
 
-    public String getItemBrand() {
-        return itemBrand;
-    }
-
-    public void setItemBrand(String itemBrand) {
-        this.itemBrand = itemBrand;
-    }
-
-    public String getItemModel() {
-        return itemModel;
-    }
-
-    public void setItemModel(String itemModel) {
-        this.itemModel = itemModel;
-    }
-
     @Column(name = "itemDate")
     private String itemDate;
 
@@ -43,6 +27,50 @@ public class Item {
 
     @Column(name = "itemType")
     private String itemType;
+
+    @ManyToOne()
+    private Insurance insurance;
+
+    @ManyToOne()
+    private User user;
+
+    public Item() {
+    }
+
+    public Item(Long itemId) {
+        this.itemId = itemId;
+    }
+
+    //getters and setter of itemId
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    public String getItemBrand() {
+        return itemBrand;
+    }
+
+    public void setItemBrand(String itemBrand) {
+        this.itemBrand = itemBrand;
+    }
+
+    public String getItemModel() { return itemModel; }
+
+    public void setItemModel(String itemModel) {
+        this.itemModel = itemModel;
+    }
 
     public Double getItemPrice() {
         return itemPrice;
@@ -58,36 +86,6 @@ public class Item {
 
     public void setItemDate(String itemDate) {
         this.itemDate = itemDate;
-    }
-
-    @ManyToOne()
-    private Insurance insurance;
-
-    @ManyToOne()
-    private User user;
-
-    public Item() {
-    }
-
-    public Item(Long itemId) {
-        this.itemId = itemId;
-    }
-
-    public Long getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
-    }
-
-    public String getItemType() {
-        return itemType;
-    }
-
-
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
     }
 
     public Insurance getInsurance() {

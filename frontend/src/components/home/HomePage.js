@@ -41,26 +41,26 @@ class HomePage extends Component {
                     </div>
                 </div>
                 <div className="column">
-                    <div className="row-full">
-                        <div className="col-4 center-content">
+                    <div className="row">
+                        <div className="col center-content">
                             <Link to="/item" className="nav-link">
                                 <img className="btn-circle btn-circle-lg" src="/images/photo.png " alt="item" />
                             </Link>
                             <p>Items</p>
                         </div>
-                        <div className="col-4 center-content">
+                        <div className="col center-content">
                             <Link to="/insurance" className="nav-link">
                                 <img className="btn-circle btn-circle-lg" src="/images/insurance.png " alt="insurance" />
                             </Link>
                             <p>Insurance</p>
                         </div>
-                        <div className="col-4 center-content">
+                        <div className="col center-content">
                             <Link to="/claims" className="nav-link">
                                 <img className="btn-circle btn-circle-lg" src="/images/claims.png " alt="claims" />
                             </Link>
                             <p>Claims</p>
                         </div>
-                        <div className="col-4 center-content">
+                        <div className="col center-content">
                             <Link to="/quote" className="nav-link">
                                 <img className="btn-circle btn-circle-lg" src="/images/quote.png " alt="quote" />
                             </Link>
