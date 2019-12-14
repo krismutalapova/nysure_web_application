@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ClaimsSelection from "./ClaimsSelection";
+import ClaimsCard from "./ClaimsCard";
 
 //to fetch data
 import ClaimsApi from "../../api/ClaimsApi";
