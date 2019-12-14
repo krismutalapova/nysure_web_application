@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import ClaimsForm from "./ClaimsForm";
-import ClaimsApi from "../../api/ClaimsApi";
 import ClaimsSelection from "./ClaimsSelection";
+import ClaimsCard from "./ClaimsCard";
+
+//to fetch data
+import ClaimsApi from "../../api/ClaimsApi";
+import UserApi from "../../api/UserApi";
 
 class ClaimsPage extends Component {
     constructor(props) {
@@ -28,9 +31,12 @@ class ClaimsPage extends Component {
     }
 
     componentDidMount() {
-        //get all claims by status
-        ClaimsApi.getAllByStatus("true")
-            .then(({ data }) => this.setState({ claims: data }))
+        //get all claims by user
+        UserApi.current()
+            .then((res) => {
+                return ClaimsApi.getAllClaimsByUser(res.data.id)})
+            .then((res) => {
+                this.setState({ claims: res.data })})
             .catch(err => console.error(err));
     }
 
@@ -58,19 +64,19 @@ class ClaimsPage extends Component {
                 <div className="row">
                     {claims.map(( claim ) => {
                         return (
-                            <div key={claim.id} className="card" style={cardStyle}>
+                            <div key={claim.claimId} className="card" style={cardStyle}>
                                 <div className="card-body">
-                                    <h5 className="card-title">{claim.type}</h5>
-                                    <p className="card-text">{claim.company}</p>
-                                    <p className="card-text">{claim.cost} SEK</p>
+                                    <h5 className="card-title">{claim.incidentDate === "" ? "Date not available" : claim.incidentDate}</h5>
+                                    <p className="card-text">{`Item insured: ${claim.item.itemType}`}</p>
+                                    <p className="card-text">{`Company: ${claim.item.insurance.company}`}</p>
                                     <button type="button"
                                         className="btn btn-primary"
                                         data-toggle="modal"
-                                        data-target={`#claimCardModal-${claim.id}`}> View claim
+                                        data-target={`#claimCardModal-${claim.claimId}`}> View claim
                                         </button>
                                 </div>
-                                <Modal id={`claimCardModal-${claim.id}`} title={claim.type}>
-                                     <claimCard claim={claim}/>
+                                <Modal id={`claimCardModal-${claim.claimId}`} title={`Claim no. ${claim.claimId}`}>
+                                     <ClaimsCard claim={claim} />
                                 </Modal>
                             </div>
                         );
@@ -99,7 +105,7 @@ const Modal = ({ children, id, title }) =>
 
 const cardStyle = {
     width: '100%',
-    maxWidth: '400px',
+    maxWidth: '350px',
     margin: '10px',
 }
 
@@ -112,11 +118,5 @@ const modalBorderStyle = {
     borderRadius: '10px',
     width: 'auto', 
   }
-
-  const modalForm= {
-      width: '100%', 
-  }
-
-
 
 export default ClaimsPage;

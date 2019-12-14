@@ -13,6 +13,9 @@ public class Claim {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long claimId;
 
+    @Column(name = "type")
+    private String type;
+
     @Column(name = "incidentDescription")
     private String incidentDescription;
 
@@ -43,6 +46,14 @@ public class Claim {
 
     public void setClaimId(Long claimId) {
         this.claimId = claimId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getIncidentDescription() {
