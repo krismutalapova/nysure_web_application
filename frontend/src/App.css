@@ -226,6 +226,13 @@
   text-decoration: underline;
 }
 
+.savebtn {
+  height: 30px;
+  width: auto;
+  margin-left: 10px;
+  float: right;
+}
+
 .navbar-brand {
   margin-left: 20px;
 }

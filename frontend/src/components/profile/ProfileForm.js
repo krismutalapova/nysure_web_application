@@ -7,7 +7,6 @@ class ProfileForm extends React.Component {
 
     state = {
         name: "",
-        email: "",
         password: "",
     }
 
@@ -15,80 +14,64 @@ class ProfileForm extends React.Component {
         window.setTimeout(() => {
             this.setState({
                 name: this.props.user.name,
-                email: this.props.user.email,
                 password: "",
             })
         }, 400)
-       
+
     }
 
-     handleSubmit() {
-        const updatedUser = {...this.props.user}
+    handleSubmit() {
+        const updatedUser = { ...this.props.user }
         updatedUser.name = this.state.name
-        updatedUser.email = this.state.email
         updatedUser.password = this.state.password.length ? this.state.password : this.props.user.password
         UserApi.updateUser(updatedUser)
             .then(() => {
                 window.location.reload()
-            }) 
+            })
     }
 
     render() {
 
         return (
             <div className="card">
-                <div className="card-item">
-                <label>Username:</label>
-                    <div className="form-group card-title">
-                        
+                <div className="card-body">
+                    <label>Username:</label>
+                    <div className="form-group">
                         <input
                             type="text"
+                            placeholder="What shall we call you?" 
                             className="form-control"
                             value={this.state.name}
                             onChange={e => this.setState({ name: e.target.value })}
-                            placeholder="What shall we call you?" />
+                        />      
                     </div>
-                    <button 
+                    <button
                         type="button"
-                        className="btn"
+                        className="btn savebtn"
                         onClick={e => this.handleSubmit()}>
-                            <i className="edit-info"></i>
+                        <img className="savebtn" src="/icons/save-solid.png" alt="save" />
                     </button>
                 </div>
-                <div className="card-item">
-                        <div className="form-group">
-                            <label>Email:</label>
-                            <input
-                                type="email"
-                                value={this.state.email}
-                                onChange={e => this.setState({ email: e.target.value })}
-                                className="form-control"
-                                placeholder="Email" />
-                        </div>
-                        <button type="button"
-                            className="btn"
-                            onClick={e => this.handleSubmit()}>
-                            <i className="edit-info"></i>
-                        </button>
+
+                <div className="card-body">
+                    <label>Password:</label>
+                    <div className="form-group">
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            className="form-control"
+                            value={this.state.password}
+                            onChange={e => this.setState({ password: e.target.value })}
+                        />
                     </div>
-                    <div className="row">
-                        <div className="form-group">
-                            <label>Password:</label>
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                className="form-control"
-                                value={this.state.password}
-                                onChange={e => this.setState({ password: e.target.value })}
-                            />
-                        </div>
-                        <button type="button"
-                            className="btn"
-                            onClick={e => this.handleSubmit()}>
-                            <i className="edit-info"></i>
-                        </button>
-                    </div>
+                    <button type="button"
+                        className="btn savebtn"
+                        onClick={e => this.handleSubmit()}>
+                        <img className="savebtn" src="/icons/save-solid.png" alt="save" />
+                    </button>
                 </div>
+            </div>
+
         );
     }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ProfileForm from "./ProfileForm";
-import UserApi from "../../api/UserApi.js";
 
 class ProfilePage extends Component {
 
