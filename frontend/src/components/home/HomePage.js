@@ -21,55 +21,63 @@ class HomePage extends Component {
         //get the total cost of insurances
         UserApi.current()
             .then((res) => {
-                return InsuranceApi.getSumByUser(res.data.id)})
+                return InsuranceApi.getSumByUser(res.data.id)
+            })
             .then((res) => {
-                this.setState({ balance: res.data })})
+                this.setState({ balance: res.data })
+            })
             .catch(err => console.error(err));
     }
 
     render() {
         return (
             <div>
-                <div className="column">
-                    <div className="row-full">
-                        <div className="column">
-                            <div className="card text-white estimated-spent">
-                                <h4 className="">Estimated monthly cost:</h4>
-                                <h5 className="">{`${this.numberWithCommas()} SEK per month`}</h5>
-                            </div>
-                        </div>
+                <div className="row-full">
+                    <div className="card text-white estimated-spent">
+                        <h4 className="">Estimated monthly cost:</h4>
+                        <h5 className="">{`${this.numberWithCommas()} SEK per month`}</h5>
                     </div>
                 </div>
+
                 <div className="column">
                     <div className="row">
                         <div className="col center-content">
                             <Link to="/item" className="nav-link">
-                                <img className="btn-circle btn-circle-lg" src="/images/photo.png " alt="item" />
+                                <img
+                                    className="btn-circle btn-circle-lg"
+                                    src="/images/photo.png "
+                                    alt="item" />
                             </Link>
                             <p>Items</p>
                         </div>
                         <div className="col center-content">
                             <Link to="/insurance" className="nav-link">
-                                <img className="btn-circle btn-circle-lg" src="/images/insurance.png " alt="insurance" />
+                                <img
+                                    className="btn-circle btn-circle-lg"
+                                    src="/images/insurance.png "
+                                    alt="insurance" />
                             </Link>
                             <p>Insurance</p>
                         </div>
                         <div className="col center-content">
                             <Link to="/claims" className="nav-link">
-                                <img className="btn-circle btn-circle-lg" src="/images/claims.png " alt="claims" />
+                                <img
+                                    className="btn-circle btn-circle-lg"
+                                    src="/images/claims.png "
+                                    alt="claims" />
                             </Link>
                             <p>Claims</p>
                         </div>
                         <div className="col center-content">
                             <Link to="/quote" className="nav-link">
-                                <img className="btn-circle btn-circle-lg" src="/images/quote.png " alt="quote" />
+                                <img
+                                    className="btn-circle btn-circle-lg"
+                                    src="/images/quote.png "
+                                    alt="quote" />
                             </Link>
                             <p>Get a quote</p>
                         </div>
                     </div>
-                </div>
-                <div className="row-full">
-                    <div className="bottomPadding"></div>
                 </div>
             </div>
         );
