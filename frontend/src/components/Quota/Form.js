@@ -44,10 +44,6 @@ function QuotaForm(props) {
 function common() {
     return <Form.Group controlId="formCommonInfo">
         <Row className="m-1">
-        <Form.Text className="text-muted"> We are GDPR compliant.
-        All your data is secure and won't be shared with a third party. </Form.Text>
-        </Row>
-        <Row className="m-1">
         
             <Col>
                 <Form.Label>First name</Form.Label>
@@ -140,6 +136,10 @@ function vehicle() {
                 <Form.Control type="date" placeholder="Enter year of production" />
             </Col>
         </Row>
+        <Row className="m-1">
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
+        </Row>
     </Form.Group>;
 }
 
@@ -154,6 +154,10 @@ function home() {
                 <Form.Label>Square meters</Form.Label>
                 <Form.Control type="number" placeholder="Enter square meters" />
             </Col>
+        </Row>
+        <Row className="m-1">
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
@@ -185,6 +189,10 @@ function pet() {
                 <Form.Control type="text" placeholder="Enter year(s) of birth" />
             </Col>
         </Row>
+        <Row className="m-1">
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
+        </Row>
     </Form.Group>;
 }
 
@@ -199,6 +207,10 @@ function travel() {
                 <Form.Label>Number of days of stay</Form.Label>
                 <Form.Control type="number" placeholder="Enter number of days of stay" />
             </Col>
+        </Row>
+        <Row className="m-1">
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
@@ -215,6 +227,10 @@ function life() {
                 <Form.Control type="text" placeholder="Is your spouse a smoker" />
             </Col>
         </Row>
+        <Row className="m-1">
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
+        </Row>
     </Form.Group>;
 }
 
@@ -229,6 +245,10 @@ function health() {
                 <Form.Label>Is your spouse a smoker?</Form.Label>
                 <Form.Control type="text" placeholder="Is your spouse a smoker" />
             </Col>
+        </Row>
+        <Row className="m-1">
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
@@ -245,6 +265,10 @@ function business() {
                  <Form.Control type="text" placeholder="Enter square footage" />
             </Col>
         </Row>
+        <Row className="m-1">
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
+        </Row> 
     </Form.Group>;
 }
 
