@@ -57,12 +57,12 @@ class LoginPage extends Component {
         return (
 
             <div className="row">
-                <div className="col center-content" >
+                <div className="col-2 center-content" >
                     <img
                         className="NySureLogo"
                         alt="NySure"
                         src="/images/NySureLogoWL2.png" />
-                        <h3 className="LoginSlogan">
+                        <h3 className="col center-content LoginSlogan">
                             <strong>INSURANCE &nbsp;AT &nbsp;YOUR TERMS</strong>
                         </h3>
                 </div>
@@ -80,7 +80,7 @@ class LoginPage extends Component {
                             data-target="#registerModal">
                             <strong>Register</strong>
                         </button>
-                        <Modal id="registerModal" title="Nysure Registration">
+                        <Modal className="card border-0" id="registerModal" title="Nysure Registration">
                             <RegisterForm onSubmit={this.register} />
                         </Modal>
                     </div>
@@ -95,12 +95,12 @@ const Modal = ({ children, id, title }) =>
         <div className="modal-dialog" style={modalBorderStyle}>
             <div className="modal-content" style={modalBorderStyle}>
                 <div className="modal-header" style={modalBorderStyle}>
-                    <h4 className="modal-title">{title}</h4>
+                    <h4 className="modal-title border-0">{title}</h4>
                     <button type="button" className="close" data-dismiss="modal">
                         &times;
                     </button>
                 </div>
-                <div className="modal-body" style={modalBorderStyle}>
+                <div className="modal-body border-0" style={modalBorderStyle}>
                     {children}
                 </div>
             </div>
