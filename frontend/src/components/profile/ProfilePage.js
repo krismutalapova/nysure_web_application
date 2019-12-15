@@ -30,13 +30,7 @@ class ProfilePage extends React.Component {
         updatedUser.phone = this.state.phone
         updatedUser.password = this.state.password.length ? this.state.password : this.props.user.password
         UserApi.updateUser(updatedUser)
-            .then((res) => {
-                this.setState({
-                    name: res.data.user.id,
-                    email: res.data.user.email,
-                    phone: res.data.user.phone,
-                    password: ""
-                })})
+            .then(window.location.reload())
     }
 
     render() {
