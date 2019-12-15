@@ -2,7 +2,7 @@ import React from "react";
 
 function ClaimsCard({ claim }) {
     return (
-        <div className="card" style={cardStyle}>
+        <div className="card border-0" style={cardStyle}>
             <div className="card-body" >
                 <label htmlFor="type"> type:</label>
                 <input disabled type="text" className="form-control" style={selectStyle} value={claim.type}></input>

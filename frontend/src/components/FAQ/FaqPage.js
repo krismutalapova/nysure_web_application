@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
+
 const QandA = {
     "I forgot my username and password. How do I log in?": "Trying to log into your account, but can’t remember your username and password? Don’t worry; we can help recover your information. Just call 1-888-327-6335 Mon-Fri 7:00 am to 11:00 pm Central Time.",
     "How does my local fire department impact my homeowner’s policy?": "Each fire protection agency (including your local fire department) is reviewed by the Insurance Services Office (ISO) and ranked based on their fire protection services, such as fire equipment, staffing and available water supply. The ranking is called the Public Protection Class (PPCTM) with 1 being the best score and 10 being the worst score. Many insurance companies use the PPC rating and the distance your home is from the nearest legally responding fire department to determine whether they will insure your home and how much to charge.",
@@ -27,6 +28,7 @@ function CustomToggle({ children, eventKey }) {
             type="button"
             className="faq-btn-collapse"
             onClick={decoratedOnClick}
+            style={{ color: '#eeeeee', textDecoration: 'none'}}
         >
             {children}
         </button>
@@ -54,12 +56,13 @@ function renderQandA(QandADict) {
 }
 
 function renderOneQandA(question, answer, index) {
+    
     return <Card key={index}>
         <Card.Header>
             <CustomToggle eventKey={index}><h5>{question}</h5></CustomToggle>
         </Card.Header>
         <Accordion.Collapse eventKey={index}>
-            <Card.Body style={{ color: '#eeeeee' }}>{answer}</Card.Body>
+            <Card.Body style={{ color: '#eeeeee'}}>{answer}</Card.Body>
         </Accordion.Collapse>
     </Card>
 }

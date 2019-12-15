@@ -45,8 +45,9 @@ function ClaimsForm(props) {
             item: { itemId: item },
             user: user,
         })
-            .then(({ data }) => { window.location.href = "/claims"; })
-            .catch(err => console.error(err));
+            .then(({ data }) => { window.location.href = "/claims";})
+            .catch(err => {console.error(err)
+            alert("Select an insured item first")});
     }
 
     return (
