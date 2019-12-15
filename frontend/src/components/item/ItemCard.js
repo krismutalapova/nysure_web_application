@@ -70,7 +70,7 @@ class ItemCard extends Component {
         }
 
         return (
-            <div className="card" style={cardStyle}>
+            <div className="card border-0" style={cardStyle}>
                 <div className="card-body" >
                     <label htmlFor="ItemBrand">Item Brand:</label>
                     <input disabled type="text" className="form-control" style={selectStyle} value={itemBrand !== "" ? itemBrand : "not defined"}></input>

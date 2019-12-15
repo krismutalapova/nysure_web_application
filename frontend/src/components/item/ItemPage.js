@@ -90,16 +90,16 @@ class ItemPage extends Component {
                     {items.map((item) => {
                         return (
                             <div key={item.itemId} className="card" style={cardStyle}>
-                                <div className="card-body">
+                                <div className="card-body" style={{color: "white"}}>
                                 <a className="fa fa-trash float-right"
                                     style={buttonStyle}
                                     href="/item#"
                                     onClick={() => this.onClickDeleteItem(item.itemId)}>
                                 </a>
-                                    <h5 className="card-title">{item.itemType}</h5>
+                                    <h5 className="card-title" >{item.itemType}</h5>
                                     <p className="card-text">{!item.insurance ? "No insurance plan." : `Insured by ${item.insurance.company}.`}</p>
-                                    <button type="button"
-                                        className="btn btn-primary"
+                                    <button type="btn"
+                                        className="btn btn-info"
                                         data-toggle="modal"
                                         data-target={`#itemCardModal-${item.itemId}`}
                                     > View item

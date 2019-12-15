@@ -51,8 +51,8 @@ class InsuranceCard extends Component {
         const { selectedFiles } = this.state;
   
         return (
-            <div className="card" style={cardStyle}>
-                <div className="card-body" >
+            <div className="card border-0" >
+                <div className="card-body border-0">
                     <label htmlFor="type"> Policy ID:</label>
                     <input disabled type="text" className="form-control" style={selectStyle} value={this.props.insurance.id}></input>
 
