@@ -173,6 +173,7 @@ const Carousel = ({ uploadedImages, handleDelete }) =>
     }
 const buttonStyle = {
             marginRight: '15px',
+            color: "teal"
     }
 const cardStyle = {
             width: '80%',
