@@ -60,7 +60,7 @@ body {
   border-radius: 10px;
   font-family: 'Raleway', sans-serif;
 }
-      
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   height: 100px;
@@ -116,12 +116,12 @@ display: inline-block;
   text-align-last: center;
   color: #82b1b7;
   margin-top: 15px;
-  margin-left: 96px;
+  margin-left: 70px;
 }
 .NySureLogo {
     display: block;
     margin-top: 100px;
-    margin-left: 100px;
+    margin-left: 140px;
     height: 250px;
 }
 
