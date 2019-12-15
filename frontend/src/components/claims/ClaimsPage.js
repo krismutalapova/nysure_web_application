@@ -65,12 +65,12 @@ class ClaimsPage extends Component {
                     {claims.map(( claim ) => {
                         return (
                             <div key={claim.claimId} className="card" style={cardStyle}>
-                                <div className="card-body">
+                                <div className="card-body" style={{color: "white"}}>
                                     <h5 className="card-title">{claim.incidentDate === "" ? "Date not available" : claim.incidentDate}</h5>
                                     <p className="card-text">{`Item insured: ${claim.item.itemType}`}</p>
                                     <p className="card-text">{`Company: ${claim.item.insurance.company}`}</p>
-                                    <button type="button"
-                                        className="btn btn-primary"
+                                    <button type="btn"
+                                        className="btn btn-info"
                                         data-toggle="modal"
                                         data-target={`#claimCardModal-${claim.claimId}`}> View claim
                                         </button>

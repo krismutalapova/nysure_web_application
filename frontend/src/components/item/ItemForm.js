@@ -82,7 +82,7 @@ function ItemForm( {onClickCreateItem, insurances } ) {
                 </select>
         </div>
         
-        <button type="submit" className="btn btn-primary" data-dismiss="modal" onClick={handleSubmit}>Create</button>
+        <button type="btn" className="btn btn-info"data-dismiss="modal" onClick={handleSubmit}>Create</button>
     </div>  
     </Form>                
     );

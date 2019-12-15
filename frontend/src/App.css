@@ -52,12 +52,12 @@ body {
 }
 
 .card {
-    background-color: #a7b3b4;
+  background: linear-gradient(to bottom, #a1acac, #a7b3b4);
 }
 
 .card-body {
-  background-color: #a7b3b4;
-  margin:-5px;
+  display: inline-block;
+  background:  #a7b3b4;
   border-radius: 10px;
   font-family: 'Raleway', sans-serif;
 }
@@ -105,23 +105,21 @@ body {
   background: linear-gradient(to right, #d0d7d7, #ececec);
 }
 
-.logincard {
-  background-color: #a7b3b4;
-  border-color: #a7b3b4;
+.regCard {
+  margin-inline-start: 15px;
+  margin-inline-end: 15px;
 }
-
 .LoginSlogan {
   text-align-last: center;
-  font-size: calc(7px + 2vmin);
-  color: black;
-  margin-top: 20px;
+  color: #82b1b7;
+  margin-top: 15px;
+  margin-left: 70px;
 }
-
 .NySureLogo {
-  display: block;
-  height: 30vmin;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-top: 100px;
+    margin-left: 140px;
+    height: 250px;
 }
 
 .strong-shadow{
