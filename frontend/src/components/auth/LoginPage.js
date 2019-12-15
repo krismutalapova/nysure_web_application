@@ -61,9 +61,9 @@ class LoginPage extends Component {
                     <img
                         className="NySureLogo"
                         alt="NySure"
-                        src="/images/NySureLogoWL2.png" />
+                        src="/images/NySure-Logo.png" />
                         <h3 className="col center-content LoginSlogan">
-                            <strong>INSURANCE &nbsp;AT &nbsp;YOUR TERMS</strong>
+                            <strong>INSURANCE ON YOUR TERMS</strong>
                         </h3>
                 </div>
                 

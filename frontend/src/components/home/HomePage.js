@@ -35,7 +35,7 @@ class HomePage extends Component {
                 <div className="row-full">
                     <div className="card text-white estimated-spent">
                         <h4 className="">Estimated monthly cost:</h4>
-                        <h5 className="">{`${this.numberWithCommas()} SEK per month`}</h5>
+                        <h5 className=""> <strong> {`${this.numberWithCommas()} SEK  per month`}</strong></h5>
                     </div>
                 </div>
 
