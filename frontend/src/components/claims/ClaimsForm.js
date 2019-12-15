@@ -58,7 +58,8 @@ function ClaimsForm(props) {
 
             <button
                 type="btn btn-block"
-                className="btn btn-info btn-block"
+                className="btn btn-info"
+                style={{ padding: "10px", margin:"10px 20px 10px 20px"}}
                 onClick={handleSubmit}>
                 Create claim
             </button>
