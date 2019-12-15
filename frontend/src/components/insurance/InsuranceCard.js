@@ -113,11 +113,9 @@ const selectStyle = {
 }
 const buttonStyle = {
     marginRight: '15px',
+    color: "teal"
 }
-const cardStyle = {
-    width: '80%',
-    margin: 'auto'
-}
+
 
 
 export default InsuranceCard;

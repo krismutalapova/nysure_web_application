@@ -92,7 +92,7 @@ class ItemPage extends Component {
                             <div key={item.itemId} className="card" style={cardStyle}>
                                 <div className="card-body" style={{color: "white"}}>
                                 <a className="fa fa-trash float-right"
-                                    style={buttonStyle}
+                                    style={{color: "white"}}
                                     href="/item#"
                                     onClick={() => this.onClickDeleteItem(item.itemId)}>
                                 </a>
