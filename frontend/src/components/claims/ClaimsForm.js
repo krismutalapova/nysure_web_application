@@ -59,7 +59,8 @@ function ClaimsForm(props) {
 
             <button
                 type="btn btn-block"
-                className="btn btn-info btn-block"
+                className="btn btn-info"
+                style={{ padding: "10px", margin: "10px 20px 10px 20px" }}
                 onClick={handleSubmit}>
                 Create claim
             </button>
@@ -147,9 +148,8 @@ function vehicle(fieldA, setFieldA, fieldB, setFieldB) {
         </Row>
 
         <Row className="m-1">
-            <Col>
-                <Form.Text className="text-muted">*All information is confidential</Form.Text>
-            </Col>
+            <Form.Text className="text-muted" style={{ padding: '13px' }}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>
 }
@@ -167,9 +167,8 @@ function home(fieldA, setFieldA, fieldB, setFieldB) {
             </Col>
         </Row>
         <Row className="m-1">
-            <Col>
-                <Form.Text className="text-muted">*All information is confidential</Form.Text>
-            </Col>
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
@@ -187,9 +186,8 @@ function child(fieldA, setFieldA, fieldB, setFieldB) {
             </Col>
         </Row>
         <Row className="m-1">
-            <Col>
-                <Form.Text className="text-muted">*All information is confidential</Form.Text>
-            </Col>
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
@@ -207,9 +205,8 @@ function pet(fieldA, setFieldA, fieldB, setFieldB) {
             </Col>
         </Row>
         <Row className="m-1">
-            <Col>
-                <Form.Text className="text-muted">*All information is confidential</Form.Text>
-            </Col>
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
@@ -227,9 +224,8 @@ function travel(fieldA, setFieldA, fieldB, setFieldB) {
             </Col>
         </Row>
         <Row className="m-1">
-            <Col>
-                <Form.Text className="text-muted">*All information is confidential</Form.Text>
-            </Col>
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
@@ -247,9 +243,8 @@ function life(fieldA, setFieldA, fieldB, setFieldB) {
             </Col>
         </Row>
         <Row className="m-1">
-            <Col>
-                <Form.Text className="text-muted">*All information is confidential</Form.Text>
-            </Col>
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
@@ -267,9 +262,8 @@ function health(fieldA, setFieldA, fieldB, setFieldB) {
             </Col>
         </Row>
         <Row className="m-1">
-            <Col>
-                <Form.Text className="text-muted">*All information is confidential</Form.Text>
-            </Col>
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
@@ -287,9 +281,8 @@ function business(fieldA, setFieldA, fieldB, setFieldB) {
             </Col>
         </Row>
         <Row className="m-1">
-            <Col>
-                <Form.Text className="text-muted">*All information is confidential</Form.Text>
-            </Col>
+        <Form.Text className="text-muted" style={{padding:'13px'}}> We are GDPR compliant.
+        All your data is secure and won't be shared with a third party. </Form.Text>
         </Row>
     </Form.Group>;
 }
