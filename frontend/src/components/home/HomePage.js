@@ -39,7 +39,7 @@ class HomePage extends Component {
                     </div>
                 </div>
 
-                <div className="column">
+                <div className="column-8">
                     <div className="row">
                         <div className="col center-content">
                             <Link to="/item" className="nav-link">
