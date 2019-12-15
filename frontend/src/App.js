@@ -80,7 +80,7 @@ function App() {
                          </Route>
 
                         <Route path="/profile">
-                            <ProfilePage user={user}/>
+                            <ProfilePage/>
                         </Route>
 
                         <Route path="/">

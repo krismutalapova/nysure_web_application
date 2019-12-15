@@ -28,10 +28,6 @@ class UserApi {
         }
     }
 
-    updateUser(user) {
-        return Api.put('/user', user);
-    }
-
     bindCurrentUserStateSetter(currentUserStateSetter) {
         this.currentUserSet = currentUserStateSetter;
     }

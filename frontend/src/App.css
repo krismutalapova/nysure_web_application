@@ -31,20 +31,10 @@
   color: #09d3ac;
 }
 
-.body {
+body {
   min-height: 100vh;
   background: linear-gradient(to bottom, #ffffff, #ececec);
   font-family: 'Raleway', sans-serif;
-}
-
-.edit-info {
-  margin-left: 15px;
-  margin-right: 20px;
-  object-position: center;
-}
-
-.strong-shadow{
-  background-color: #a7b3b4;
 }
 
 .border-content-left {
@@ -55,7 +45,6 @@
   font-size: 16pt;
   border: lightblue 1pt solid;
   padding: 5pt;
-
 }
 
 .btn-circle, .btn-circle:hover {
@@ -90,7 +79,8 @@
   margin-top: 20%;
 }
 
-.carousel-control-next-icon:after {
+.carousel-control-next-icon:after
+{
   content: '>';
   font-size: 45px;
   color: black;
@@ -110,25 +100,6 @@
   vertical-align: center;
 }
 
-.topbar-brand {
-
-  display: block;
-    height: 5vmin;
-    shape-image-threshold: 5px;
-    display: block;
-    height: 30vmin;
-}
-
-.border-content-left {
-  display: inline-block;
-  width: 100%;
-  text-align: left;
-  color: white;
-  font-size: 16pt;
-  border: lightblue 1pt solid;
-  padding: 5pt;
-}
-  
 .form-control {
   margin: none;
   background: linear-gradient(to right, #d0d7d7, #ececec);
@@ -224,19 +195,7 @@
   text-decoration: underline;
 }
 
-.savebtn {
-  height: 30px;
-  width: auto;
-  margin-left: 10px;
-  float: right;
-}
-
 .navbar-brand {
-  margin-left: 20px;
-}
-
-.btn-outline-info{
-  margin-right: 20px;
   margin-left: 30px;
   shape-image-threshold: initial;
 }

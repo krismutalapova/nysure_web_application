@@ -1,125 +1,98 @@
-import React from "react";
-import UserApi from "../../api/UserApi";
+import React, {useState} from "react";
 
+function ProfileForm({onSubmit}) {
+    const [name, setName]=useState("");
+    const [address, setAddress]=useState("");
+    const [phone, setPhone]=useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-
-class ProfileForm extends React.Component {
-
-    state = {
-        name: "",
-        email: "",
-        phone: "",
-        password: "",
-    }
-
-    componentDidMount() {
-        window.setTimeout(() => {
-            this.setState({
-                name: this.props.user.name,
-                email: this.props.user.email,
-                phone: this.props.user.phone,
-                password: "",
-            })
-        }, 400)
-    }
-
-    handleSubmit() {
-        const updatedUser = { ...this.props.user }
-        updatedUser.name = this.state.name
-        updatedUser.phone = this.state.phone
-        updatedUser.password = this.state.password.length ? this.state.password : this.props.user.password
-        UserApi.updateUser(updatedUser)
-            .then(() => {
-                window.location.reload()
-            })
-    }
-
-    render() {
-        return (
-            <div className="card">
-                <div className="card-body" style={{ borderRadius: '0px' }}>
-                    <label>Username:</label>
-                    <div className="input-group">
+    return (
+        <div className="card">
+            <div className="card-body">
+                <div className="row">
+                    <div className="form-group">
+                        <label>Full Name:</label>
                         <input
                             type="text"
-                            placeholder="What shall we call you?"
                             className="form-control"
-                            style={{ borderRadius: '10px' }}
-                            value={this.state.name}
-                            onChange={e => this.setState({ name: e.target.value })}
-                        />
-                        <button
-                            type="button"
-                            className="btn savebtn"
-                            onClick={e => this.handleSubmit()}>
-                            <img className="savebtn" src="/icons/save-solid.png" alt="save" />
-                        </button>
+                            value={name}
+                            onChange={ e => setName(e.target.value) }
+                            placeholder="What shall we call you?"/>
                     </div>
+                    <button type="button"
+                        className="btn"
+                        onClick={e => onSubmit({name})}>
+                            <i className="edit-info"></i>
+                    </button>
                 </div>
-
-                <div className="card-body" style={{ borderRadius: '0px' }}>
-                    <label>Email:</label>
-                    <div className="input-group">
+                <div div className="row">
+                    <div className="form-group">
+                        <label>Email:</label>
                         <input
-                            disabled
-                            type="text"
-                            placeholder="What is your e-mail?"
+                            type="email"
+                            value={email}
+                            onChange={ e => setEmail(e.target.value) }
                             className="form-control"
-                            style={{ borderRadius: '10px' }}
-                            value={this.state.email}
-                            onChange={e => this.setState({ email: e.target.value })}
-                        />
-                        <button
-                            disabled
-                            type="button"
-                            className="btn savebtn"
-                            onClick={e => this.handleSubmit()}>
-                            <img className="savebtn" src="/icons/save-solid.png" alt="save" />
-                        </button>
+                            placeholder="Email"/>
                     </div>
+                    <button type="button"
+                        className="btn"
+                        onClick={e => onSubmit({email})}>
+                            <i className="edit-info"></i>
+                    </button>
                 </div>
-
-                <div className="card-body" style={{ borderRadius: '0px' }}>
-                    <label>Phone:</label>
-                    <div className="input-group">
-                        <input
-                            type="number"
-                            placeholder="What is your phone number?"
-                            className="form-control"
-                            style={{ borderRadius: '10px' }}
-                            value={this.state.phone}
-                            onChange={e => this.setState({ phone: e.target.value })}
-                        />
-                        <button type="button"
-                            className="btn savebtn"
-                            onClick={e => this.handleSubmit()}>
-                            <img className="savebtn" src="/icons/save-solid.png" alt="save" />
-                        </button>
-                    </div>
-                </div>
-
-                <div className="card-body" style={{ borderRadius: '0px' }}>
-                    <label>Password:</label>
-                    <div className="input-group">
+                <div div className="row">
+                    <div className="form-group">
+                        <label>Password:</label>
                         <input
                             type="password"
                             placeholder="Password"
                             className="form-control"
-                            style={{ borderRadius: '10px' }}
-                            value={this.state.password}
-                            onChange={e => this.setState({ password: e.target.value })}
-                        />
-                        <button type="button"
-                            className="btn savebtn"
-                            onClick={e => this.handleSubmit()}>
-                            <img className="savebtn" src="/icons/save-solid.png" alt="save" />
-                        </button>
+                            value={password}
+                            onChange={e => setPassword(e.target.value)} />
                     </div>
+                    <button type="button"
+                        className="btn"
+                        onClick={e => onSubmit({password})}>
+                            <i className="edit-info"></i>
+                    </button>
+                </div>
+                <div div className="row">
+                    <div className="form-group">
+                        <label>Address:</label>
+                        <input
+                            type="address"
+                            placeholder="Address"
+                            className="form-control"
+                            value={address}
+                            onChange={e => setAddress(e.target.value)} />
+                    </div>
+                    <button type="button"
+                        className="btn"
+                        onClick={e => onSubmit({address})}>
+                            <i className="edit-info"></i>
+                    </button>
+                </div>
+                <div div className="row">
+                    <div className="form-group">
+                        <label>Phone:</label>
+                        <input
+                            type="phone"
+                            placeholder="phone"
+                            className="form-control"
+                            value={phone}
+                            onChange={e => setPhone(e.target.value)} />
+                    </div>
+                    <button type="button"
+                        className="btn"
+                        onClick={e => onSubmit({phone})}>
+                            <i className="edit-info"></i>
+                    </button>
                 </div>
             </div>
-
-        );
-    }
+        </div>
+    );
 }
 
 export default ProfileForm;
