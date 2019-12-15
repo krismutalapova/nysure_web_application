@@ -3,12 +3,12 @@ import React from "react";
 function InsuranceForm( {onClickCreateInsurance} ) {
 
     return (
-        <div className="card">
-            <div className="card-body">
+        <div className="card border-0">
+            <div className="card-body border-0">
                         
                         <div>
-                        <div id="carouselExampleIndicators" className="carousel slide" data-interval="false">
-                        <div className="carousel-inner">
+                        <div id="carouselExampleIndicators" className="carousel slide border-0" data-interval="false">
+                        <div className="carousel-inner border-0">
                             
                             <div className="carousel-item active">
                                <button type="button" className="btn-lg" data-dismiss="modal"
