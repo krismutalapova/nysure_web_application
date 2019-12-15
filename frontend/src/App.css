@@ -284,3 +284,10 @@ a.remImage img {
 .del:hover:after{
   opacity: 1;
 }
+
+.savebtn {
+  height: 30px;
+  width: auto;
+  margin-left: 10px;
+  float: right;
+}

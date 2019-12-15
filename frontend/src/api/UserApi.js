@@ -18,6 +18,10 @@ class UserApi {
         return Api.get('/user');
     }
 
+    updateUser(user) {
+        return Api.put('/user', user);
+    }
+
     async loadUser() {
         try {
             let userObject = await this.current();

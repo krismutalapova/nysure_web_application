@@ -1,59 +1,130 @@
-import React, { Component } from "react";
-import ProfileForm from "./ProfileForm";
-import UserApi from "../../api/UserApi.js";
+import React from "react";
+import UserApi from "../../api/UserApi";
 
-class ProfilePage extends Component {
-state = {
-        user: {
-            id: "Loading...",
-            name: "Loading...",
-            email: "Loading...",
-            address: "Loading...",
-            phone: "Loading...",
-        }
-    }
-
-    setCurrentUser(userObject) {
-        this.setState({ user: userObject.data });
-    }
-
+class ProfilePage extends React.Component {
     constructor(props) {
-        super(props);
-        this.loadUser();
+        super(props)
+
+        this.state = {
+            name: "",
+            email: "",
+            phone: "",
+            password: "",
+        }
     }
 
-    async loadUser() {
-        try {
-            let userObject = await UserApi.current();
-            this.setState({ user: userObject.data });
-        } catch (e) {
-            console.error(e);
-        }
+    componentDidMount() {
+        window.setTimeout(() => {
+            this.setState({
+                name: this.props.user.name,
+                email: this.props.user.email,
+                phone: this.props.user.phone,
+                password: "",
+            })
+        }, 400)
+    }
+
+    handleSubmit() {
+        const updatedUser = { ...this.props.user }
+        updatedUser.name = this.state.name
+        updatedUser.phone = this.state.phone
+        updatedUser.password = this.state.password.length ? this.state.password : this.props.user.password
+        UserApi.updateUser(updatedUser)
+            .then(res => {
+                this.setState({
+                    name: res.data.name,
+                    email: res.data.email,
+                    phone: res.data.phone,
+                    password: "",
+                });
+                window.location.reload()
+            })
     }
 
     render() {
         return (
-            <div className="wrapper">
-                <div className="container">
-                    <div className="row mt-4">
-                        <div className="col-md-6 " style={{color: "transparent"}}>
-                            <img alt="profile pic"
-                                className="img-circle"
-                                src="images/alberto.jpg"
-                                />
-                            <p>ID</p>
-                        </div>
+            <div className="card">
+                <div className="card-body" style={{ borderRadius: '0px' }}>
+                    <label>Username:</label>
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            placeholder="What shall we call you?"
+                            className="form-control"
+                            style={{ borderRadius: '10px' }}
+                            value={this.state.name}
+                            onChange={e => this.setState({ name: e.target.value })}
+                        />
+                        <button
+                            type="button"
+                            className="btn savebtn"
+                            onClick={e => this.handleSubmit()}>
+                            <img className="savebtn" src="/icons/save-solid.png" alt="save" />
+                        </button>
+                    </div>
+                </div>
 
-                        <div className="card-body">
-                            <div>
-                                <div className="col-12  strong-shadow">
-                                    <ProfileForm/>
-                                </div>
-                            </div>
-                        </div>
+                <div className="card-body" style={{ borderRadius: '0px' }}>
+                    <label>Email:</label>
+                    <div className="input-group">
+                        <input
+                            disabled
+                            type="text"
+                            placeholder="What is your e-mail?"
+                            className="form-control"
+                            style={{ borderRadius: '10px' }}
+                            value={this.state.email}
+                            onChange={e => this.setState({ email: e.target.value })}
+                        />
+                        <button
+                            disabled
+                            type="button"
+                            className="btn savebtn"
+                            onClick={e => this.handleSubmit()}>
+                            <img className="savebtn" src="/icons/save-solid.png" alt="save" />
+                        </button>
+                    </div>
+                </div>
+
+                <div className="card-body" style={{ borderRadius: '0px' }}>
+                    <label>Phone:</label>
+                    <div className="input-group">
+                        <input
+                            type="number"
+                            placeholder="What is your phone number?"
+                            className="form-control"
+                            style={{ borderRadius: '10px' }}
+                            value={this.state.phone}
+                            onChange={e => this.setState({ phone: e.target.value })}
+                        />
+                        <button type="button"
+                            className="btn savebtn"
+                            onClick={e => this.handleSubmit()}>
+                            <img className="savebtn" src="/icons/save-solid.png" alt="save" />
+                        </button>
+                    </div>
+                </div>
+
+                <div className="card-body" style={{ borderRadius: '0px' }}>
+                    <label>Password:</label>
+                    <div className="input-group">
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            className="form-control"
+                            style={{ borderRadius: '10px' }}
+                            value={this.state.password}
+                            onChange={e => this.setState({ password: e.target.value })}
+                        />
+                        <button type="button"
+                            className="btn savebtn"
+                            onClick={e => this.handleSubmit()}>
+                            <img className="savebtn" src="/icons/save-solid.png" alt="save" />
+                        </button>
                     </div>
                 </div>
             </div>
+
         );
     }
 }
