@@ -24,7 +24,7 @@ function Topbar({ onLogout, user }) {
                 <a href="/profile">
                     <img 
                         className="profileIcon" 
-                        src="icons/user-circle-solid.png" 
+                        src="/icons/user-circle-solid.png" 
                         style={{ width: "40px", height: "40px" }} 
                         alt="Edit User"
                     />
